@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Using official ubuntu box from vagrantcloud.com
   # https://vagrantcloud.com/ubuntu/trusty64
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/trusty32"
   # The loopback app uses port 3000.
   config.vm.network "forwarded_port", guest: 3000, host: 3000
 
