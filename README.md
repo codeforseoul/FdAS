@@ -42,6 +42,7 @@ Vagrant는 ruby로 작성한 개발 환경 구축을 위한 도구로써, 개발
 ```
 git clone https://github.com/codeforseoul/nogo_workingmon.git
 cd nogo_workingmom/
+git checkout setup
 vagrant up
 
 ```
