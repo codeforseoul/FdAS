@@ -44,6 +44,7 @@ Vagrant는 ruby로 작성한 개발 환경 구축을 위한 도구로써, 개발
 ```
 git clone https://github.com/codeforseoul/nogo_workingmon.git
 cd nogo_workingmom/
+git checkout setup
 vagrant up
 
 ```
@@ -52,7 +53,8 @@ vagrant up
 ####3. 프로젝트 시작
 
 ```
-// ubuntu trusty64 가상머신으로 로그인
+
+// ubuntu trusty32 가상머신으로 로그인
 vagrant ssh
 
 // 기본적으로 vagrant는 호스트 OS의 현재 디렉토리를 게스트 OS의 /vagrant로 마운트합니다.
