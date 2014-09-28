@@ -1,5 +1,5 @@
 
-개같이 쓰고 정승같이 누리자 (가제) ```nogo_workingmon```
+알뜰 서울의 발견 (Finding of AlDdle Seoul)
 ===============
 
 서울시 홈페이지는 1000만개!! 무슨 소리냐구요? 생계, 주거, 복지, 문화 뭐 서울시가 제공하는 서비스는 여기저기 수없이 많은데, 우린 항상 바쁘죠. 정신차려보면 다 지나갔더라고요. 바로 시민이 자신의 다양한 조건(나이, 성별, 가족, 사는 곳, 직업)을 넣으면 그 조건에 맞는 서울시의 서비스를 보여주고 활용할 수 있게 하는 겁니다. 지금은 발품팔고 뛰어다녀도 찾기 힘든 시절이잖아요. ^^
@@ -18,19 +18,21 @@
 
 현재 팀원들과 앞으로의 참여자들간의 새로운 기술 경험, 공부 및 공동 개발을 위해 오픈소스 nodejs 프레임워크를 선택했습니다. 또한 사용성을 높이기 위해서 앱을 사용하고 스트림 형태로 제공하고 위해 mongodb를 선택했습니다.(아 이거랑은 상관없나요? 그냥 했습니다. :) 클라이언트는 웹사이트, 안드로이드앱 정도로 기획 중입니다. 음 일단 총대를 맨거라 프레임워크가 변경될 수도... ㅡ,.ㅡ;;;
 
-### Strongloop
-오픈소스 nodejs framework (http://loopback.io)
+### Loopback
+nodejs MBASS(Mobile Backend as s Service framework)
+http://loopback.io
 
 ### Mongodb
-오픈소스 document 기반의 NoSQL 스토리지 (http://mongodb.org)
+Document 기반의 NoSQL 스토리지
+http://mongodb.org
 
 ### Vagrant [|veɪgrənt]
 
-Vagrant는 ruby로 작성한 개발 환경 구축을 위한 도구로써, 개발 환경 구축하는데 드는 시간을 줄일 수 있으며 각각 다른 OS나 환경의 개발자들이 동일한 개발 환경에서 협업할 수 있습니다. 
+Vagrant는 ruby로 작성한 개발 환경 구축을 위한 도구로써, 개발 환경 구축하는데 드는 시간을 줄일 수 있으며 각각 다른 OS나 환경의 개발자들이 동일한 개발 환경에서 협업할 수 있습니다.
 
 가장 큰 특징은 게스트 OS (vagrant가 제어하는 가상머신)의 자원을 활용하면서 개발자가 사용하는 머신의 호스트 OS에서 소스를 편집할 수 있다는 점입니다. 호스트 OS의 디렉토리를 게스트 OS에 마운트시키고 그 소스를 게스트 OS에서 돌리는 겁니다. 예를 들면 윈도우나 맥을 사용하는 개발자가 리눅스 기반의 환경에서 돌아가는 프로젝트를 이미 사용 중인 개발도구나 소스 편집기를 활용해서 개발할 수 있다는 거죠~
 
-### 사용방법 
+### 사용방법
 
 ####1. 소프트웨어 설치
 
@@ -51,10 +53,10 @@ vagrant up
 
 ```
 // ubuntu trusty64 가상머신으로 로그인
-vagrant ssh 
+vagrant ssh
 
 // 기본적으로 vagrant는 호스트 OS의 현재 디렉토리를 게스트 OS의 /vagrant로 마운트합니다.
-cd /vagrant/nogo_workingmom/server 
+cd /vagrant/nogo_workingmom/server
 
 // 필요한 node 모듈을 설치합니다.
 npm install
@@ -63,7 +65,7 @@ npm install
 slc run
 
 ```
-브라우저에서 http://0.0.0.0:3000/explorer 로 접근하면 api를 테스트해볼 수 있습니다. 
+브라우저에서 http://0.0.0.0:3000/explorer 로 접근하면 api를 테스트해볼 수 있습니다.
 
 ####4. 불타는 코딩!
 아주 작은 커밋이 모여 바다가 됩니다. 불살라주세요~ ㅋㅋㅋㅋ 아님 이슈라도 달아주심 감사~
@@ -85,7 +87,7 @@ slc run
 - age // 나이
 - regions // 지역
 - interests // 관심사
-- twitter 
+- twitter
 - facebook
 
 #### 서비스
@@ -97,5 +99,5 @@ slc run
 - image
 - interests
 
-### 
+###
 
