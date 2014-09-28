@@ -42,13 +42,12 @@ Vagrant는 ruby로 작성한 개발 환경 구축을 위한 도구로써, 개발
 ####2. 가상머신 시작
 
 ```
-git clone https://github.com/codeforseoul/nogo_workingmon.git
-cd nogo_workingmom/
-git checkout setup
+git clone https://github.com/codeforseoul/fads.git
+cd fads/
 vagrant up
 
 ```
-좋아하는 음료수를 마시거나 담배 한 대 태우시거나 산책을 하고 돌아오면 개발 환경 완성!
+좋아하는 음료수를 마시거나 담배 한 대 태우거나 산책을 하고 돌아오면 개발 환경 완성!
 
 ####3. 프로젝트 시작
 
@@ -58,7 +57,7 @@ vagrant up
 vagrant ssh
 
 // 기본적으로 vagrant는 호스트 OS의 현재 디렉토리를 게스트 OS의 /vagrant로 마운트합니다.
-cd /vagrant/nogo_workingmom/server
+cd /vagrant/server
 
 // 필요한 node 모듈을 설치합니다.
 npm install
