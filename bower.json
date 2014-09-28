@@ -1,0 +1,21 @@
+{
+  "name": "fads",
+  "version": "0.1.0",
+  "homepage": "https://github.com/strongloop/loopback-example-angular-starter",
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.25",
+    "angular-resource": "~1.2.25",
+    "angular-ui-router": "~0.2.11",
+    "bootstrap": "~3.2.0",
+    "jquery": "~2.1.1"
+  }
+}

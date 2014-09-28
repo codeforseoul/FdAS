@@ -1,6 +1,6 @@
 {
-  "name": "workingmom",
-  "version": "0.0.0",
+  "name": "fads",
+  "version": "0.1.0",
   "main": "server/server.js",
   "scripts": {
     "pretest": "jshint ."
@@ -8,6 +8,7 @@
   "dependencies": {
     "compression": "^1.0.3",
     "errorhandler": "^1.1.1",
+    "grunt": "^0.4.5",
     "loopback": "^2.0.0",
     "loopback-boot": "^2.0.0",
     "loopback-connector-mongodb": "^1.4.4",
