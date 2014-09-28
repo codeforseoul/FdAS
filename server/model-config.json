@@ -23,5 +23,9 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "service": {
+    "dataSource": "MongoDB",
+    "public": true
   }
 }

@@ -1,0 +1,31 @@
+{
+  "name": "service",
+  "plural": "services",
+  "base": "PersistedModel",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string"
+    },
+    "interests": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
