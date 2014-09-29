@@ -32,7 +32,7 @@ Vagrant는 ruby로 작성한 개발 환경 구축을 위한 도구로써, 개발
 
 가장 큰 특징은 게스트 OS (vagrant가 제어하는 가상머신)의 자원을 활용하면서 개발자가 사용하는 머신의 호스트 OS에서 소스를 편집할 수 있다는 점입니다. 호스트 OS의 디렉토리를 게스트 OS에 마운트시키고 그 소스를 게스트 OS에서 돌리는 겁니다. 예를 들면 윈도우나 맥을 사용하는 개발자가 리눅스 기반의 환경에서 돌아가는 프로젝트를 이미 사용 중인 개발도구나 소스 편집기를 활용해서 개발할 수 있다는 거죠~
 
-### 사용방법
+### 개발 환경 구성
 
 ####1. 소프트웨어 설치
 
@@ -44,10 +44,12 @@ Vagrant는 ruby로 작성한 개발 환경 구축을 위한 도구로써, 개발
 ```
 git clone https://github.com/codeforseoul/fads.git
 cd fads/
+// 가상 머신 생성. 쉘 프로비저닝.
 vagrant up
 
 ```
 좋아하는 음료수를 마시거나 담배 한 대 태우거나 산책을 하고 돌아오면 개발 환경 완성!
+물론 가상머신의 느려터짐을 견딜 수 없을 때는 호스트에 환경을 직접 구성하고 개발해도 됩니다.
 
 ####3. 프로젝트 시작
 
@@ -56,49 +58,44 @@ vagrant up
 // ubuntu trusty32 가상머신으로 로그인
 vagrant ssh
 
-// 기본적으로 vagrant는 호스트 OS의 현재 디렉토리를 게스트 OS의 /vagrant로 마운트합니다.
-cd /vagrant/server
+// 기본적으로 vagrant는 호스트 OS의 현재 디렉토리를 게스트 OS의 /vagrant로 마운트
+cd /vagrant
 
-// 필요한 node 모듈을 설치합니다.
+// strongloop command line tools 설치
+npm -g install strongloop
+
+// 필요한 node 모듈 설치
 npm install
+
+// client 라이브러리 다운로드
+bower install
+
+// 개발 브렌치에서!
+git checkout devleop
 
 // 프로젝트 띄우기
 slc run
 
 ```
-브라우저에서 http://0.0.0.0:3000/explorer 로 접근하면 api를 테스트해볼 수 있습니다.
+브라우저에서 http://0.0.0.0:3000/는 웹 클라이언트,
+http://0.0.0.0:3000/explorer 로 접근하면 api를 테스트해볼 수 있습니다.
+
+####3-1. 가상머신 사용하지 않는 경우
+```
+install nodejs & npm
+install mongodb
+npm -g install strongloop
+```
+설명이 좀 부족한데 위에 것들을 설치해야 한다는 말이에요.
 
 ####4. 불타는 코딩!
 아주 작은 커밋이 모여 바다가 됩니다. 불살라주세요~ ㅋㅋㅋㅋ 아님 이슈라도 달아주심 감사~
 
+```
+브랜치
+master <- develop <- front-dev
+
+```
+
 ####5. 두근두근 pull request!
 창피해하지 마세요. 여러분이 더 대단합니다. 아마도, 당연히, 격하게 환영합니다!
-
-
-### 구조
-
-#### 사용자
-
-- username
-- password
-- email
-- signed_in
-- logged_in
-- gender // 성별
-- age // 나이
-- regions // 지역
-- interests // 관심사
-- twitter
-- facebook
-
-#### 서비스
-- id
-- title
-- url
-- body
-- author
-- image
-- interests
-
-###
-
