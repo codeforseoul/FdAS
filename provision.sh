@@ -24,4 +24,5 @@ sudo apt-get -y install nodejs
 
 # Install node modules
 echo "###### 2 Dependencies - nodejs modules ######"
-sudo npm install -g strongloop
+sudo npm install -g strongloop grunt-cli
+cd /vagrant && npm install && slc run -d

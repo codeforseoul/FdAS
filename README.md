@@ -90,6 +90,8 @@ npm -g install strongloop
 
 ####4. 불타는 코딩!
 아주 작은 커밋이 모여 바다가 됩니다. 불살라주세요~ ㅋㅋㅋㅋ 아님 이슈라도 달아주심 감사~
+pull request나 커밋은 develop, front-dev 브렌치로만 날려주세요.
+master 브렌치에는 테스트가 완료된 deploy 대상 소스만 유지하려구요.
 
 ```
 브랜치
