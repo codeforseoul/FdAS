@@ -71,7 +71,7 @@ npm install
 bower install
 
 // 개발 브렌치에서!
-git checkout devleop
+git checkout develop
 
 // 프로젝트 띄우기
 slc run
