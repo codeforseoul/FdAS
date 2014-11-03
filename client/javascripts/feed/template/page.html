@@ -1,0 +1,15 @@
+<section id="feed-lyt" data-ng-controller="feedCtrl">
+	<header>
+		<h2>피드</h2>
+		<menu>
+			<a href="/my" data-ng-click="focusView( $event )">개인</a>
+			<a href="/interest" data-ng-click="focusView( $event )">관심사</a>
+		</menu>
+		<fieldset role="search">
+			<legend>검색</legend>
+			<input type="search" name="" id="" data-ng-model="feedKeyword">
+			<input type="image" src="" alt="검색" data-ng-click="feedFilter(feedKeyword)">
+		</fieldset>
+	</header>
+	<div data-ng-view></div>
+</section>
