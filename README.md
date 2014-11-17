@@ -121,6 +121,14 @@ npm -g install strongloop
 ```
 설명이 좀 부족한데 위에 것들을 설치해야 한다는 말이에요.
 
+####3-2. Docker 1.3+ 사용
+
+```
+docker build -t="codeforseoul/fdas" .
+docker run -p 3000 -t -i -v $PWD:/root/src codeforseoul/fdas /bin/bash
+slc run
+```
+
 ####4. 불타는 코딩!
 아주 작은 커밋이 모여 바다가 됩니다. 불살라주세요~ ㅋㅋㅋㅋ 아님 이슈라도 달아주심 감사~
 Once you are ready and have something worth working with, create a pull request
