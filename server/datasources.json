@@ -1,10 +1,7 @@
 {
-  "db": {
-    "name": "db",
-    "connector": "memory"
-  },
-  "MongoDB": {
-    "name": "MongoDB",
+  "mongodb": {
+    "database": "fdas_dev",
+    "name": "mongodb",
     "connector": "mongodb"
   }
 }
