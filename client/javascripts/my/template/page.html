@@ -1,0 +1,18 @@
+<section id="my-lyt" data-ng-controller="myCtrl">
+	<header>
+		<h2>개인</h2>
+		<menu data-ng-if="!isDefaultUrl">
+			<a href="/my" data-ng-click="loadView( $event )">뒤로가기</a>
+		</menu>
+	</header>
+	<section data-ng-if="isDefaultUrl">
+		<menu>
+			<a href="/my/info" data-ng-click="loadView( $event )">내정보</a>
+			<a href="/feeds/my" data-ng-click="loadView( $event )">저장한 소식</a>
+			<a href="/app/setting" data-ng-click="loadView( $event )">설정</a>
+		</menu>
+	</section>
+	<section data-ng-if="!isDefaultUrl">
+		<div data-ng-include="templateUrl"></div>
+	</section>
+</section>

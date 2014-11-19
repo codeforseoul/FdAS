@@ -1,0 +1,33 @@
+<div data-ng-controller="myInfoCtrl">
+	<fieldset>
+		<legend>내 정보 설정</legend>
+		<ul>
+			<li>
+				<h4>성별</h4>
+				<div>
+					<input type="radio" name="myGender" value="male" id="myGender-male" data-ng-model="myGender" data-ng-change="change()">
+					<label for="myGender-male">남</label>
+					<input type="radio" name="myGender" value="female" id="myGender-female" data-ng-model="myGender" data-ng-change="change()">
+					<label for="myGender-female">여</label>
+				</div>
+			</li>
+			<li>
+				<h4>나이</h4>
+				<div>
+					<input type="radio" name="myAge" value="1" id="myAge-1" data-ng-model="myAge" data-ng-change="change()">
+					<label for="myAge-1">청소년</label>
+					<input type="radio" name="myAge" value="2" id="myAge-2" data-ng-model="myAge" data-ng-change="change()">
+					<label for="myAge-2">청년</label>
+					<input type="radio" name="myAge" value="3" id="myAge-3" data-ng-model="myAge" data-ng-change="change()">
+					<label for="myAge-3">중장년</label>
+					<input type="radio" name="myAge" value="4" id="myAge-4" data-ng-model="myAge" data-ng-change="change()">
+					<label for="myAge-4">노년</label>
+				</div>
+			</li>
+			<li>
+				<h4>지역</h4>
+				<select name="area" id="myArea" data-ng-model="myArea" data-ng-options="area.title for area in areas" data-ng-change="change()"></select>
+			</li>
+		</ul>
+	</fieldset>
+</div>
