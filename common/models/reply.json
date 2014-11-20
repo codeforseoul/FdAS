@@ -1,0 +1,20 @@
+{
+  "name": "reply",
+  "plural": "replies",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "addDate": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

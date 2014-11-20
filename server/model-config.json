@@ -6,7 +6,8 @@
     ]
   },
   "User": {
-    "dataSource": "mongodb"
+    "dataSource": "mongodb",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "mongodb",
@@ -30,6 +31,14 @@
   },
   "user": {
     "dataSource": "mongodb",
-    "public": false
+    "public": true
+  },
+  "grade": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "reply": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

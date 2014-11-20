@@ -26,10 +26,15 @@
   },
   "validations": [],
   "relations": {
-    "user": {
-      "type": "belongsTo",
-      "model": "user",
-      "foreignKey": "ownerId"
+    "grades": {
+      "type": "hasMany",
+      "model": "grade",
+      "foreignKey": "valuerId"
+    },
+    "replies": {
+      "type": "hasMany",
+      "model": "reply",
+      "foreignKey": "authorId"
     }
   },
   "acls": [

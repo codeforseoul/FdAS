@@ -1,13 +1,27 @@
 {
   "name": "user",
   "base": "PersistedModel",
-  "properties": {},
+  "properties": {
+    "addDate": {
+      "type": "string"
+    }
+  },
   "validations": [],
   "relations": {
     "services": {
       "type": "hasMany",
       "model": "service",
       "foreignKey": "ownerId"
+    },
+    "grades": {
+      "type": "hasMany",
+      "model": "grade",
+      "foreignKey": "valuerId"
+    },
+    "replies": {
+      "type": "hasMany",
+      "model": "reply",
+      "foreignKey": "authorId"
     }
   },
   "acls": [],
