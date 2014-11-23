@@ -14,8 +14,13 @@
   "dependencies": {
     "angular": "~1.2.25",
     "angular-resource": "~1.2.25",
+    "angular-route": "~1.2.25",
+    "angular-animate": "~1.2.25",
     "angular-ui-router": "~0.2.11",
     "bootstrap": "~3.2.0",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "html5shiv": "~3.7.2",
+    "es5-shim": "~4.0.3",
+    "ie7-js": "*"
   }
 }
