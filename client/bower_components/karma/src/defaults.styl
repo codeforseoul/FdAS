@@ -1,0 +1,20 @@
+_goldilocks ?= 30em
+_goldilocks_padding ?= 0.809em
+_grid_columns ?= 6
+_gutter_width ?= 1.2em
+_grid_expand_min_proportion ?= .2
+
+_base_size ?= 125%
+
+baby ?= s("screen and (max-width: %s)", ((_goldilocks + 4*_goldilocks_padding) * _base_size/100))
+mummy ?= s("screen and (min-width: %s) and (max-width: %s)", ((_goldilocks + 4*_goldilocks_padding) * _base_size/100), ((_goldilocks*2 + 4*_goldilocks_padding) * _base_size/100))
+daddy ?= s("screen and (min-width: %s)", ((_goldilocks + 4*_goldilocks_padding) * _base_size/100))
+daddyOnly ?= s("screen and (min-width: %s)", ((_goldilocks*2 + 4*_goldilocks_padding) * _base_size/100))
+
+_sequence_fibonacci ?= 0.6154 0.6154 0.6154 0.6154 1 1.6154 2.6154 3.6154 3.6154 3.6154
+_sequence_traditional ?= 0.666 0.75 0.8333 0.9167 1 1.1667 1.333 1.5 1.75 2 3 4 5 6
+_sequence_lecobusier ?= 0.6154 0.6154 0.6154 0.8077 1 1.3077 1.6154 2.1154 2.615 3.4231
+_sequence_center ?= 4
+
+_line_height ?= 1.6
+_typographic_scale ?= _sequence_traditional

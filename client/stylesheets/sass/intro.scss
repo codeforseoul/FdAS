@@ -1,0 +1,158 @@
+@import "define";
+
+#introLy {
+	overflow: hidden;
+	position: relative;
+	width: 100%; height: 100%;
+
+	> ol {
+		overflow: hidden;
+		position: relative;
+		width: 100%; height: 100%;
+		@include clearifx;
+
+		li {
+			position: absolute;
+			top: 0; left: 0;
+			width: 100%; height: 100%;
+			background-position: 50% 40%;
+			background-repeat: no-repeat;
+			text-align: center;
+			color: rgba(0,0,0,0);
+
+			&.item-1 {
+				background-image: url(#{$baseSrc}images/intro/img0.png);
+				background-size: mobilePx(360) mobilePx(713);
+			}
+			&.item-2 {
+				background-image: url(#{$baseSrc}images/intro/img1.png);
+				background-size: mobilePx(370) mobilePx(509);
+			}
+			&.item-3 {
+				background-image: url(#{$baseSrc}images/intro/img2.png);
+				background-size: mobilePx(319) mobilePx(553);
+			}
+			&.item-4 {
+				background-image: url(#{$baseSrc}images/intro/img3.png);
+				background-size: mobilePx(358) mobilePx(553);
+			}
+		}
+
+		.ng-enter, 
+		.ng-leave {
+			@include prefix-transition( all, $introSwipeTime );
+		} 
+
+		.swipe-left {
+			&.ng-enter {
+				left: 100%;
+			}
+			&.ng-enter.ng-enter-active {
+				left: 0;
+			}
+
+			&.ng-leave {
+				left: 0;
+			}
+			&.ng-leave.ng-leave-active{
+				left: -100%;
+			}			
+		}
+
+		.swipe-right {
+			&.ng-enter {
+				left: -100%;
+			}
+			&.ng-enter.ng-enter-active {
+				left: 0;
+			}
+
+			&.ng-leave {
+				left: 0;
+			}
+			&.ng-leave.ng-leave-active{
+				left: 100%;
+			}			
+		}
+	}
+
+
+	> nav {
+		position: absolute;
+		top: 75%;
+		width: 100%; height: mobilePx(48);
+		text-align: center;
+
+		> menu {
+			height: inherit;
+
+			> button {
+				position: absolute;
+				top: 0%;
+				width: mobilePx(27,round); height: inherit;
+				background: url(#{$baseSrc}images/intro/btn-nav.png) no-repeat;
+				background-size: mobilePx(27*2,round) mobilePx(48*2);
+
+				&.disabled {
+					cursor: auto;
+				}
+
+				&.to-prev {
+					left: mobilePx(52);
+					background-position: mobilePx(27,round)*0 0;
+
+					&.disabled {
+						background-position: mobilePx(27,round)*0 mobilePx(48)*-1;
+					}
+				}
+				&.to-next {
+					right: mobilePx(52);
+					background-position: mobilePx(27,round)*-1 0;
+
+					&.disabled {
+						background-position: mobilePx(27,round)*-1 mobilePx(48)*-1;
+					}
+				}
+			}
+		}
+		> ol {
+			margin-left: (100% - 50%) / 2;
+			width: 50%;
+			height: inherit;
+			display: inline-block;
+			margin-top: mobilePx(48)*-1;
+			@include prefix-flexbox2;
+			@include prefix-css3( justify-content, center );
+			@include prefix-css3( align-items, center );
+
+			> li {
+				overflow: hidden;
+				display: inline-block;
+				margin: 0 mobilePx(10);
+				width: mobilePx(15);
+				height: mobilePx(15);
+				border-radius: 50% 50%;
+				background-color: #2e3191;
+				color: rgba(0,0,0,0);
+				opacity: 0.1;
+
+				&.active {
+					opacity: 1;
+				}
+			}
+		}
+		> button {
+			display: inline-block;
+			width: mobilePx(468);
+			height: mobilePx(79);
+			margin-top: mobilePx(40);
+			background: url(#{$baseSrc}images/intro/btn-start.png) no-repeat;
+			background-size: mobilePx(468) mobilePx(79);
+		}
+	}
+
+	> .to-intro-close {
+		position: absolute;
+		top: mobilePx(23); right: mobilePx(26);
+	}
+}

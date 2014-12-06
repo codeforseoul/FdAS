@@ -1,0 +1,509 @@
+@import "define";
+
+// feed layout
+.feedLy {
+	height: 100%;
+
+	// 피드
+	.feed {
+		position: relative;
+		background: #fff;
+		
+		> header {
+			position: relative;
+			padding: mobilePx(13) mobilePx(21);
+			padding-left: mobilePx(113);
+			background: url(#{$baseSrc}images/ico-feed1.png) no-repeat mobilePx(21) center;
+			background-size: mobilePx(74) mobilePx(73);
+			@include blueBorder;
+
+			.location { 
+				display: block;
+				margin-top: mobilePx(12);
+				letter-spacing: -1px;
+				font-size: max( mobilePx(26), $minFontSize );
+				color: #333333;
+			}
+			small {
+				display: block;
+				margin-top: mobilePx(10);
+				letter-spacing: -1px;
+				font-size: max( mobilePx(22), $minFontSize );
+				color: #999999;
+			}
+			.to-interest {
+				position: absolute;
+				top: mobilePx(19); right: mobilePx(21);
+				padding: mobilePx(3) mobilePx(15) mobilePx(3) mobilePx(22);
+				border: 2px solid #ff6b00;
+				border-radius: mobilePx(18);
+				font-size: max( mobilePx(24), $minFontSize );
+				color: #ff6b00;
+
+				span {
+					padding-right: mobilePx(22);
+					background: url(#{$baseSrc}images/bl-arrow1.png) right center no-repeat;
+					background-size: mobilePx(12) mobilePx(16);
+					letter-spacing: -1px;
+				}
+			}
+		}	
+		> section {
+			position: relative;
+			padding-top: mobilePx(48);
+
+			> del {
+				display: block;
+				padding: 0 mobilePx(30);
+				margin-bottom: mobilePx(22);
+				font-style: normal;
+				font-size: mobilePx(30);
+				font-weight: bold;
+				color: #ff720d;
+				letter-spacing: -1px;
+				text-decoration: none;
+
+				&+h3{
+					color:#a3a3a3;
+				}
+				&+h3+p{
+					margin-bottom: mobilePx(54);
+					color:#bcbcbc;
+				}
+			}
+			> h3 {
+				padding: 0 mobilePx(30);
+				line-height: 125%;
+				font-size: max( mobilePx(36), $minFontSize );
+				letter-spacing: -1px;
+				color: #000000;
+			}
+			> p {
+				padding: 0 mobilePx(30);
+				margin-top: mobilePx(20);
+				line-height: 140%;
+				font-size: max( mobilePx(28), $minFontSize );
+				letter-spacing: -1px;
+				color: #666666;
+			}
+			> a,
+			> button {
+				display: inline-block;
+				margin: 0 mobilePx(30);
+				font-size: min( mobilePx(24), $minFontSize );
+				color: #3b86ef;
+			}
+			> .img-wrap {
+				overflow: hidden;
+				margin-top: mobilePx(24);
+				width: 100%; 
+				min-height: mobilePx(100); 
+				max-height: mobilePx(660);
+
+				> img {
+					width: 100%;
+				}
+			}
+			// > button {
+			// 	position: absolute;
+			// 	top: 0px; left: 0px;
+			// 	width: 100%; height: 100%;
+			// 	opacity: 0;
+			// }
+		}
+		> aside {
+			position: relative;
+			padding: mobilePx(19) mobilePx(23) mobilePx(19) mobilePx(27);
+
+			> ul {
+				> li {
+					display: inline-block;
+
+					.ico {
+						vertical-align: top;
+
+						& + var {
+							padding-left: mobilePx(8);
+							vertical-align: top;
+							font-size: max( mobilePx(22), $minFontSize );
+							color: #666666;
+						}
+					}
+				}
+			}
+			> .starRating {
+				position: absolute;
+				top: 0; right: mobilePx(30);
+			}
+		}
+		> footer {
+			> menu {
+				height: mobilePx(74);
+				margin-top: mobilePx(16);
+				border-top: 1px solid #dddddd;
+				background: #fafafa;
+				box-sizing: border-box;
+				@include clearifx;
+
+				button {
+					float: left;
+					display: inline-block;
+					width: 33%; height: inherit;
+					border-left: 1px solid #dddddd;
+					box-sizing: border-box;
+					text-align: center;
+
+					&:first-child {
+						border-left: 0px none;
+					}
+					&:first-child + button {
+						width: 34%;
+					}
+					> .deco {
+						display: inline-block;
+						background-image: url(#{$baseSrc}images/icos-feed-menu.png);
+						background-repeat: no-repeat;
+						background-size: mobilePx(32) mobilePx(152);
+						letter-spacing: -1px;
+
+						&.scrap {
+							$height: mobilePx(28);
+							height: $height; line-height: $height;
+							padding-left: mobilePx(42);
+							background-position: 0 0;
+
+							&.on {
+								background-position: 0 mobilePx(28+1 + 2, floor)*-1;
+							}
+						}
+						&.share {
+							$height: mobilePx(31, floor);
+							height: $height; line-height: $height;
+							padding-left: mobilePx(38);
+							background-position: 0 mobilePx(28+1+28+1, floor)*-1;
+						}
+						&.reply {
+							height: mobilePx(30); line-height: mobilePx(30);
+							padding-left: mobilePx(45);
+							background-position: 0 mobilePx(28+1+28+1+31+1 - 2, floor)*-1;
+						}
+						&.star {
+							height: mobilePx(32); line-height: mobilePx(31);
+							padding-left: mobilePx(42);
+							background-position: 0 mobilePx(28+1+28+1+31+1+30+1, floor)*-1;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// 댓글
+	.reply {
+		> menu {
+			border-top: 1px solid #dddddd;
+
+			> .to-prev-reply {
+				display: block;
+				width: 100%;
+				height: mobilePx(68);
+				line-height: mobilePx(68);
+				text-align: center;
+				font-size: max( mobilePx(20), $minFontSize );
+				letter-spacing: -1px;
+				color: #999999;
+
+				span {
+					display: inline-block;
+					padding-left: mobilePx(30);
+					background: url(#{$baseSrc}images/ico-ellipsis.png) no-repeat 0 center;
+					background-size: mobilePx(20) mobilePx(6);
+				}
+			}
+		}
+		> ul {
+			@include blueBorder;
+
+			> li {
+				position: relative;
+				padding: mobilePx(32) mobilePx(20);
+				padding-left: mobilePx(106);
+				border-top: 1px solid #dddddd;
+				background-repeat: no-repeat;
+				background-size: mobilePx(69) mobilePx(69);
+				font-size: max( mobilePx(22), $minFontSize );
+
+				img {
+					position: absolute;
+					top: mobilePx(32); left: mobilePx(20);
+					width: mobilePx(69);
+					height: mobilePx(69);
+					border: 1px solid #e0e0e0;
+					border-radius: 50%;
+				}
+				strong {
+					color: #333333;
+				}
+				time {
+					padding-left: mobilePx(14);
+					color: #999999;
+				}
+				p {
+					@include ellipsis-multi(2);
+					margin-top: mobilePx(10);
+					line-height: 140%;
+					color: #666666;
+				}
+			}
+		}
+		> form {
+			> fieldset {
+				position: relative;
+
+				textarea {
+					width: 100%;
+					height: mobilePx(150);
+					padding: mobilePx(30);
+					padding-right: mobilePx(160+20);
+					border: 0px none;
+					box-sizing: border-box;
+
+					@each $vender in $venders {
+						&::#{$vender}scrollbar{
+							width: mobilePx(10);
+						}
+					}
+				}
+				.btn {
+					position: absolute;
+					top: mobilePx(10); right: mobilePx(20);
+				}
+			}
+		}
+	}
+
+	// 피드 목록
+	&#feedListLy {
+		> section {
+			> ul {
+				overflow: hidden;
+				padding: mobilePx(20); padding-top: 0px;
+				background: #e6e6e6;
+
+				> li {
+					margin-top: mobilePx(20);
+					border: 1px solid #b8b6b6;
+				}
+				.feed {
+					> section {
+						> h3 {
+							@include ellipsis-single();
+						}
+						> p {
+							@include ellipsis-multi(3);
+						}
+						> a,
+						> button {
+							margin-top: mobilePx(15);
+						}
+						> img {
+							margin-top: mobilePx(25);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// 피드 상세
+	&#feedItemLy {
+		.feed {
+			> section {
+				> a {
+					margin-top: mobilePx(30);
+				}
+				> img {
+					padding: 0 mobilePx(20);
+					margin-top: mobilePx(50);
+					box-sizing: border-box;
+				}
+			}
+		}
+	}
+}
+
+
+#feedFormLy {
+	height: 100%;
+	@include prefix-flexbox2();
+	@include prefix-css3( flex-direction, column );
+
+	> header {
+		height: mobilePx( $headerTopHei );
+	}
+
+	> form {
+		@include prefix-css3( flex-grow, 1 );
+		@include prefix-flexbox2();
+		@include prefix-css3( flex-direction, column );
+		@include prefix-css3( justify-content, stretch );
+	}
+
+	ul {
+		> li {
+			input,
+			select,
+			textarea {
+				display: block;
+				width: 100%;
+				padding: 0 mobilePx(36);
+				border: 0px none;
+				background: #fff;
+				box-sizing: border-box;
+				@include prefix-css3( appearance, none );
+			}
+		}
+	}
+
+	div.required {
+		box-sizing: border-box;
+		@include blueBorder;
+		@include prefix-css3( flex-grow, 1 );
+		@include prefix-flexbox2();
+		@include prefix-css3( flex-direction, column );
+		@include prefix-css3( justify-content, stretch );
+
+		ul {
+			@include prefix-css3( flex-grow, 1 );
+			@include prefix-flexbox2();
+			@include prefix-css3( flex-direction, column );
+			@include prefix-css3( justify-content, stretch );
+
+			> li {
+
+				&:first-child {
+					height: mobilePx(85);
+				}
+				&:first-child + li {
+					height: mobilePx(85);
+				}
+				&:last-child {
+					@include prefix-css3( flex-grow, 1 );
+					@include prefix-flexbox2();
+					@include prefix-css3( flex-direction, column );
+					@include prefix-css3( justify-content, stretch );
+
+					textarea {
+						@include prefix-css3( flex-grow, 1 );
+					}
+				}
+
+				> button {
+					display: block;
+					width: 100%;
+					height: inherit;
+					padding: 0 mobilePx(34);
+					background-color: #f7f7f7;
+					border-bottom: 1px solid #e5e5e5;
+					box-sizing: border-box;
+					text-align: left;
+
+					> span {
+						display: inline-block;
+						height: mobilePx(32);
+						padding-left: mobilePx(78-34);
+						background-image: url(#{$baseSrc}images/icos-feed-menu2.png);
+						background-repeat: no-repeat;
+						background-size: mobilePx(32) mobilePx(64);
+						font-size: mobilePx(24);
+						color: #999999;
+						letter-spacing: -1px;						
+					}
+
+					&.category > span {
+						background-position: 0 0;
+					}
+					&.title > span {
+						background-position: 0 mobilePx(32)*-1;
+					}
+				}
+				> input {
+					display: none;
+				}
+				> textarea {
+					padding-top: mobilePx(40);					
+				}
+			}
+		}
+	}
+
+	div.optional {
+		$bg: #f1f1f1;
+		overflow: hidden;
+		background: $bg;
+		height: mobilePx(91+107+2);
+
+		ul {
+			overflow: hidden;
+			position: relative;
+			height: 100%;
+			@include clearifx;
+
+			li {
+				float: left;
+				width: (100/4)+0%;
+				text-align: center;
+				
+				a,
+				button,
+				label {
+					display: inline-block;
+					width: mobilePercentage( 74, ((100/4)/100)*$deviceWid );
+					height: mobilePx(91);
+					line-height: mobilePx(91);
+					box-sizing: border-box;
+
+					&.on {
+						border-bottom: 1px solid #7ca0d5;								
+					}
+
+					> .ico {
+						> span {
+							height: 100%;
+						}
+					}
+				}
+
+				div {
+					position: absolute;
+					top: mobilePx(91); left: 0;
+					width: 100%;
+					height: mobilePx(107);
+					border-top: 1px solid #cfcfcf;
+
+					select,
+					input {
+						top: mobilePx(91);
+						width: 100%;
+						height: mobilePx(107);
+						border: 0px none;
+						background: $bg;
+						text-align: left;
+						@include prefix-css3(appearance, none);
+
+						&:focus,
+						&:active {
+							border: 0px none;
+							outline: none;
+						}
+
+						&[type="file"] {
+							overflow: hidden;
+							height: 1px; margin-top: -1px;
+						}
+					}							
+				}
+			}
+		}
+	}
+}

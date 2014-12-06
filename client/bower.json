@@ -1,0 +1,33 @@
+{
+  "name": "Code for Seoul by nogo team",
+  "version": "0.0.0",
+  "homepage": "https://github.com/codeforseoul/nogo_workingmon",
+  "authors": [
+    "blim <kkh975@naver.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.25",
+    "html5shiv": "~3.7.2",
+    "jquery": "1.9.1",
+    "ie7-js": "*",
+    "es5-shim": "~4.0.3",
+    "angular-route": "~1.2.6",
+    "angular-resource": "~1.2.6",
+    "require": "*",
+    "angular-mocks": "~1.3.2",
+    "angular-animate": "1.2.26",
+    "requirejs": "~2.1.15",
+    "angular-touch": "~1.3.2"
+  },
+  "devDependencies": {
+    "karma": "~0.2.2"
+  }
+}

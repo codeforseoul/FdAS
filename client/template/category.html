@@ -1,0 +1,34 @@
+<section id="categoryLy">
+	<header class="topLy">
+		<div>
+			<h1 class="type2">
+				<button type="button" class="to-back ico"
+					data-ng-click="backLink()">
+					<span>이전 페이지 이동</span>
+				</button>
+				<span class="img-txt category">관심사 설정</span>
+			</h1>
+			<menu class="type2">
+				<button type="button" class="to-save ico"
+					data-ng-click="save()">
+					<span>저장</span>
+				</button>
+			</menu>
+		</div>
+	</header>
+	<section>
+		<ul>
+			<li data-ng-repeat="category in categories">
+				<input type="checkbox" id="{{category.val}}" class="check type1" 
+					data-ng-model="categories[ category.val ]">
+				<label for="{{category.val}}">{{category.label}}</label>
+			</li>
+		</ul>
+	</section>
+</section>
+
+<!-- // dumy // -->
+<!-- <li>
+	<input type="checkbox" name="" id="check1" class="check type1">
+	<label for="check1">여성</label>
+</li> -->
