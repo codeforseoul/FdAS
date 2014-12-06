@@ -31,3 +31,4 @@ node_modules
 
 .vagrant
 client/vendor
+docular_generated
