@@ -1,0 +1,4 @@
+title: 알뜰 서울의 발견
+markdown: redcarpet
+highlighter: pygments # or rouge or null
+exclude: ['node_modules', 'gulpfile.js', 'package.json', 'src', 'Gemfile', 'Gemfile.lock', 'bower.json', 'bower_components']
