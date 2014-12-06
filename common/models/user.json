@@ -1,8 +1,27 @@
 {
   "name": "user",
+  "plural": "users",
   "base": "PersistedModel",
   "properties": {
+    "id": {
+      "type": "string"
+    },
     "addDate": {
+      "type": "string"
+    },
+    "fixDate": {
+      "type": "string"
+    },
+    "sns": {
+      "type": "string"
+    },
+    "snsUid": {
+      "type": "string"
+    },
+    "snsnsPics": {
+      "type": "string"
+    },
+    "snsName": {
       "type": "string"
     }
   },

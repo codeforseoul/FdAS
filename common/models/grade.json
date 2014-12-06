@@ -4,11 +4,20 @@
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {
+    "id": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "feedId": {
+      "type": "string"
+    },
     "addDate": {
       "type": "string",
       "required": true
     },
-    "score": {
+    "star": {
       "type": "number",
       "required": true
     }

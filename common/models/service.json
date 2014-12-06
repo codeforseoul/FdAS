@@ -3,12 +3,36 @@
   "plural": "services",
   "base": "PersistedModel",
   "properties": {
-    "title": {
+    "id": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "agency": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "addDate": {
+      "type": "string"
+    },
+    "fixDate": {
+      "type": "string"
+    },
+    "delDate": {
       "type": "string"
     },
     "url": {
       "type": "string",
       "required": true
+    },
+    "title": {
+      "type": "string"
     },
     "body": {
       "type": "string",
@@ -16,12 +40,6 @@
     },
     "image": {
       "type": "string"
-    },
-    "interests": {
-      "type": [
-        "string"
-      ],
-      "required": true
     }
   },
   "validations": [],
