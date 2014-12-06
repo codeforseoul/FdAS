@@ -31,3 +31,8 @@ node_modules
 
 .vagrant
 client/vendor
+docular_generated
+
+# exclude jekyll
+_site
+bower_components
