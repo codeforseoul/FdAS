@@ -1,0 +1,69 @@
+<section id="myLy">
+	<header class="topLy">
+		<div>
+			<h1 class="type2">
+				<button type="button" class="to-back ico"
+					data-ng-click="backLink()">
+					<span>이전 페이지 이동</span>
+				</button>
+				<span class="img-txt my">개인 설정</span>
+			</h1>
+		</div>
+	</header>
+	<section class="setting">
+		<dl>
+			<dt>{{myName.label||'이름'}} ({{myGender.label||'성별'}}, {{myAge.label||'나이'}})</dt>
+			<dd>{{myLocation.label||'지역'}}</dd>
+			<dd>자녀 {{myChildren.length||0}}명 
+				<span data-ng-repeat="child in myChildren">({{child.age}})</span>
+			</dd>
+			<dd class="item-pic">
+				<img alt="" 
+					data-img-dir="{{myPic}}"
+					data-img-dir-base="images/img-pic-none.jpg">
+			</dd>
+			<dd>
+				<button type="button"
+					data-ng-click="moveLink( 'my/info' )">
+					<span>정보 수정</span>
+				</a>
+			</dd>
+
+			<!-- // dumy // -->
+			<!-- <dt>장지선(여,36)</dt>
+			<dd>서울 서대문구</dd>
+			<dd>자녀 2명(7세,2세)</dd>
+			<dd>
+				<img src="images/img-pic-none.png" alt="">
+			</dd> -->
+		</dl>
+		<menu>
+			<button type="button" class="to-scrap" 
+				data-ng-click="moveLink( 'feeds/my' )">
+				<span>스크랩 글 <var>{{myScrap.length | maxTxt:99}}</var></span>
+			</button>
+			<button type="button" class="to-mine" 
+				data-ng-click="moveLink( 'feeds/mine' )">
+				<span>내가 쓴 글 <var>{{mineCnt | maxTxt:99 }}</var></span>
+			</button>
+			<button type="button" class="to-setting" 
+				data-ng-click="moveLink( 'app/setting' )">
+				<span>설정</span>
+			</button>
+
+			<!-- // dumy // -->
+			<!-- <a href="/feeds/my" class="to-scrap">
+				<span>스크랩 글 <var>99</var></span>
+			</a>
+			<a href="/feeds/mine" class="to-mine">
+				<span>내가 쓴 글 <var>99</var></span>
+			</a>
+			<a href="/app/setting" class="to-setting">
+				<span>설정</span>
+			</a>
+			<a href="/app/intro" class="to-intro">
+				<span>서비스 소개</span>
+			</a> -->
+		</menu>
+	</section>
+</section>

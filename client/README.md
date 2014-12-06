@@ -1,3 +1,4 @@
-## Client
+nogo_workingmon
+===============
 
-This is the place for your application front-end files.
+코드포서울 노고팀의 워킹맘 프로젝트 입니다.

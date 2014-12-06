@@ -1,0 +1,44 @@
+<article id="introLy">
+	<!-- // slider // -->	
+	<ol data-ng-swipe-left="nextSlide()"
+		data-ng-swipe-right="prevSlide()">
+		<li class="item-{{$index + 1}} swipe-{{direction}}"
+			data-ng-repeat="item in list"
+			data-ng-if="nowIndex === $index">
+			<div class="hide">{{item}}</div>
+		</li>
+	</ol>
+
+	<!-- // nav // -->
+	<nav>
+		<menu>
+			<button type="button" class="ico to-prev"
+				data-ng-click="prevSlide()"
+				data-ng-class="{
+					'disabled': isMove || nowIndex === 0 }">
+				<span>이전</span>
+			</button>
+			<button type="button" class="ico to-next"
+				data-ng-click="nextSlide()"
+				data-ng-class="{
+					'disabled': isMove || nowIndex === list.length - 1 }">
+				<span>다음</span>
+			</button>
+		</menu>
+		<ol>
+			<li data-ng-repeat="cnt in [] | range:list.length"
+				data-ng-class="{
+					'active': nowIndex === $index }">{{$index + 1}}</li>
+		</ol>
+		<button type="button" class="ico btn-start"
+			data-ng-if="nowIndex === list.length - 1"
+			data-ng-click="moveLink( 'feeds' )">
+			<span>시작하기</span>
+		</button>
+	</nav>
+
+	<button type="button" class="ico to-intro-close"
+		data-ng-click="moveLink( 'feeds' )">
+		<span>닫기</span>
+	</button>
+</article>

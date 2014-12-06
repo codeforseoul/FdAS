@@ -1,0 +1,21 @@
+/**
+ * Based upon http://lamb.cc/typograph/
+ */
+
+scale_type(position)
+  position = _sequence_center + position
+  font_size = (_typographic_scale[position])rem
+  line_height = unit(_line_height, '')
+
+  lines_req = font_size / line_height
+  if lines_req > .9 && lines_req < 1
+    lines_req = lines_req + 1
+  lines_req = ceil(lines_req)
+
+  font-size unit(font_size, 'em')
+  font-size unit(font_size, 'rem')
+  line-height (lines_req * _line_height)rem
+
+line_breaks(n = 1)
+  return (_line_height*n)rem
+

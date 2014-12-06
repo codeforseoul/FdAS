@@ -1,0 +1,86 @@
+expand_for(size)
+  -kgs-expand-for size
+
+ignore_media_queries()
+  -kgs-ignore-media 1
+
+always_expand()
+  -kgs-always-expand 1
+
+container()
+  padding 0 unit(_goldilocks_padding, 'em') 0 unit(_goldilocks_padding, 'em')
+  max-width unit(_goldilocks, 'em')
+  margin auto
+
+  @media daddy
+    padding 0 unit(_goldilocks_padding*2, 'em') 0 unit(_goldilocks_padding*2, 'em')
+    margin-left auto
+    margin-right auto
+    max-width unit(_goldilocks*2, 'em')
+
+  @media mummy
+    width unit(_goldilocks, 'em')
+
+row(columns = _grid_columns)
+  clearfix()
+  display block
+  width 100%
+  padding 0
+  margin 0
+  @media daddy
+    _generate_row(2, columns)
+  @media mummy
+    _generate_row(1, _grid_columns) if @-kgs-expand-for == 'mummy'
+    _generate_row(1, columns) if @-kgs-expand-for != 'mummy'
+
+columns(span = 1)
+  float left
+  margin-right 0 unless @margin-right == 0
+  padding-left 0 unless @padding-left == 0
+  padding-right 0 unless @padding-right == 0
+
+  -kgs-always-expand 1 if @-kgs-expand-for is defined
+
+  if @-kgs-always-expand != 1 && span <= (_grid_columns * _grid_expand_min_proportion)
+    width round(((span / _grid_columns)*100)%)
+  else
+    width 100%
+
+  unless @-kgs-ignore-media == 1
+    &
+
+      @media daddy
+        _generate_column(span, 2)
+
+      @media mummy
+        // I can explain... well.. no..
+        // but doesn't work any other way...
+        margin-left 0 if @-kgs-expand-for == 'mummy'
+        box-sizing border-box if @-kgs-expand-for == 'mummy'
+        padding-left _gutter_width if @-kgs-expand-for == 'mummy'
+        width 100% if @-kgs-expand-for == 'mummy'
+        _generate_column(span) unless @-kgs-expand-for == 'mummy'
+
+offset(span = 1)
+  @media daddy
+    margin-left (_get_span_width(span, 2) + _gutter_width * 2)!important
+  @media mummy
+    margin-left (_get_span_width(span) + _gutter_width * 2)!important
+
+pull_right()
+  float right
+
+_get_column_width(size_multiple = 1)
+  ( (_goldilocks * size_multiple) - (_grid_columns - 1) * _gutter_width ) / (_grid_columns)
+
+_get_span_width(columns, size_multiple = 1)
+  columns * _get_column_width(size_multiple) + (columns - 1) * _gutter_width
+
+_generate_row(size_multiple = 1, columns = _grid_columns)
+  width (_get_span_width(columns, size_multiple) + _gutter_width)
+  margin-left (_gutter_width * -1)
+
+_generate_column(size, size_multiple = 1)
+  // Fix for unpredictable rounding in some browsers
+  width (_get_span_width(size, size_multiple) - 0.01em)
+  margin-left _gutter_width

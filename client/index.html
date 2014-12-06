@@ -1,53 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="fdasApp">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-    <meta name="description" content="">
-
-	<script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="vendor/angular/angular.min.js"></script>
-	<script type="text/javascript" src="vendor/angular-route/angular-route.min.js"></script>
-	<script type="text/javascript" src="vendor/angular-resource/angular-resource.min.js"></script>
-	<script type="text/javascript" src="vendor/angular-animate/angular-animate.min.js"></script>
-
-	<script type="text/javascript" src="javascripts/app.js"></script>
-	<script type="text/javascript" src="javascripts/common/service/storeSvc.js"></script>			<!-- common -->
-	<script type="text/javascript" src="javascripts/my/controller/myCtrl.js"></script>				<!-- my -->
-	<script type="text/javascript" src="javascripts/feed/controller/feedCtrl.js"></script>			<!-- feed -->
-	<script type="text/javascript" src="javascripts/interest/controller/interestCtrl.js"></script>	<!-- interest -->
-
-	<!--[if lte IE 9]>
-	<script src="vendor/html5shiv/dist/html5shiv.min.js"></script>
-	<script src="vendor/html5shiv/dist/html5shiv-printshiv.min.js"></script>
-	<![endif]-->
-
-	<!--[if lt IE 9]>
-	<script src="vendor/es5-shim/es5-shim.min.js"></script>
-	<![endif]-->
-
-	<!--[if lt IE 9]>
-	<script src="vendor/ie7-js/lib/IE9.js"></script>
-	<![endif]-->
-
-	<!--[if lt IE 8]>
-	<script src="vendor/ie7-js/lib/IE8.js"></script>
-	<![endif]-->
-
-	<!--[if lt IE 7]>
-	<script src="vendor/ie7-js/lib/IE7.js"></script>
-	<script src="vendor/ie7-js/lib/ie7-squish.js"></script>
-	<![endif]-->
+	<title>알뜰 서울 | Finding of Alddle Seoul by Nogo! Team(Code for Seoul)</title>
+	<meta name="author" content="CodeforSeoul by blim(kkh975@naver.com)">
+	<meta name="description" content="Finding of Alddle-Seoul 알뜰 서울의 발견은 자치구별로 다른 여러가지 행정 서비스를 한 눈에 볼 수 있는 서비스입니다. Finding of Alddle-Seoul  is a service to search a variety of Seoul city administrative services">
+	<meta name="keywords" content="여성, 복지, 보육, 취업, 일자리, 행정서비스, 교육, 은퇴, 생애주기, 마을, 공동체, 보건, 의료, 취학, 주민센터, 보건소, 구청, 어르신, 서비스, 서울시, 주민편의, 도서관, 주민자치, 민원, 생활법률, 수급, 거주자우선주차, 여권, 지방세, 정보공개, 환경개선부담금, 생활폐기물, 민방위, 시민안전봉사대, 종량제, 공공시설, 관광, 문화, 구민회관, 체육시설, 둘레길, 아동, 어린이, woman, female, child, welfare, job, education, retirement, administration, health care, senior, seoul, medical treatment, medical, sightseeing, passport, tex, culture, tourism">
+	<meta name = "viewport"content = "width = device-width, initial-scale = 1, maximum-scale = 1, user-scalable = no">
+	<link href="stylesheets/css/main.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
-<div id="wrap-lyt" data-ng-controller="fdasMainCtrl">
-	<main>
-		<div data-ng-include="template.my"></div>
-		<div data-ng-include="template.feed"></div>
-		<div data-ng-include="template.interest"></div>
-	</main>
+<!--[if lt IE 11]>
+<div style="margin-top:50px; text-align:center;">
+	<img src="images/img-notSupport.png" alt="죄송합니다! 이 브라우저는 서비스가 지원되지 않습니다. Explore 11 이상, Chrome, Safari 등 최신 브라우저를 지원합니다.">
 </div>
+<![endif]-->
+
+<![if !IE]>
+<div id="bodyLy">
+	<section id="loadingLy">
+		<h1><img src="images/loading/tit.png" alt="알뜰 서울의 발견"></h1>
+		<footer>
+			<address><img src="images/loading/logo.png" alt="Code for Seoul"></address>
+		</footer>
+	</section>
+</div>
+
+<!-- loading -->
+<script type="text/javascript" src="bower_components/requirejs/require.js" data-main="javascripts/loader.js"></script>
+<![endif]>
 
 </body>
 </html>

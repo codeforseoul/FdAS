@@ -1,0 +1,46 @@
+@import "define";
+
+// category layout
+#categoryLy {
+	// position: absolute;
+	// top: 0px; left: 100%;
+	// width: 100%; height: 100%;
+
+	> section {
+		> ul {
+			> li {
+				overflow: hidden;
+				position: relative;
+				border-top: 1px solid #fff;
+				border-bottom: 1px solid #e5e5e5;
+				font-size: mobilePx(28);
+				letter-spacing: -1px;				
+				color: #666666;
+				@include clearifx;
+
+				&:first-child {
+					border-top: 0px none;
+				}
+
+				> label {
+					display: block;
+					width: 100%; height: mobilePx(49);
+					padding-top: mobilePx(25);
+					padding-bottom: mobilePx(20);
+					padding-left: mobilePx(68);
+					padding-right: mobilePx(35);
+					background-color: #f7f7f7;
+				}
+				> input {
+					position: absolute;
+					top: mobilePx(25);
+					right: mobilePx(35);
+
+					&:checked+label {
+						background-color: #fff;
+					}
+				}
+			}
+		}
+	}
+}

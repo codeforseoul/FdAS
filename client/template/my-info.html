@@ -1,0 +1,85 @@
+<section id="myInfoLy">
+	<header class="topLy">
+		<div>
+			<h1 class="type2">
+				<button type="button" class="to-back ico"
+					data-ng-click="backLink()">
+					<span>이전 페이지 이동</span>
+				</button>
+				<span class="img-txt my-info">내 정보</span>
+			</h1>
+			<menu class="type2">
+				<button type="button" class="to-save ico" 
+					data-ng-click="save()">
+					<span>저장</span>
+				</button>
+			</menu>
+		</div>
+	</header>
+	<section class="list type1">
+		<fieldset>
+			<legend>설정</legend>
+			<ul>
+				<!-- // 기본 설정 // -->
+				<li data-ng-repeat="field in fields">
+					<select name="{{field.key}}" id="{{field.key}}"
+						data-ng-model="fields[ field.key ]"
+						data-ng-options="option.label for option in field.options"
+						data-ng-class="{
+							isInit: !fields[ field.key ].label }">
+							<option value="">{{field.label}}을 선택해 주세요</option>
+					</select>
+					<label for="{{field.key}}">{{field.label}}</label>
+					<var>{{fields[ field.key ].label}}</var>
+				</li>
+
+				<!-- // 자녀 추가 설정 // -->
+				<li class="item-sub"
+					data-ng-repeat="child in children"
+					data-ng-if="$index < fields[ 'myChildren' ].val">
+					<select name="{{child.key}}" id="{{child.key}}"
+						data-ng-model="children[ child.key ]"
+						data-ng-options="option.label for option in child.options"
+						data-ng-class="{
+							isInit: !children[ child.key ].label }">
+							<option value="">{{child.label}}을 선택해 주세요</option>
+					</select>
+					<label for="{{child.key}}">{{child.label}}</label>
+					<var>{{children[ child.key ].label}}</var>
+				</li>
+			</ul>
+		</fieldset>
+	</section>
+</section>	
+
+<!-- // dumy // -->
+<!-- <li>
+	<select name="" id="" disabled>
+		<option value=""></option>
+	</select>
+	<label for="">성별을 선택해 주세요</label>
+</li>
+<li>
+	<select name="" id="">
+		<option value="">남자</option>
+	</select>
+	<label for="">성별</label>
+</li>
+<li>
+	<select name="" id="">
+		<option value="">34세</option>
+	</select>
+	<label for="">나이</label>
+</li>
+<li>
+	<select name="" id="">
+		<option value="">서울시 강남구 서울시 강남구 서울시 강남구 서울시 강남구</option>
+	</select>
+	<label for="">지역</label>
+</li>
+<li>
+	<select name="" id="">
+		<option value="">자녀1</option>
+	</select>
+	<label for="">자녀</label>
+</li> -->
