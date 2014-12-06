@@ -6,39 +6,39 @@
     ]
   },
   "User": {
-    "dataSource": "mongodb",
+    "dataSource": "fdas_dev",
     "public": false
   },
   "AccessToken": {
-    "dataSource": "mongodb",
+    "dataSource": "fdas_dev",
     "public": false
   },
   "ACL": {
-    "dataSource": "mongodb",
+    "dataSource": "fdas_dev",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mongodb",
+    "dataSource": "fdas_dev",
     "public": false
   },
   "Role": {
-    "dataSource": "mongodb",
+    "dataSource": "fdas_dev",
     "public": false
   },
   "service": {
-    "dataSource": "mongodb",
+    "dataSource": "fdas_dev",
     "public": true
   },
   "user": {
-    "dataSource": "mongodb",
+    "dataSource": "fdas_dev",
     "public": true
   },
   "grade": {
-    "dataSource": "mongodb",
+    "dataSource": "fdas_dev",
     "public": true
   },
   "reply": {
-    "dataSource": "mongodb",
+    "dataSource": "fdas_dev",
     "public": true
   }
 }
