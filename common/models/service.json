@@ -28,15 +28,13 @@
       "type": "string"
     },
     "url": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "title": {
       "type": "string"
     },
     "body": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "image": {
       "type": "string"
