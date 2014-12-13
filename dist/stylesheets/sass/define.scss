@@ -1,0 +1,141 @@
+
+$deviceWid: 640;
+$deviceHei: 1136;
+$loadingBgWid: 1742;
+$loadingTime: 30s;
+$introSwipeTime: 250ms;
+$viewLoadTime: 250ms;
+$baseSrc: '../../';
+$minWidth: 320px;
+$minFontSize: 11px;
+$headerTopHei: 90;
+
+$venders: ( '-webkit-', '-moz-', '-ms-', '-o-', '' );
+
+@function mobilePx( $size, $op: null ){
+	@if $op == ceil {
+		@return ceil( $size / 2 ) + 0px;
+	} @else if $op == floor {
+		@return floor( $size / 2 ) + 0px;
+	} @else if $op == round {
+		@return round( $size / 2 ) + 0px;
+	} @else {
+		@return ( $size / 2 ) + 0px;
+	}
+}
+
+@function mobilePercent( $size, $base: $deviceWid ){
+	@return $size / $base;
+}
+
+@function mobilePercentage( $size, $base: $deviceWid ){
+	@return ( mobilePercent( $size, $base ) * 100 ) + 0%;
+}
+
+@function getCenterPos( $size, $parent ){
+	@return ( $parent - $size ) / 2;
+}
+
+@mixin prefix-animation( $delay, $duration, $name, $count: 1, $func: ease ){
+	@each $vender in $venders {
+		#{$vender}animation-delay: $delay;
+		#{$vender}animation-duration: $duration;
+		#{$vender}animation-name: $name;
+		#{$vender}animation-iteration-count: $count;
+		#{$vender}animation-timing-function: $func;
+	}
+}
+
+@mixin prefix-keyframe( $name ){
+	@-webkit-keyframes #{$name} {
+		@content; 
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	} 
+}
+
+@mixin prefix-transition( $val, $time, $delay: 0, $func: ease ){
+	@each $vender in $venders {
+		#{$vender}transition: $val $time $delay $func;
+	}
+}
+
+@mixin prefix-translateX( $val ){
+	@each $vender in $venders {
+		#{$vender}transform: translateX( $val );
+	}
+}
+
+@mixin prefix-scale( $val ){
+	@each $vender in $venders {
+		#{$vender}transform: scale( $val );
+	}
+}
+
+// old flexbox
+@mixin prefix-flexbox {
+	@each $vender in $venders {
+		display: #{$vender}box;
+	}
+}
+
+// new flexbox
+@mixin prefix-flexbox2 {
+	@each $vender in $venders {
+		display: #{$vender}flex;
+	}
+}
+
+@mixin prefix-css3( $key, $val ){
+	@each $vender in $venders {	
+		#{$vender}#{$key}: $val;
+	}
+}
+
+@mixin clearifx{
+	&:after {
+		content: ' ';
+		display: block;
+		clear: both;
+	}
+}
+
+@mixin ellipsis-single( $width: 0 ){
+	@if $width > 0 {
+		width: $width
+	}
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin ellipsis-multi( $line ){
+	@include prefix-flexbox();
+	@include prefix-css3( line-clamp, $line );
+	@include prefix-css3( box-orient, vertical );
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@mixin blueBorder {
+	border-bottom: 2px solid #7ca0d5;
+
+	& + * {
+		border-top: 1px solid #7090c0;
+	}
+}
+
+@mixin stylePlace {
+	@each $vender in $venders {
+		&::#{$vender}input-placeholder{
+			@content;
+		}
+	}
+}
