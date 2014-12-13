@@ -2,16 +2,25 @@
   "_meta": {
     "sources": [
       "../common/models",
-      "./models"
+      "./models",
+      "./node_modules/loopback-component-passport/lib/models"
     ]
   },
-  "User": {
+  "user": {
     "dataSource": "fdas_dev",
-    "public": false
+    "public": true
   },
-  "AccessToken": {
+  "accessToken": {
     "dataSource": "fdas_dev",
-    "public": false
+    "public": true
+  },
+  "userCredential": {
+    "dataSource": "fdas_dev",
+    "public": true
+  },
+  "userIdentity": {
+    "dataSource": "fdas_dev",
+    "public": true
   },
   "ACL": {
     "dataSource": "fdas_dev",
@@ -26,10 +35,6 @@
     "public": false
   },
   "service": {
-    "dataSource": "fdas_dev",
-    "public": true
-  },
-  "user": {
     "dataSource": "fdas_dev",
     "public": true
   },

@@ -1,7 +1,7 @@
 {
   "name": "user",
   "plural": "users",
-  "base": "PersistedModel",
+  "base": "User",
   "properties": {
     "id": {
       "type": "string"
@@ -25,7 +25,6 @@
       "type": "string"
     }
   },
-  "validations": [],
   "relations": {
     "services": {
       "type": "hasMany",
@@ -41,8 +40,24 @@
       "type": "hasMany",
       "model": "reply",
       "foreignKey": "authorId"
+    },
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "accessToken",
+      "foreignKey": "userId"
+    },
+    "identities": {
+      "type": "hasMany",
+      "model": "userIdentity",
+      "foreignKey": "userId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "userCredential",
+      "foreignKey": "userId"
     }
   },
+  "validations": [],
   "acls": [],
   "methods": []
 }
