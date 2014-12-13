@@ -1,3 +1,6 @@
+* {
+	margin: 0px; padding: 0px;
+}
 
 body {
   background: #fff;
@@ -12,4 +15,13 @@ body {
 
 .container .text-muted {
   margin: 20px 0;
+}
+
+main {
+	text-align: center;
+}
+
+img {
+	vertical-align: top;
+	font-size: 0px;
 }
