@@ -1,6 +1,5 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
-
 var app = module.exports = loopback();
 
 // Passport configurators..
@@ -32,6 +31,16 @@ app.use(loopback.favicon());
 app.use(loopback.compress());
 
 // -- Add your pre-processing middleware here --
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
+
+// Setup the view engine (jade)
+var path = require('path');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 // boot scripts mount components like REST API
 boot(app, __dirname);
@@ -46,7 +55,7 @@ app.use(bodyParser.urlencoded({
 // The access token is only available after boot
 app.use(loopback.token({
   model: app.models.accessToken
-}));
+})); 
 
 app.use(loopback.cookieParser(app.get('cookieSecret')));
 app.use(loopback.session({
@@ -69,17 +78,19 @@ for (var s in config) {
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 app.get('/auth/account', ensureLoggedIn('/login.html'), function (req, res, next) {
-  res.render('pages/loginProfiles', {
-    user: req.user,
-    url: req.url
-  });
+  // res.render('pages/loginProfiles', {
+  //   user: req.user,
+  //   url: req.url
+  // });
+  res.json({user:req.user})
 });
 
 app.get('/link/account', ensureLoggedIn('/login.html'), function (req, res, next) {
-  res.render('pages/linkedAccounts', {
-    user: req.user,
-    url: req.url
-  });
+  // res.render('pages/linkedAccounts', {
+  //   user: req.user,
+  //   url: req.url
+  // });
+  res.json({user:req.user})
 });
 
 app.get('/local', function (req, res, next){
