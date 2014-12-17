@@ -2,12 +2,12 @@
   "facebook-login": {
     "provider": "facebook",
     "module": "passport-facebook",
-    "clientID": "{process.env.FB_CID}",
-    "clientSecret": "{process.env.FB_CS}",
+    "clientID": "734387796636874",
+    "clientSecret": "82f0af104381453d298b6bfd62a2cb97",
     "callbackURL": "http://localhost:3000/auth/facebook/callback",
     "authPath": "/auth/facebook",
     "callbackPath": "/auth/facebook/callback",
-    "successRedirect": "/auth/account",
+    "successRedirect": "/#/auth",
     "scope": ["email"]
   }
 }
