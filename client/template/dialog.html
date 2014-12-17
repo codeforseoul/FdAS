@@ -1,0 +1,129 @@
+<!-- <div data-ng-transclude></div> -->
+<div class="dialogLy"
+	data-ng-show="on"
+	data-ng-switch="type">
+
+	<!-- // 로그인 // -->
+	<section id="loginPopLy" class="popLy"
+		data-ng-switch-when="login">
+		<header>
+			<h3>로그인이 필요합니다.</h3>
+		</header>
+		<section>
+			<menu>
+				<button type="button" class="to-sns"
+					data-ng-click="$emit( 'auth' )">
+					<span class="ico sns facebook"></span>
+					<span class="txt">페이스북</span>
+				</button>
+				<!-- <a href="http://localhost:3000/auth/facebook" class="to-sns"
+					data-ng-click="snsLogin( 'facebook' )">
+					<span class="ico sns facebook"></span>
+					<span class="txt">페이스북</span>
+				</a> -->
+				<!-- <button type="button" class="to-sns">
+					<span class="ico sns kaka"></span>
+					<span class="txt">카카오스토리</span>
+				</button> -->
+			</menu>
+		</section>
+		<footer>
+			<button type="button" class="ico to-close"
+				data-ng-click="close()">
+				<span>팝업 닫기</span>
+			</button>
+		</footer>
+	</section>
+
+	<!-- // 공유하기 // -->
+	<section id="sharePopLy" class="popLy"
+		data-ng-switch-when="share">
+		<header>
+			<h3>공유하기</h3>
+		</header>
+		<section>
+			<menu>
+				<button type="button" class="to-sns"
+					data-ng-click="snsShare( 'facebook', data );">
+					<span class="ico sns facebook"></span>
+					<span class="txt">페이스북</span>
+				</button>
+				<!-- <button type="button" class="to-sns">
+					<span class="ico sns kaka"></span>
+					<span class="txt">카카오스토리</span>
+				</button> -->
+				<button type="button" class="to-sns"
+					data-ng-click="open( 'shareCopy', data.id )">
+					<span class="ico sns copy"></span>
+					<span class="txt">URL 복사</span>
+				</button>
+			</menu>
+		</section>
+		<footer>
+			<button type="button" class="ico to-close"
+				data-ng-click="close()">
+				<span>팝업 닫기</span>
+			</button>
+		</footer>
+	</section>
+
+	<!-- // 공유하기 - 복사 // -->
+	<section id="copyPopLy" class="popLy"
+		data-ng-switch-when="shareCopy">
+		<header>
+			<h3>공유하기</h3>
+		</header>
+		<section>
+			<input type="text" name="" value="http://{{host}}/#/feed/{{data.id}}" title="공유할 주소" val="">
+			<button type="button" class="btn type1">복사하기</button>
+		</section>
+		<footer>
+			<button type="button" class="ico to-close"
+				data-ng-click="close()">
+				<span>팝업 닫기</span>
+			</button>
+		</footer>
+	</section>
+
+	<!-- // 템플릿 // -->
+	<div data-ng-switch-when="template">
+		<section id="templatePopLy" class="popLy" 
+			data-ng-include="html">
+		</section>
+	</div>
+
+	<!-- // 평가하기 // -->
+	<section id="starPopLy" class="popLy"
+		data-ng-switch-when="star">
+		<header>
+			<h3>평가하기</h3>
+		</header>
+		<section>
+			<input type="text" class="starRating" title="별점" 
+				data-star-input-compile="starVal">
+			<menu>
+				<button type="button" class="btn type1"
+					data-ng-click="$emit( 'service', 'feed.star', [ starVal + 1, data ] );">완료</button><!-- // TO MAIN Controller // -->
+				<button type="button" class="btn type2"
+					data-ng-click="close()">취소</button>
+			</menu>
+		</section>
+		<footer>
+			<button type="button" class="ico to-close"
+				data-ng-click="close()">
+				<span>팝업 닫기</span>
+			</button>
+		</footer>
+	</section>
+
+	<!-- // 피드 수정, 삭제 // -->
+	<div id="optPopLy" class="popLy"
+		data-ng-switch-when="feedOption">
+		<button type="button" class="opt"
+			data-ng-click="$emit( 'service', 'feed.modify', data );">글 수정하기</button><!-- // TO MAIN Controller // -->
+		<button type="button" class="opt"
+			data-ng-click="$emit( 'service', 'feed.remove', data );">글 삭제하기</button><!-- // TO MAIN Controller // -->
+		<button type="button" class="opt"
+			data-ng-click="close()">취소</button>
+	</div>
+</div>

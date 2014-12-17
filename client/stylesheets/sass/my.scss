@@ -144,11 +144,7 @@
 
 // my layout
 #myLy {
-	// position: absolute;
-	// top: 0px; left: -100%;
-	// width: 100%; height: 100%;
-
-	.setting {
+	> section {
 		padding-top: mobilePx(74);
 
 		> dl {
@@ -281,3 +277,44 @@
 	}
 }
 
+#appIntroduceLy {
+	> article {
+		padding: mobilePx(20);
+		background-color: #e6e6e6;
+		font-size: mobilePx(28);
+		color: #666666;
+		letter-spacing: -1px;
+
+		> div {
+			overflow: hidden;
+			padding: mobilePx(30);
+			border: 1px solid #b8b8b8;
+			background-color: #fff;
+			background-image: url(#{$baseSrc}images/bg-app-introduce1.png), url(#{$baseSrc}images/bg-app-introduce2.png);
+			background-position: right mobilePx(100), left mobilePx(1210);
+			background-repeat: no-repeat;
+			background-size: mobilePx(445) mobilePx(1158), mobilePx(445) mobilePx(1158);
+		}
+	}
+
+	h3,
+	mark {
+		display: block;
+		margin-top: mobilePx(50);
+		background: none;
+		font-size: inherit;
+		color: #2b388f;
+	}
+
+	h3 {
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+	p,
+	li {
+		margin-top: 5px;
+		line-height: 140%;
+		font-size: inherit;
+	}
+}

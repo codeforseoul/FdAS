@@ -2,12 +2,17 @@
 
 // feed layout
 .feedLy {
-	height: 100%;
+	min-height: 100%;
 
 	// 피드
 	.feed {
 		position: relative;
 		background: #fff;
+
+		&.mine {
+			border: 1px solid #b8b6b6;
+			box-sizing: border-box;
+		}
 		
 		> header {
 			position: relative;
@@ -46,6 +51,13 @@
 					background-size: mobilePx(12) mobilePx(16);
 					letter-spacing: -1px;
 				}
+			}
+
+			button {
+				position: absolute;
+				top: 0%; right: mobilePx(21);
+				height: 100%;
+				background-position: 0 center;
 			}
 		}	
 		> section {
@@ -92,6 +104,7 @@
 				margin: 0 mobilePx(30);
 				font-size: min( mobilePx(24), $minFontSize );
 				color: #3b86ef;
+				word-break: break-all;
 			}
 			> .img-wrap {
 				overflow: hidden;
@@ -102,6 +115,7 @@
 
 				> img {
 					width: 100%;
+					vertical-align: top;
 				}
 			}
 			// > button {
@@ -113,6 +127,8 @@
 		}
 		> aside {
 			position: relative;
+			height: mobilePx(30);
+			line-height: mobilePx(30);
 			padding: mobilePx(19) mobilePx(23) mobilePx(19) mobilePx(27);
 
 			> ul {
@@ -120,7 +136,7 @@
 					display: inline-block;
 
 					.ico {
-						vertical-align: top;
+						vertical-align: -5%;
 
 						& + var {
 							padding-left: mobilePx(8);
@@ -133,7 +149,8 @@
 			}
 			> .starRating {
 				position: absolute;
-				top: 0; right: mobilePx(30);
+				top: mobilePx(19); 
+				right: mobilePx(30);
 			}
 		}
 		> footer {
@@ -284,11 +301,12 @@
 
 	// 피드 목록
 	&#feedListLy {
+		background: #e6e6e6;
+
 		> section {
 			> ul {
 				overflow: hidden;
 				padding: mobilePx(20); padding-top: 0px;
-				background: #e6e6e6;
 
 				> li {
 					margin-top: mobilePx(20);
@@ -310,6 +328,14 @@
 							margin-top: mobilePx(25);
 						}
 					}
+				}
+			}
+			> menu {
+				text-align: center;
+
+				button {
+					margin-top: mobilePx(32-20);
+					margin-bottom: mobilePx(36);
 				}
 			}
 		}
@@ -338,11 +364,11 @@
 	@include prefix-flexbox2();
 	@include prefix-css3( flex-direction, column );
 
-	> header {
+	.topLy {
 		height: mobilePx( $headerTopHei );
 	}
 
-	> form {
+	.contents {
 		@include prefix-css3( flex-grow, 1 );
 		@include prefix-flexbox2();
 		@include prefix-css3( flex-direction, column );
@@ -360,12 +386,30 @@
 				border: 0px none;
 				background: #fff;
 				box-sizing: border-box;
+				font-size: mobilePx(24);
 				@include prefix-css3( appearance, none );
 			}
 		}
 	}
 
-	div.required {
+	.placeholder-dir {
+		display: inline-block;
+		text-align: left;
+		font-size: mobilePx(24);
+		color: #999999;	
+		letter-spacing: -1px;
+	}
+
+	select + .placeholder-dir {
+		&.ng-pristine {
+			// display: block !important;
+		}
+		&.ng-dirty {
+			// display: none;
+		}
+	}
+
+	.requiredField {
 		box-sizing: border-box;
 		@include blueBorder;
 		@include prefix-css3( flex-grow, 1 );
@@ -379,66 +423,58 @@
 			@include prefix-css3( flex-direction, column );
 			@include prefix-css3( justify-content, stretch );
 
-			> li {
-
-				&:first-child {
-					height: mobilePx(85);
-				}
-				&:first-child + li {
-					height: mobilePx(85);
-				}
+			li {
 				&:last-child {
 					@include prefix-css3( flex-grow, 1 );
 					@include prefix-flexbox2();
 					@include prefix-css3( flex-direction, column );
 					@include prefix-css3( justify-content, stretch );
-
-					textarea {
-						@include prefix-css3( flex-grow, 1 );
-					}
 				}
 
-				> button {
+				select, input {
 					display: block;
 					width: 100%;
-					height: inherit;
+					height: mobilePx(85);
+					line-height: mobilePx(85);
 					padding: 0 mobilePx(34);
-					background-color: #f7f7f7;
 					border-bottom: 1px solid #e5e5e5;
+					background-color: #f7f7f7;
+					font-size: mobilePx(24);
+					letter-spacing: -1px;	
 					box-sizing: border-box;
-					text-align: left;
+				}
+				select + .placeholder-dir, 
+				input + .placeholder-dir {
+					display: inline-block;
+					height: mobilePx(32);
+					line-height: mobilePx(32);
+					margin: mobilePx((85-32)/2) mobilePx(34);
+					padding-left: mobilePx(78-34);
+					box-sizing: border-box;
+					background-color: #f7f7f7;
+					background-image: url(#{$baseSrc}images/icos-feed-menu2.png);
+					background-repeat: no-repeat;
+					background-size: mobilePx(32) mobilePx(64);
 
-					> span {
-						display: inline-block;
-						height: mobilePx(32);
-						padding-left: mobilePx(78-34);
-						background-image: url(#{$baseSrc}images/icos-feed-menu2.png);
-						background-repeat: no-repeat;
-						background-size: mobilePx(32) mobilePx(64);
-						font-size: mobilePx(24);
-						color: #999999;
-						letter-spacing: -1px;						
-					}
-
-					&.category > span {
+					&.category {
 						background-position: 0 0;
 					}
-					&.title > span {
+					&.title {
 						background-position: 0 mobilePx(32)*-1;
 					}
 				}
-				> input {
-					display: none;
-				}
-				> textarea {
-					padding-top: mobilePx(40);					
+				textarea,
+				textarea + .placeholder-dir {
+					padding: mobilePx(40) mobilePx(34);
+					line-height: 18px;				
 				}
 			}
 		}
 	}
 
-	div.optional {
+	.optionalField {
 		$bg: #f1f1f1;
+		$menuCnt: 6;
 		overflow: hidden;
 		background: $bg;
 		height: mobilePx(91+107+2);
@@ -451,7 +487,7 @@
 
 			li {
 				float: left;
-				width: (100/4)+0%;
+				width: (100/$menuCnt)+0%;
 				text-align: center;
 				
 				a,
@@ -474,16 +510,16 @@
 					}
 				}
 
-				div {
-					position: absolute;
+				label + div {
+					position: absolute !important;
 					top: mobilePx(91); left: 0;
 					width: 100%;
 					height: mobilePx(107);
 					border-top: 1px solid #cfcfcf;
+					text-align: left;
 
 					select,
 					input {
-						top: mobilePx(91);
 						width: 100%;
 						height: mobilePx(107);
 						border: 0px none;
@@ -501,9 +537,48 @@
 							overflow: hidden;
 							height: 1px; margin-top: -1px;
 						}
-					}							
+					}	
+
+					.placeholder-dir {
+						height: mobilePx(107);
+						line-height: mobilePx(107);
+						padding: 0 mobilePx(36);
+						background: $bg;
+						box-sizing: border-box;
+					}						
+				}
+
+				label[for="image"] + div {
+					.preview {
+						$size: mobilePx(107-(10 * 2));
+						display: inline-block;
+						position: relative;
+						left: (100%/$menuCnt)*3;
+						width: (100%/$menuCnt);
+						margin: 5px 0;
+						text-align: center;
+
+						img, button {
+							width: $size;
+							height: $size;
+						}
+
+						button {
+							position: absolute;
+							top: 0; left: 50%;
+							margin-left: $size/2*-1;
+						}
+					}
 				}
 			}
+		}
+	}
+
+	&.ng-dirty {
+		input.ng-invalid-required.ng-dirty,
+		select.ng-invalid-required.ng-dirty,
+		textarea.ng-invalid-required.ng-dirty {
+			background-color: lighten( desaturate( #AD141E, 50% ), 50% ) !important;
 		}
 	}
 }

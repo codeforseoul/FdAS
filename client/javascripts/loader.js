@@ -14,7 +14,8 @@ requirejs.config({
 		'angular-route': '../bower_components/angular-route/angular-route.min',
 		'angular-resource': '../bower_components/angular-resource/angular-resource.min',
 		'angular-animate': '../bower_components/angular-animate/angular-animate.min',
-		'angular-touch': '../bower_components/angular-touch/angular-touch.min'
+		'angular-touch': '../bower_components/angular-touch/angular-touch.min',
+		'angular-mocks': '../bower_components/angular-mocks/angular-mocks'
 	},
 	'shim': {
 		'angular': {
@@ -31,6 +32,9 @@ requirejs.config({
 			'deps': [ 'angular' ]
 		},
 		'angular-touch': {
+			'deps': [ 'angular' ]
+		},
+		'angular-mocks': {
 			'deps': [ 'angular' ]
 		},
 		'app': {

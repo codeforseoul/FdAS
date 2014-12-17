@@ -73,6 +73,12 @@ $venders: ( '-webkit-', '-moz-', '-ms-', '-o-', '' );
 	}
 }
 
+@mixin prefix-scale( $val ){
+	@each $vender in $venders {
+		#{$vender}transform: scale( $val );
+	}
+}
+
 // old flexbox
 @mixin prefix-flexbox {
 	@each $vender in $venders {

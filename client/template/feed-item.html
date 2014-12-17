@@ -6,121 +6,54 @@
 					data-ng-click="backLink()">
 					<span>이전 페이지 이동</span>
 				</button>
-				<span class="img-txt"
-					data-ng-class="header.name">{{header.label}}</span>
-
-				<!-- // dumy // -->
-				<!-- <span class="img-txt fdas">서울의 발견</span>
-				<span class="img-txt scrap">스크랩 보기</span>
-				<span class="img-txt mine">내가 쓴 글보기</span> -->
+				<span class="img-txt fdas2">서울의발견</span>
 			</h1>
 			<menu class="type1">
 				<button type="button" class="to-write ico top-menu" 
-					data-ng-click="moveLink( 'create/feed' )">
+					data-ng-click="$parent.moveLink( 'create/feed' )">
 					<span>글쓰기</span>
 				</button>
 				<button type="button" class="to-my ico top-menu" 
-					data-ng-click="moveLink( 'my' )">
+					data-ng-click="$parent.moveLink( 'my' )">
 					<span>개인</span>
 				</button>
 				<button type="button" class="to-category ico top-menu" 
-					data-ng-click="moveLink( 'category' )">
+					data-ng-click="$parent.moveLink( 'category' )">
 					<span>관심사</span>
 				</button>
 			</menu>
 		</div>
 	</header>
-	<article class="feed" 
-		data-ng-class="feed.category"
-		data-ng-init="
-			feed.isScrap = isFeedScrap( feed.id );
-			feed.isEnd = (feed.endDate | endDate);">
-		<header>
-			<strong class="location">{{feed.location}}</strong>
-			<small><span class="agency">{{feed.agency}}</span> <time>{{feed.startDate|date:'yyyy.MM.dd'}} ~ {{feed.endDate|date:'yyyy.MM.dd'}}</time></small>
-		</header>
-		<section>
-			<del data-ng-if="feed.isEnd">이 행정 서비스는 더 이상 지원되지 않습니다.</del>
-			<h3>{{feed.title}}</h3>
-			<p>{{feed.body}}</p>
-			<a href="{{feed.url}}" target="_blank" 
-				data-ng-if="!feed.isEnd">
-				<span>{{feed.url}}</span>
-			</a>
-			<div class="img-wrap"
-				data-ng-if="!feed.isEnd">
-				<img alt=""
-					data-ng-if="!feed.isEnd"
-					data-img-dir="{{feed.image}}"
-					data-img-dir-base="images/img-feed-default.png">
-			</div>
-		</section>
-		<aside>
-			<ul>
-				<!-- 스크랩수는 local에 저장, 따로 정량화 하기 힘듦 -->
-				<!-- <li data-ng-if="feed.like.length > 0">
-					<span class="ico feed-status like">
-						<span>스크랩수</span><var>{{feed.like.length | maxTxt:999}}</var>
-					</span>
-				</li> -->
-				<li data-ng-if="feed.reply.length> 0">
-					<span class="ico feed-status reply">
-						<span>댓글수</span><var>{{feed.reply.length | maxTxt:999}}</var>
-					</span>
-				</li>
-			</ul>
-			<div data-star-dir="{{feed.score}}" class="starRating" title="평점">{{feed.score}}</div>
-		</aside>
-		<footer>
-			<menu>
-				<button type="button"
-					data-ng-click="
-						feedScrap( feed.id ); 
-						feed.isScrap = isFeedScrap( feed.id );">
-					<span class="deco scrap"
-						data-ng-class="{ 
-							'on': feed.isScrap === true }">스크랩하기</span>
-				<button type="button" 
-					data-ng-click="
-						onModal.type = 'popup';
-						onModal.sort = 'share';
-						onModal.data = feed.id;">
-					<span class="deco share">공유하기</span>
-				</button>
-				<button type="button" 
-					data-ng-click="
-						onModal.type = 'popup';
-						onModal.sort = 'star';
-						onModal.data = feed.id;">
-					<span class="deco star">평가하기</span>
-				</button>
-			</menu>
-		</footer>
-	</article>
-
+	<section data-feed-compile 
+			data-outer="$parent" 
+			data-item="feed"
+			data-type="'item'"></section>
 	<section class="reply">
 		<menu>
 			<button type="button" class="to-prev-reply"
-				data-ng-click="prevReply()">
+				data-ng-if="hasReplyList"
+				data-ng-click="getReply()">
 				<span>이전 댓글 보기</span>
 			</button>
 		</menu>
 		<ul>
 			<li data-ng-repeat="reply in replies">
 				<img alt=""
-					data-img-dir="{{reply.pic}}"
-					data-img-dir-base="images/img-pic-none2.png">
-				<strong>{{reply.id}}</strong> <time>{{reply.date}}</time>
+					data-img-compile="{{reply.pic}}"
+					data-img-compile-base="images/img-pic-none2.png">
+				<strong>{{reply.user.email}}</strong> <time>{{reply.addDate||reply.fixDate|date:'yyyy.MM.dd HH:mm'}}</time>
 				<p>{{reply.body}}</p>
 			</li>
 		</ul>
-		<form name="replyForm">
+		<form name="replyForm"
+			data-ng-submit="postReply()">
 			<fieldset>
 				<textarea name="reply" id="reply" cols="30" rows="10" minlength="1" maxlength="100" required placeholder="댓글을 작성하려면 로그인 하세요." 
 					data-ng-model="reply"
 					data-ng-trim="true"></textarea>
-				<button type="button" class="btn"
-					data-ng-click="createReply()"
+				<button type="submit" class="btn"
+					data-ng-disabled="replyForm.$invalid"
+					data-ng-click="saveReply()"
 					data-ng-class="{
 						'type1': replyForm.reply.$valid,
 						'type2': replyForm.reply.$invalid }">
@@ -130,103 +63,3 @@
 		</form>
 	</section>
 </section>
-
-<div data-ng-include="'template/modal.html'"></div>
-
-<!-- // dumy // -->
-<!-- <article class="feed">
-	<header>
-		<strong class="location">서울시 강남구</strong>
-		<small><span class="agency">여성새일센터</span> <time>2014.10.10</time></small>
-		<button type="button" class="to-catgory">
-			<span>고용</span>
-		</button>
-	</header>
-	<section>
-		<h3>워킹맘을 위한 든든한 고용대책 워킹맘을 위한 든든한 고용대책 워킹맘을 위한 든든한 고용대책</h3>
-		<p>지난해 6월에 발표한 고용률 70%의 핵심 과제는 여성고용률을 높이는 것이었는데요. 직장어린이집 활성화, 시간선택제 일자리 활성화, 일하는 여성의 생애주기별 경력유지 지원 등의 정책을 추진했다. 직장어린이집 활성화, 시간선택제 일자리 활성화, 일하는 여성의 생애주기별 경력유지 지원 등의 정책을 추진했다. 직장어린이집 활성화, 시간선택제 일자리 활성화, 일하는 여성의 생애주기별 경력유지 지원 등의 정책을 추진했다. 직장어린이집 활성화, 시간선택제 일자리 활성화, 일하는 여성의 생애주기별 경력유지 지원 등의 정책을 추진했다.</p>
-		<a href="">http://blog.naver.com/hellopolicy/220153556463</a>
-		<img src="images/main/temp-feed.png" alt="">
-	</section>
-	<aside>
-		<ul>
-			<li>
-				<span class="ico feed-status like">
-					<span>좋아요수</span><var>999</var>
-				</span>
-			</li>
-			<li>
-				<span class="ico feed-status reply">
-					<span>댓글수</span><var>999</var>
-				</span>
-			</li>
-		</ul>
-		<div score class="score">
-			<dfn>평점</dfn><var>4</var>
-		</div>
-	</aside>
-	<footer>
-		<menu>
-			<button type="button">
-				<span class="deco scrap">스크랩하기</span>
-			</button>
-			<button type="button">
-				<span class="deco share">공유하기</span>
-			</button>
-			<button type="button">
-				<span class="deco reply">댓글달기</span>
-			</button>
-		</menu>
-	</footer>
-</article>
-<article class="feed">
-	<header>
-		<strong class="location">서울시 강남구</strong>
-		<small><span class="agency">여성새일센터</span> <time>2014.10.10</time></small>
-		<button type="button" class="to-catgory">
-			<span>고용</span>
-		</button>
-	</header>
-	<section>
-		<del>이 행정 서비스는 더 이상 지원되지 않습니다.</del>
-		<h3>워킹맘을 위한 든든한 고용대책 워킹맘을 위한 든든한 고용대책 워킹맘을 위한 든든한 고용대책</h3>
-		<p>지난해 6월에 발표한 고용률 70%의 핵심 과제는 여성고용률을 높이는 것이었는데요. 직장어린이집 활성화, 시간선택제 일자리 활성화, 일하는 여성의 생애주기별 경력유지 지원 등의 정책을 추진했다. 직장어린이집 활성화, 시간선택제 일자리 활성화, 일하는 여성의 생애주기별 경력유지 지원 등의 정책을 추진했다. 직장어린이집 활성화, 시간선택제 일자리 활성화, 일하는 여성의 생애주기별 경력유지 지원 등의 정책을 추진했다. 직장어린이집 활성화, 시간선택제 일자리 활성화, 일하는 여성의 생애주기별 경력유지 지원 등의 정책을 추진했다.</p>
-	</section>
-	<aside>
-		<ul>
-			<li>
-				<span class="ico feed-status like">
-					<span>좋아요수</span><var>999</var>
-				</span>
-			</li>
-			<li>
-				<span class="ico feed-status reply">
-					<span>댓글수</span><var>999</var>
-				</span>
-			</li>
-		</ul>
-		<div score class="score">
-			<dfn>평점</dfn><var>4</var>
-		</div>
-	</aside>
-	<footer>
-		<menu>
-			<button type="button">
-				<span class="deco scrap">스크랩하기</span>
-			</button>
-			<button type="button">
-				<span class="deco share">공유하기</span>
-			</button>
-			<button type="button">
-				<span class="deco reply">댓글달기</span>
-			</button>
-		</menu>
-	</footer>
-</article> -->
-
-<!-- // dumy -->
-<!-- <li>
-	<img src="images/img-pic-none2.png" alt="">
-	<strong>아이디아이디</strong> <time>2014.06.14 오전 9:15</time>
-	<p>와우! 정말 좋은 정보 감사합니다. 주변 분들한테 공유해야겠어요 ^^  주변 분들한테 공유해야겠어요 와우! 정말 좋은 정보 감사합니다. 주변 분들한테 공유해야겠어요 ^^  주변 분들한테 공유해야겠어요 와우! 정말 좋은 정보 감사합니다. 주변 분들한테 공유해야겠어요 ^^  주변 분들한테 공유해야겠어요 </p>
-</li> -->

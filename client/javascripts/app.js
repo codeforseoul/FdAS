@@ -13,42 +13,46 @@ define([
 		'angular-resource',
 		'angular-animate',
 		'angular-touch',
-	// html
-		'text!../template/intro.html',
-		'text!../template/main.html',
+		'angular-mocks',
 	// constant
-		'constant/define',
-		'constant/restful',
+		'constant/Define',
 	// config
-		'config/commonCfg',
-		'config/httpCfg',
-		'config/routesCfg',
+		'config/Configuration',
+		'config/Router',
 	// factory
-		'factory/storageFty',
-		'factory/deviceFty',
+		'factory/LocalStorage',
+		'factory/DeviceBridge',
+		'factory/CommonHelper',
 	// service
-		'service/storageSvc',
-		'service/snsSvc',
-		'service/feedSvc',
+		'service/StoreService',
+		'service/ResourceService',
+		'service/AuthService',
+		'service/SnsService',
+		'service/FeedService',
 	// directive
-		'directive/imgDir',
-		'directive/starDir',
-		'directive/starInputDir',
-		'directive/placeholderDir',
-		'directive/previewImgDir',
+		'directive/dialogCompile',
+		'directive/feedCompile',
+		'directive/imgCompile',
+		'directive/starCompile',
+		'directive/starInputCompile',
+		'directive/placeholderCompile',
+		'directive/previewImageCompile',
 	// controller
-		'controller/introCtrl',
-		'controller/mainCtrl',
-		'controller/myCtrl',
-		'controller/myInfoCtrl',
-		'controller/appSettingCtrl',
-		'controller/appIntroCtrl',
-		'controller/feedCommonCtrl',
-		'controller/feedListCtrl',
-		'controller/feedItemCtrl',
-		'controller/feedCreateCtrl',
-		'controller/categoryCtrl'
-], function( 
+		'controller/IntroController',
+		'controller/MainController',
+		'controller/DialogController',
+		'controller/MyController',
+		'controller/MyInfoController',
+		'controller/AppSettingController',
+		'controller/CategoryController',
+		'controller/FeedListController',
+		'controller/FeedItemController',
+		'controller/FeedFormController',
+	// other
+		'initalize',
+	// test
+		'test/TestModule' ], 
+	function( 
 	// libaray
 		text,
 	// angular
@@ -57,130 +61,95 @@ define([
 		angularResource, 
 		angularAnimate, 
 		angularTouch,
-	// html
-		introHTML,
-		mainHTML,
+		angularMocks,
 	// contant
-		define,
-		restful,
+		Define,
 	// config
-		commonCfg,
-		httpCfg,
-		routesCfg,
+		Configuration,
+		Router,
 	// factory
-		storageFty,
-		deviceFty,
+		LocalStorage,
+		DeviceBridge,
+		CommonHelper,
 	// service
-		storageSvc, 
-		snsSvc,
-		feedSvc,
+		StoreService, 
+		ResourceService,
+		AuthService,
+		SnsService,
+		FeedService,
 	// directive
-		imgDir,
-		starDir,
-		starInputDir,
-		placeholderDir,
-		previewImgDir,
+		dialogCompile,
+		feedCompile,
+		imgCompile,
+		starCompile,
+		starInputCompile,
+		placeholderCompile,
+		previewImageCompile,
 	// controller
-		introCtrl,
-		mainctrl,
-		myCtrl,
-		myInfoCtrl,
-		appSettingCtrl,
-		appIntroCtrl,
-		feedCommonCtrl,
-		feedListCtrl,
-		feedItemCtrl,
-		feedCreateCtrl,
-		categoryCtrl ){
-	var commonModule = 
-		angular.
-			module( 'fdasApp.common', [ 'ngRoute', 'ngResource', 'ngAnimate' ] ).
-			constant( 'Define', define ).
-			constant( 'Restful', restful ).
-			config( commonCfg ).
-			config( httpCfg ).
-			config( routesCfg ).
-			factory( 'storageFty', storageFty ).
-			factory( 'deviceFty', deviceFty ).
-			service( 'storageSvc', storageSvc ).
-			service( 'snsSvc', snsSvc ).
-			directive( 'imgDir', imgDir ).
-			directive( 'starDir', starDir ).
-			directive( 'starInputDir', starInputDir ).
-			directive( 'placeholderDir', placeholderDir ).
-			directive( 'previewImgDir', previewImgDir );
+		IntroController,
+		MainController,
+		DialogController,
+		MyController,
+		MyInfoController,
+		AppSettingController,
+		CategoryController,
+		FeedListController,
+		FeedItemController,
+		FeedFormController,
+	// other
+		initalize,
+	// test
+		TestModule ){
 
-	var myModule = 
-		angular.
-			module( 'fdasApp.my', [ 'fdasApp.common' ] ).
-			controller( 'myCtrl', myCtrl ).
-			controller( 'myInfoCtrl', myInfoCtrl ).	
-			controller( 'appSettingCtrl', appSettingCtrl ).	
-			controller( 'appIntroCtrl', appIntroCtrl );
+	// common module
+	angular.
+		module( 'fdasApp.common', [ 'ngRoute', 'ngResource', 'ngAnimate'/*, 'fdasApp.test'*/ ] ).
+		constant( 'Define', Define ).
+		config( Configuration ).
+		config( Router ).
+		factory( 'LocalStorage', LocalStorage ).
+		factory( 'DeviceBridge', DeviceBridge ).
+		factory( 'CommonHelper', CommonHelper ).
+		service( 'StoreService', StoreService ).
+		service( 'ResourceService', ResourceService ).
+		service( 'AuthService', AuthService ).
+		service( 'SnsService', SnsService ).
+		service( 'FeedService', FeedService ).
+		directive( 'dialogCompile', dialogCompile ).
+		directive( 'feedCompile', feedCompile ).
+		directive( 'imgCompile', imgCompile ).
+		directive( 'starCompile', starCompile ).
+		directive( 'starInputCompile', starInputCompile ).
+		directive( 'placeholderCompile', placeholderCompile ).
+		directive( 'previewImageCompile', previewImageCompile );
 
-	var feedModule = 
-		angular.
-			module( 'fdasApp.feed', [ 'fdasApp.common' ] ).
-			service( 'feedSvc', feedSvc ).
-			controller( 'feedCommonCtrl', feedCommonCtrl ).
-			controller( 'feedListCtrl', feedListCtrl ).
-			controller( 'feedItemCtrl', feedItemCtrl ).
-			controller( 'feedCreateCtrl', feedCreateCtrl );
+	// intro module
+	angular.
+		module( 'fdasApp.intro', [ 'ngTouch' ] ).
+		controller( 'IntroController', IntroController );
 
-	var categoryModule = 
-		angular.
-			module( 'fdasApp.category', [ 'fdasApp.common' ] ).
-			controller( 'categoryCtrl', categoryCtrl );
+	// my module
+	angular.
+		module( 'fdasApp.my', [ 'fdasApp.common' ] ).
+		controller( 'MyController', MyController ).
+		controller( 'MyInfoController', MyInfoController ).	
+		controller( 'AppSettingController', AppSettingController ).	
+		controller( 'CategoryController', CategoryController );
 
-	var introModule = 
-		angular.
-			module( 'fdasApp.intro', [ 'ngTouch' ] ).
-			controller( 'introCtrl', introCtrl );
+	// feed module
+	angular.
+		module( 'fdasApp.feed', [ 'fdasApp.common' ] ).
+		controller( 'FeedListController', FeedListController ).
+		controller( 'FeedItemController', FeedItemController ).
+		controller( 'FeedFormController', FeedFormController );
 
-	var mainModule = 
-		angular.
-			module( 'fdasApp', [ 
-				'fdasApp.intro', 
-				'fdasApp.my', 
-				'fdasApp.feed', 
-				'fdasApp.category' 
-			]).
-			controller( 'mainCtrl', mainctrl ).
-			run([ '$location', 'storageSvc', 'snsSvc', function( $location, storageSvc, snsSvc ){
-
-				// facebook load
-				snsSvc.load( 'facebook' );
-
-				// check url
-				// $location.path( 'intro' );
-				// $location.path( 'my' );
-				// $location.path( 'my/info' );
-				// $location.path( 'app/setting' );
-				// $location.path( 'app/introduce' );
-				// $location.path( 'category' );
-
-				// $location.path( 'feeds' );
-				// $location.path( 'feeds/my' );		
-				// $location.path( 'feeds/mine' );		
-				// $location.path( 'feed/123' );
-				// $location.path( 'create/feed' );
-				// $location.path( 'aaa' );
-
-				// loading done
-				document.getElementById( 'bodyLy' ).innerHTML = mainHTML;
-
-				if ( storageSvc.get( 'isAppInit' ) ){
-					$location.path( 'feeds' );
-				} else {
-					storageSvc.save({
-						'isAppInit': true
-					});
-					$location.path( 'intro' );
-				}
-			}]);
+	// main module
+	angular.
+		module( 'fdasApp', [ 'fdasApp.intro', 'fdasApp.my', 'fdasApp.feed' ]).
+		controller( 'MainController', MainController ).
+		controller( 'DialogController', DialogController ).
+		run( initalize );
 
 	// angular 부트스트래핑
 	angular.bootstrap( document, [ 'fdasApp' ]);
-
-	return mainModule;
 });

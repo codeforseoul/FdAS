@@ -1,4 +1,5 @@
-<section id="feedFormLy">
+<form name="feedForm" id="feedFormLy"
+	data-ng-submit="isUpdate ? putFeed() : postFeed()">
 	<header class="topLy">
 		<div>
 			<h1 class="type2">
@@ -9,191 +10,135 @@
 				<span class="img-txt fdas2">서울의 발견</span>
 			</h1>
 			<menu class="type2">
-				<button type="button" class="to-submit ico" 
-					data-ng-click="moveLink( 'create/feed' )">
+				<button type="submit" class="to-submit ico"
+					data-ng-click="saveFeed()">
 					<span>올리기</span>
 				</button>
 			</menu>
 		</div>
 	</header>
-	<!-- <section> -->
-		<form name="replyOptionForm">
-			<div class="required">
-				<ul>
-					<li>
-						<button type="button" class="category">
-							<span>소식을 올릴 분야를 선택해 주세요.</span>
-						</button>
-						<select name="category" required
-							data-ng-model="category"
-							data-ng-options="category.label for category in categories">
-						</select>
-					</li>
-					<li>
-						<button type="button" class="title">
-							<span>소식의 제목을 작성해 주세요.</span>
-						</button>
-						<input type="text" name="title" class="title" minlength="2" maxlength="50" required
-							data-ng-model="title" 
-							data-ng-trim="true">
-					</li>
-					<li>
-						<textarea name="" id="contents" cols="30" rows="10" required minlength="2" placeholder="알뜰 서울의 발견에 소중한 내용을 작성해 주세요.<br>더 많은 정보 입력이 가능하신가요? 하단 탭을 선택 후 입력해 주세요."
-							data-placeholder-dir
-							data-placeholder-dir-style="{
-								'line-height': '18px',
-								'font-size': '12px',
-								'color': '#999',
-								'letter-spacing': '-1px' }"
-							data-ng-model="contents" 
-							data-ng-trim="true">
-						</textarea>
-					</li>
-					<!-- <li>{{menus}}</li> -->
-				</ul>
-			</div>
-
-			<div class="optional">
-				<ul>
-					<li>
-						<label for="area"
-							data-ng-click="onSubField = 'area'"
-							data-ng-class="{
-								'on': onSubField === 'area' }">
-							<span class="ico feed-menu area">
-								<span>지역</span>
-							</span>
-						</label>	
-						<div data-ng-show="onSubField === 'area'">
-							<select name="area" id="area" title="지역"
-								data-ng-model="area"
-								data-ng-options="option.label for option in location">
-							</select>
-						</div>		
-					</li>
-					<li>
-						<label for="image"
-							data-ng-click="onSubField = 'image';"
-							data-ng-class="{
-								'on': onSubField === 'image' }">
-							<span class="ico feed-menu image">
-								<span>이미지</span>
-							</span>
-						</label>		
-						<div data-ng-show="onSubField === 'image'">				
-							<input type="file" name="image" id="image" title="이미지" minlength="4" accept="image/*" capture 
-								data-ng-model="image"
-								data-ng-trim="true"
-								data-preview-img-dir>
-							<!-- <div class="preview">
-								<img alt="">
-								<button type="button">
-									<span>삭제</span>
-								</button>
-							</div> -->
-						</div>
-					</li>
-					<li>
-						<label for="agency"
-							data-ng-click="onSubField = 'agency';"
-							data-ng-class="{
-								'on': onSubField === 'agency' }">
-							<span class="ico feed-menu agency">
-								<span>기관 및 회사</span>
-							</span>
-						</label>
-						<div data-ng-show="onSubField === 'agency'">
-							<input type="text" name="agency" id="agency" minlength="2" maxlength="50" title="기관 및 회사"
-								data-ng-model="agency"
-								data-ng-trim="true">
-						</div>
-					</li>
-					<li>
-						<label for="url"
-							data-ng-click="onSubField = 'url';"
-							data-ng-class="{
-								'on': onSubField === 'url' }">
-							<span class="ico feed-menu url">
-								<span>URL</span>
-							</span>
-						</label>
-						<div data-ng-show="onSubField === 'url'">
-							<input type="url" name="url" id="url" title="URL" minlength="2" pattern="https?://.+"
-								data-ng-model="url"
-								data-ng-trim="true">
-						</div>				
-					</li>
-				</ul>
-			</div>
-		</form>
-	<!-- </section> -->
-</section>
-
-<div data-ng-include="'template/modal.html'"></div>
-
-<!-- <ul data-ng-model="onSubField">
-	<li data-ng-repeat="menu in menus">
-		<label for="{{menu.key}}"
-			data-ng-click="$parent.onSubField = menu.key;"
-			data-ng-class="{
-				'on': $parent.onSubField === menu.key }">
-			<span class="ico feed-menu"
-				data-ng-class="menu.key">
-				<span>{{menu.label}}</span>
-			</span>
-		</label>
-		<div data-ng-switch="menu.type"
-			data-ng-show="onSubField === menu.key"
-				data-ng-model="menu2">
-			<select name="area" title="{{menu.label}}"
-				data-ng-switch-when="select"
-				data-ng-model="menu"
-				data-ng-options="option.label for option in menu.options">
-			</select>
-			<input type="{{menu.type}}" name="{{menu.key}}" id="{{menu.key}}" title="{{menu.label}}" accept="image/*" capture
-				data-ng-switch-when="file"
-				data-ng-trim="true"
-				data-ng-minlength="4"
-				data-ng-change="previewImage()">
-			<input type="{{menu.type}}" name="{{menu.key}}" id="{{menu.key}}" title="{{menu.label}}"
-				data-ng-switch-when="text"
-				data-ng-trim="true"
-				data-ng-minlength="2"
-				data-ng-maxlength="50">
-			<input type="{{menu.type}}" name="{{menu.key}}" id="{{menu.key}}" title="{{menu.label}}" pattern="https?://.+"
-				data-ng-switch-when="url"
-				data-ng-trim="true"
-				data-ng-minlength="2"
-				data-ng-pattern="https?://.+">
+	<section class="contents">
+		<div class="requiredField">
+			<ul>
+				<li>
+					<select name="category" class="category" title="분야" required placeholder="소식을 올릴 분야를 선택해 주세요."
+						data-ng-model="category"
+						data-ng-options="category.label for category in categories"
+						data-placeholder-compile>
+					</select>
+				</li>
+				<li>
+					<input type="text" name="title" class="title" title="제목" minlength="2" maxlength="50" required placeholder="소식의 제목을 작성해 주세요."
+						data-ng-model="title" 
+						data-ng-trim="true"
+						data-placeholder-compile>
+				</li>
+				<li>
+					<textarea name="body" class="body" cols="30" rows="10" title="내용" required minlength="2" placeholder="알뜰 서울의 발견에 소중한 내용을 작성해 주세요.<br>더 많은 정보 입력이 가능하신가요? 하단 탭을 선택 후 입력해 주세요."
+						data-ng-model="body" 
+						data-ng-trim="true"
+						data-placeholder-compile></textarea>
+				</li>
+			</ul>
 		</div>
-	</li>
-</ul> -->
-<!-- // dumy // -->
-<!-- <button type="button">
-	<span class="wrap">
-		<span class="ico feed-menu area">
-			<span>지역</span>
-		</span>
-	</span>
-</button>
-<button type="button">
-	<span class="wrap">
-		<span class="ico feed-menu image">
-			<span>이미지</span>
-		</span>
-	</span>
-</button>
-<button type="button">
-	<span class="wrap">
-		<span class="ico feed-menu agency">
-			<span>기관 및 회사</span>
-		</span>
-	</span>
-</button>
-<button type="button">
-	<span class="wrap">
-		<span class="ico feed-menu url">
-			<span>URL</span>
-		</span>
-	</span>
-</button> -->
+
+		<div class="optionalField">
+			<ul>
+				<li>
+					<label for="area"
+						data-ng-init="onSubField = 'area'"
+						data-ng-click="onSubField = 'area'"
+						data-ng-class="{
+							'on': onSubField === 'area' }">
+						<span class="ico feed-menu area">
+							<span>지역</span>
+						</span>
+					</label>	
+					<div data-ng-show="onSubField === 'area'">
+						<select name="area" id="area" placeholder="지역를 선택해 주세요."
+							data-ng-model="area"
+							data-ng-options="option.label for option in locations"
+							data-placeholder-compile>
+						</select>
+					</div>		
+				</li>
+				<li>
+					<label for="startDate"
+						data-ng-click="onSubField = 'startDate'"
+						data-ng-class="{
+							'on': onSubField === 'startDate' }">
+						<span class="ico feed-menu startDate">
+							<span>시작일</span>
+						</span>
+					</label>	
+					<div data-ng-show="onSubField === 'startDate'">
+						<input type="date" name="startDate" id="startDate"
+							data-ng-model="startDate">
+					</div>		
+				</li>
+				<li>
+					<label for="endDate"
+						data-ng-click="onSubField = 'endDate'"
+						data-ng-class="{
+							'on': onSubField === 'endDate' }">
+						<span class="ico feed-menu endDate">
+							<span>종료일</span>
+						</span>
+					</label>	
+					<div data-ng-show="onSubField === 'endDate'">
+						<input type="date" name="endDate" id="endDate"
+							data-ng-model="endDate">
+					</div>		
+				</li>
+				<li>
+					<label for="image"
+						data-ng-click="onSubField = 'image';"
+						data-ng-class="{
+							'on': onSubField === 'image' }">
+						<span class="ico feed-menu image">
+							<span>이미지</span>
+						</span>
+					</label>		
+					<div data-ng-show="onSubField === 'image'">	
+						<!-- // ng-change not working in input type[file ] // -->
+						<input type="file" name="image" id="image" title="이미지" minlength="4" accept="image/*" capture
+							onchange="angular.element( this ).scope().transferFile( this )"
+							data-ng-model="image"
+							data-ng-trim="true"
+							data-preview-image-compile>
+					</div>
+				</li>
+				<li>
+					<label for="agency"
+						data-ng-click="onSubField = 'agency';"
+						data-ng-class="{
+							'on': onSubField === 'agency' }">
+						<span class="ico feed-menu agency">
+							<span>기관 및 회사</span>
+						</span>
+					</label>
+					<div data-ng-show="onSubField === 'agency'">
+						<input type="text" name="agency" id="agency" minlength="2" maxlength="50" placeholder="기관 및 단체를 입력하세요."
+							data-ng-model="agency"
+							data-ng-trim="true">
+					</div>
+				</li>
+				<li>
+					<label for="url"
+						data-ng-click="onSubField = 'url';"
+						data-ng-class="{
+							'on': onSubField === 'url' }">
+						<span class="ico feed-menu url">
+							<span>URL</span>
+						</span>
+					</label>
+					<div data-ng-show="onSubField === 'url'">
+						<input type="url" name="url" id="url" title="URL" minlength="2" pattern="https?://.+" placeholder="관련 URL을 입력하세요."
+							data-ng-model="url"
+							data-ng-trim="true">
+					</div>				
+				</li>
+			</ul>
+		</div>
+	</section>
+</form>

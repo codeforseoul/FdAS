@@ -10,7 +10,7 @@
 			</h1>
 		</div>
 	</header>
-	<section class="setting">
+	<section>
 		<dl>
 			<dt>{{myName.label||'이름'}} ({{myGender.label||'성별'}}, {{myAge.label||'나이'}})</dt>
 			<dd>{{myLocation.label||'지역'}}</dd>
@@ -19,12 +19,12 @@
 			</dd>
 			<dd class="item-pic">
 				<img alt="" 
-					data-img-dir="{{myPic}}"
-					data-img-dir-base="images/img-pic-none.jpg">
+					data-img-compile="{{myPic}}"
+					data-img-compile-base="images/img-pic-none.jpg">
 			</dd>
 			<dd>
 				<button type="button"
-					data-ng-click="moveLink( 'my/info' )">
+					data-ng-click="$parent.moveLink( 'my/info' )">
 					<span>정보 수정</span>
 				</a>
 			</dd>
@@ -39,15 +39,15 @@
 		</dl>
 		<menu>
 			<button type="button" class="to-scrap" 
-				data-ng-click="moveLink( 'feeds/my' )">
+				data-ng-click="$parent.moveLink( 'feeds/my/' )">
 				<span>스크랩 글 <var>{{myScrap.length | maxTxt:99}}</var></span>
 			</button>
 			<button type="button" class="to-mine" 
-				data-ng-click="moveLink( 'feeds/mine' )">
+				data-ng-click="$parent.moveLink( 'feeds/mine' )">
 				<span>내가 쓴 글 <var>{{mineCnt | maxTxt:99 }}</var></span>
 			</button>
 			<button type="button" class="to-setting" 
-				data-ng-click="moveLink( 'app/setting' )">
+				data-ng-click="$parent.moveLink( 'app/setting' )">
 				<span>설정</span>
 			</button>
 

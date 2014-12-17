@@ -1,0 +1,67 @@
+<article class="feed" 
+	data-ng-class="feed.category">
+	<header>
+		<strong class="location">{{feed.area}}</strong>
+		<small><span class="agency">{{feed.agency}}</span> <time>{{feed.startDate|date:'yyyy.MM.dd'}} ~ {{feed.endDate|date:'yyyy.MM.dd'}}</time></small>
+		<button type="button" class="ico feed-more2"
+			data-ng-click="$emit( 'dialog', 'feedOption', [ feed.id, feed.userId ] )"><!-- // TO MAIN Controller // -->
+			<span>더보기</span>
+		</button>
+	</header>
+	<section>
+		<del data-ng-if="feed.isEnd">이 행정 서비스는 더 이상 지원되지 않습니다.</del>
+		<h3>{{feed.title}}</h3>
+		<p>{{feed.body}}</p>
+		<button type="button"
+			data-ng-click="$emit( 'moveLink', 'feed/{{feed.id}}' )"
+			data-ng-if="type === 'list' &amp;&amp; !feed.isEnd">
+			<span>자세히 보기</span>
+		</button>
+		<a href="{{feed.url}}"
+			data-ng-if="type === 'item'">
+			{{feed.url}}
+		</a>
+		<!-- <div class="img-wrap"
+			data-ng-if="!feed.isEnd">
+			<img alt="" 
+				data-ng-if="!feed.isEnd"
+				data-img-compile="{{feed.image}}"
+				data-img-compile-base="images/img-feed-default.png">
+		</div> -->
+	</section>
+	<aside>
+		<ul>
+			<li>
+				<span class="ico feed-status reply">
+					<span>댓글수</span>
+				</span>
+				<var>{{feed.replyCnt | maxTxt:999 | minTxt:0}}</var>
+			</li>
+		</ul>
+		<div data-star-compile="{{feed.star | maxTxt:5 | minTxt:0}}" class="starRating" title="평점">{{feed.star}}</div>
+	</aside>
+	<footer>
+		<menu>
+			<button type="button"
+				data-ng-click="$emit( 'service', 'feed.scrap', feed.id )"><!-- // TO MAIN Controller // -->
+				<span class="deco scrap"
+					data-ng-class="{ 
+						'on': feed.isScrap === true }">스크랩하기</span>
+			</button>
+			<button type="button"
+				data-ng-click="$emit( 'dialog', 'share', feed )"><!-- // TO MAIN Controller // -->
+				<span class="deco share">공유하기</span>
+			</button>
+			<button type="button" 
+				data-ng-if="type === 'list'"
+				data-ng-click="$emit( 'moveLink', 'feed/' + feed.id )"><!-- // TO MAIN Controller // -->
+				<span class="deco reply">댓글달기</span>
+			</button>
+			<button type="button" 
+				data-ng-if="type === 'item'"
+				data-ng-click="$emit( 'dialog', 'star', feed.id )"><!-- // TO MAIN Controller // -->
+				<span class="deco star">평가하기</span>
+			</button>
+		</menu>
+	</footer>
+</article>

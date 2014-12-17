@@ -28,14 +28,23 @@
 							data-ng-model="appAlarm">
 					</menu>
 				</li>
+				<li>
+					<a href="" ng-click="$emit( 'moveLink', 'feeds' )">리스트 바로가기</a>
+				</li>
+				<li>
+					<a href="" ng-click="$emit( 'moveLink', 'feed/54911d925b81bf7502c501cb' )">아이템 바로가기</a>
+				</li>
 				<li class="item-2">
 					<strong>공유 설정</strong>
 					<small>SNS 공유 설정을 합니다.</small>
 					<menu>
-						<input type="checkbox" name="snsFb" class="check sns fb" title="페이스북 연동"
-							data-ng-model="snsFb" 
-							data-ng-click="snsLogin( 'fb' )">
+						<input type="checkbox" name="snsFb" class="check sns facebook" title="페이스북 연동"
+							data-ng-model="facebookLogin"
+							data-ng-checked="login === true"
+							data-ng-click="toggleAuth( $event );">
 						<!-- <input type="checkbox" name="snsKaka" class="check sns kaka" title="카카오톡 연동"
+							data-ng-true-value="'logined'"
+							data-ng-false-value="'notlogined'"
 							data-ng-model="snsKaka" 
 							data-ng-click="snsLogin( 'kaka' )"> -->
 					</menu>
@@ -44,7 +53,7 @@
 					<strong>서비스 소개</strong>
 					<small>서비스 소개와 코드포서울 노GO!팀을 소개합니다.</small>
 					<button type="button"
-						data-ng-click="moveLink( 'app/introduce' )">
+						data-ng-click="$parent.moveLink( 'app/introduce' )">
 						<span>보기</span>
 					</button>
 				</li>

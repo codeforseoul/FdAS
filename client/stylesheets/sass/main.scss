@@ -51,14 +51,16 @@ var, em { font-style: normal; }
 
 	&.ng-enter {
  		opacity: 0;
+ 		@include prefix-scale(0.9);
 	}
 	&.ng-enter.ng-enter-active {
  		opacity: 1;
+ 		@include prefix-scale(1);
 	}
 
 	&.ng-leave,
 	&.ng-leave.ng-leave-active{
- 		opacity: 0;
+ 		opacity: 0;		
 	}
 }
 #errorLy {
@@ -66,7 +68,7 @@ var, em { font-style: normal; }
 	@include prefix-flexbox2();
 	@include prefix-css3( flex-direction, column );
 
-	> section {
+	.msg {
 		width: 100%; height: 100%;
 		background: url(#{$baseSrc}images/img-404.png) no-repeat 50% 50%;
 		background-size: mobilePx(415) mobilePx(473);
@@ -138,11 +140,11 @@ input[type="text"], input[type="search"], textarea {
 		background-position: 0 0;
 		background-size: mobilePx( $wid, round ) mobilePx( $wid, round );
 
-		&.fb {
-			background-image: url(#{$baseSrc}images/ico-sns-fb.png);
+		&.facebook {
+			background-image: url(#{$baseSrc}images/ico-sns-facebook.png);
 		}
-		&.kaka {
-			background-image: url(#{$baseSrc}images/ico-sns-kaka.png);
+		&.kakaotalk {
+			background-image: url(#{$baseSrc}images/ico-sns-kakaotalk.png);
 		}
 		&.copy {
 			background-image: url(#{$baseSrc}images/ico-sns-copy.png);
@@ -165,6 +167,16 @@ input[type="text"], input[type="search"], textarea {
 		// 	background-position: mobilePx(32)*-1 0;
 		// }
 		&.area {
+			width: mobilePx(30); 
+			height: mobilePx(40);
+			background-position: 0 0;
+		}
+		&.sdate {
+			width: mobilePx(30); 
+			height: mobilePx(40);
+			background-position: 0 0;
+		}
+		&.edate {
 			width: mobilePx(30); 
 			height: mobilePx(40);
 			background-position: 0 0;
@@ -201,6 +213,20 @@ input[type="text"], input[type="search"], textarea {
 			height: mobilePx( 26 );
 			background-position: 0 mobilePx( 23, round )*-1;
 		}
+	}
+
+	&.feed-more {
+		width: mobilePx(114);
+		height: mobilePx(114);
+		background: url(#{$baseSrc}images/btn-more.png) no-repeat 0 0;
+		background-size: mobilePx(114) mobilePx(114);
+	}
+
+	&.feed-more2 {
+		width: mobilePx(20);
+		height: mobilePx(6);
+		background: url(#{$baseSrc}images/btn-more2.png) no-repeat 0 0;
+		background-size: mobilePx(20) mobilePx(6);
 	}
 
 	&.top-menu {
@@ -348,10 +374,10 @@ input[type="text"], input[type="search"], textarea {
 			background-position: 0 mobilePx(54,floor)*-1;
 		}
 	}
-	&.sns.fb {
+	&.sns.facebook {
 		width: mobilePx(54,floor);
 		height: mobilePx(54,floor);
-		background-image: url(#{$baseSrc}images/ico-check-sns-fb.png);
+		background-image: url(#{$baseSrc}images/ico-check-sns-facebook.png);
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(54,floor) mobilePx(54*2,floor);
@@ -361,10 +387,10 @@ input[type="text"], input[type="search"], textarea {
 			background-position: 0 mobilePx(54,floor)*-1;
 		}
 	}
-	&.sns.kaka {
+	&.sns.kakaotalk {
 		width: mobilePx(54,floor);
 		height: mobilePx(54,floor);
-		background-image: url(#{$baseSrc}images/ico-check-sns-kaka.png);
+		background-image: url(#{$baseSrc}images/ico-check-sns-kakaotalk.png);
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(54,floor) mobilePx(54*2,floor);
@@ -396,7 +422,7 @@ input[type="text"], input[type="search"], textarea {
 	}
 }
 
-.modalLy {
+.dialogLy {
 	position: fixed;
 	top: 0%; left: 0%;
 	width: 100%; height: 100%;
@@ -414,10 +440,9 @@ input[type="text"], input[type="search"], textarea {
 		$popwidth: 544;
 		$headerHei: 85;
 		position: absolute;
-		top: 50%; left: 50%;
+		top: 40%; left: ( 100 - mobilePercentage( $popwidth ) ) / 2;
 		width: mobilePercentage( $popwidth );
 		min-width: $minWidth;
-		margin-left: mobilePercentage( $popwidth ) * -1 / 2;
 		border-radius: 5px;
 		background: #fff;
 
@@ -426,8 +451,12 @@ input[type="text"], input[type="search"], textarea {
 			line-height: mobilePx( $headerHei );
 			padding: 0 mobilePx( 34 );
 			border-bottom: 3px solid #7ca0d5;
-			font-size: max( mobilePx( 30 ), $minFontSize );
-			letter-spacing: -1px;
+
+			h3 {
+				line-height: inherit;
+				font-size: max( mobilePx( 30 ), $minFontSize );
+				letter-spacing: -1px;
+			}
 		}
 		> section {
 			padding: mobilePx( 30 ) 0;
@@ -468,7 +497,7 @@ input[type="text"], input[type="search"], textarea {
 					border: 1px solid #cccccc;
 					border-radius: 8px;
 					box-sizing: border-box;
-					color: #cccccc;
+					// color: #cccccc;
 				}
 				.btn {
 					margin-top: mobilePx( 23 );

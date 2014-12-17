@@ -7,15 +7,24 @@
 define([], function(){
 	return {
 		'host': 'localhost:8000',
+		'serviceHost': 'localhost:3000',
 		'introSwipeTime': 250,
+		'feedsLimit': 5,
+		'repliesLimit': 5,
 		'sns': {
-			'fb': {
+			'facebook': {
 				'appId': '734387796636874',
-				'permissions': 'public_profile, user_birthday, user_location'
+			    "secret": "82f0af104381453d298b6bfd62a2cb97",
+				'scope': [ 'public_profile', 'user_birthday', 'user_location', 'email', 'user_photos' ],
+
+				"module": "passport-facebook",
+				"clientID": "734387796636874",
+				"clientSecret": "82f0af104381453d298b6bfd62a2cb97",
+				"callbackURL": "http://localhost:3030/auth/facebook/callback",
+				"authPath": "/auth/facebook",
+				"callbackPath": "/auth/facebook/callback",
+				"successRedirect": "/auth/account"
 			}
-		},
-		'subfix': {
-			'age': '세'
 		},
 		'gender': [
 			{
@@ -26,7 +35,7 @@ define([], function(){
 				'label': '여자'
 			}
 		],
-		'location': [
+		'locations': [
 			{ 
 				'val': 0, 
 				'label': '전체' 
@@ -154,6 +163,9 @@ define([], function(){
 			}, {
 				'val': 'life',
 				'label': '생활환경'
+			}, {
+				'val': 'etc',
+				'label': '기타'
 			}
 		]
 	}

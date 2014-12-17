@@ -32,13 +32,13 @@
 		</ol>
 		<button type="button" class="ico btn-start"
 			data-ng-if="nowIndex === list.length - 1"
-			data-ng-click="moveLink( 'feeds' )">
+			data-ng-click="$parent.moveLink( 'feeds' )">
 			<span>시작하기</span>
 		</button>
 	</nav>
 
 	<button type="button" class="ico to-intro-close"
-		data-ng-click="moveLink( 'feeds' )">
+		data-ng-click="$parent.moveLink( 'feeds' )">
 		<span>닫기</span>
 	</button>
 </article>

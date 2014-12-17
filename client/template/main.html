@@ -1,4 +1,7 @@
-<div id="wrapLy" data-ng-controller="mainCtrl">
+<div id="wrapLy" 
+	data-ng-controller="MainController">
 	<main id="mainLy"
 		data-ng-view></main>
+	<div data-ng-include="'template/dialog.html'" 
+		 data-ng-controller="DialogController"></div>
 </div>
