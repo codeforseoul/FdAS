@@ -123,8 +123,6 @@ define([], function(){
 				deferred.$promise.then( function( result ){
 					var date = new Date().getTime() + '';
 
-					console.log( result );
-
 					if ( result.length === 0 ){ // new
 						ResourceService.feed.star.item.save({
 							'userId': user.id,

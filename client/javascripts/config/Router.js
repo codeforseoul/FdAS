@@ -13,6 +13,10 @@ define([], function(){
 				'templateUrl': 'template/intro.html',
 				'controller': 'IntroController'
 			}).
+			when( '/auth', {
+				'templateUrl': 'template/auth.html',
+				'controller': 'AuthController'
+			}).
 			when( '/my', {
 				'templateUrl': 'template/my.html',
 				'controller': 'MyController'

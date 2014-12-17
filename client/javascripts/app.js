@@ -39,6 +39,7 @@ define([
 		'directive/previewImageCompile',
 	// controller
 		'controller/IntroController',
+		'controller/AuthController',
 		'controller/MainController',
 		'controller/DialogController',
 		'controller/MyController',
@@ -87,6 +88,7 @@ define([
 		previewImageCompile,
 	// controller
 		IntroController,
+		AuthController,
 		MainController,
 		DialogController,
 		MyController,
