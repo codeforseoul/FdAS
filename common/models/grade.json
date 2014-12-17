@@ -8,14 +8,18 @@
       "type": "string"
     },
     "userId": {
-      "type": "string"
-    },
-    "feedId": {
-      "type": "string"
-    },
-    "addDate": {
       "type": "string",
       "required": true
+    },
+    "feedId": {
+      "type": "string",
+      "required": true
+    },
+    "addDate": {
+      "type": "string"
+    },
+    "fixDate": {
+      "type": "string"
     },
     "star": {
       "type": "number",
