@@ -2,6 +2,10 @@
   "name": "FdAS",
   "version": "0.1.0",
   "main": "server/server.js",
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/codeforseoul/FdAS"
+  },
   "scripts": {
     "pretest": "jshint ."
   },
