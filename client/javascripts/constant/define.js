@@ -6,8 +6,8 @@
 
 define([], function(){
 	return {
-		'host': 'localhost:3000',
-		'serviceHost': 'localhost:3000',
+		'host': 'fdas.mozo.kr',
+		'serviceHost': 'fdas.mozo.kr',
 		'introSwipeTime': 250,
 		'feedsLimit': 5,
 		'repliesLimit': 5,
