@@ -134,7 +134,7 @@ define([], function(){
 		$scope.putFeed = function(){
 
 			if ( AuthService.isAuth() ){
-				var param = getData( user );
+				var param = getData( userId );
 
 				param.fixDate = new Date().getTime();
 

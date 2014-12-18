@@ -25,7 +25,7 @@ define([], function(){
 
 					return val === null ? {} : {
 						'val': val,
-						'label': val + Define.subfix.age
+						'label': val + ''
 					};
 
 				// single object
@@ -33,6 +33,7 @@ define([], function(){
 				case 'myLocation':
 				case 'myChildren':
 					tmp = _key.replace( 'my', '' ).toLowerCase();
+					tmp = tmp === 'location' ? ( tmp + 's' ) : tmp;
 					val = LocalStorage.getItem( _key );
 
 					return val === null ? {} : Define[ tmp ].filter( function( item ){

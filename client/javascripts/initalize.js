@@ -17,7 +17,7 @@ define([ 'text!../template/intro.html', 'text!../template/main.html' ], function
 
 			// check list url
 			// $location.path( 'intro' );
-			// $location.path( 'my' );
+			$location.path( 'my' );
 			// $location.path( 'my/info' );	
 			// $location.path( 'app/setting' );
 			// $location.path( 'app/introduce' );

@@ -27,7 +27,7 @@ define([], function(){
 				function setFeed( feedId ){
 					$scope.feed.isScrap = isScrap( feedId );
 					$scope.feed.isEnd = ( $scope.feed.delDate !== '' ) || $filter( 'endDate' )( $scope.feed.endDate );
-					$scope.feed.area = CommonHelper.getDefineArrType( $scope.feed.area, Define.locations ).label;
+					$scope.feed.area = isNaN( $scope.feed.area ) ? $scope.feed.area : CommonHelper.getDefineArrType( $scope.feed.area, Define.locations ).label;
 
 					// get star
 					ResourceService.feed.star.method.query({

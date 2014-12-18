@@ -11,7 +11,6 @@ define([], function(){
 
 		function isAuth(){
 			return JSON.stringify( getAuth() ) !== "{}";
-			// return true;
 		}
 
 		function getAuth(){
