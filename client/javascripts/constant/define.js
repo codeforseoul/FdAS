@@ -15,15 +15,7 @@ define([], function(){
 			'facebook': {
 				'appId': '734387796636874',
 			    "secret": "82f0af104381453d298b6bfd62a2cb97",
-				'scope': [ 'public_profile', 'user_birthday', 'user_location', 'email', 'user_photos' ],
-
-				"module": "passport-facebook",
-				"clientID": "734387796636874",
-				"clientSecret": "82f0af104381453d298b6bfd62a2cb97",
-				"callbackURL": "http://localhost:3030/auth/facebook/callback",
-				"authPath": "/auth/facebook",
-				"callbackPath": "/auth/facebook/callback",
-				"successRedirect": "/auth/account"
+				'scope': [ 'public_profile', 'user_birthday', 'user_location', 'email', 'user_photos' ]
 			}
 		},
 		'gender': [
