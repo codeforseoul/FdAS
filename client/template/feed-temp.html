@@ -1,8 +1,10 @@
-<article class="feed" 
-	data-ng-class="feed.category">
+<article class="feed">
 	<header>
-		<strong class="location">{{feed.area}}</strong>
-		<small><span class="agency">{{feed.agency}}</span> <time>{{feed.startDate|date:'yyyy.MM.dd'}} ~ {{feed.endDate|date:'yyyy.MM.dd'}}</time></small>
+		<mark class="ico category" data-ng-class="feed.category">
+			<span>{{feed.category}}</span>
+		</mark>
+		<strong class="area">{{feed.area}}</strong>
+		<small class="sub"><span class="agency">{{feed.agency}}</span> <time>{{feed.startDate|date:'yyyy.MM.dd'}} ~ {{feed.endDate|date:'yyyy.MM.dd'}}</time></small>
 		<button type="button" class="ico feed-more2"
 			data-ng-click="$emit( 'dialog', 'feedOption', [ feed.id, feed.userId ] )"><!-- // TO MAIN Controller // -->
 			<span>더보기</span>
@@ -43,7 +45,7 @@
 	<footer>
 		<menu>
 			<button type="button"
-				data-ng-click="$emit( 'service', 'feed.scrap', feed.id )"><!-- // TO MAIN Controller // -->
+				data-ng-click="feedScrap( feed.id )">
 				<span class="deco scrap"
 					data-ng-class="{ 
 						'on': feed.isScrap === true }">스크랩하기</span>

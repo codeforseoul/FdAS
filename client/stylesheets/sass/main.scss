@@ -154,64 +154,54 @@ input[type="text"], input[type="search"], textarea {
 	&.feed-menu {
 		background-image: url(#{$baseSrc}images/icos-feed-menu3.png);
 		background-repeat: no-repeat;
-		background-size: mobilePx(139) mobilePx(40);
+		background-size: mobilePx(184) mobilePx(39);
+
+		&.ng-invalid {
+			background-image: url(#{$baseSrc}images/icos-feed-menu3_invaild.png);
+			background-size: mobilePx(184) mobilePx(39);
+		}
 		
-		// &.category {
-		// 	width: mobilePx(32); 
-		// 	height: mobilePx(32);
-		// 	background-position: 0 0;
-		// }
-		// &.tit {
-		// 	width: mobilePx(32); 
-		// 	height: mobilePx(32);
-		// 	background-position: mobilePx(32)*-1 0;
-		// }
 		&.area {
-			width: mobilePx(30); 
-			height: mobilePx(40);
-			background-position: 0 0;
-		}
-		&.sdate {
-			width: mobilePx(30); 
-			height: mobilePx(40);
-			background-position: 0 0;
-		}
-		&.edate {
-			width: mobilePx(30); 
-			height: mobilePx(40);
-			background-position: 0 0;
+			width: 15px; 
+			height: mobilePx(39);
+			background-position: 2px 0;
 		}
 		&.image {
-			width: mobilePx(40); 
-			height: mobilePx(40);
-			background-position: mobilePx(30)*-1 0;
+			width: 19px; 
+			height: mobilePx(39);
+			background-position: -16px 0;
 		}
 		&.agency {
-			width: mobilePx(31,round); 
-			height: mobilePx(38);
-			background-position: mobilePx(30+40)*-1 0;
+			width: 20px; 
+			height: mobilePx(39);
+			background-position: -36px 0;
 		}
 		&.url {
-			width: mobilePx(38); 
-			height: mobilePx(38);
-			background-position: mobilePx(30+40+31,round)*-1 0;
+			width: 19px; 
+			height: mobilePx(39);
+			background-position: -56px 0;
+		}
+		&.startDate {
+			width: mobilePx(40); 
+			height: mobilePx(39);
+			background-position: -75px 0;
 		}
 	}
 
 	&.feed-status {
 		background-image: url(#{$baseSrc}images/icos-feed-status.png);
 		background-repeat: no-repeat;
-		background-size: mobilePx( 30 ) mobilePx( 23 + 26, round );
+		background-size: mobilePx(30) mobilePx(23+26,ceil);
 
 		&.like {
-			width: mobilePx( 27, round ); 
-			height: mobilePx( 23, round );
+			width: mobilePx(27,ceil); 
+			height: mobilePx(23,ceil);
 			background-position: 0 0;
 		}
 		&.reply {
-			width: mobilePx( 30 ); 
-			height: mobilePx( 26 );
-			background-position: 0 mobilePx( 23, round )*-1;
+			width: mobilePx(30); 
+			height: mobilePx(26)+1px;
+			background-position: 0 mobilePx(23,ceil)*-1;
 		}
 	}
 
@@ -274,6 +264,72 @@ input[type="text"], input[type="search"], textarea {
 		}
 		&.full {
 			background-position: 0 mobilePx(30)*-1;
+		}
+	}
+
+	&.category {
+		&.female {
+			width: mobilePx(61,ceil);
+			height: mobilePx(50,ceil);
+			background: url(#{$baseSrc}images/ico-feed-female.png) no-repeat 0 0;
+			background-size: mobilePx(61) mobilePx(50);
+			top: mobilePx(50,ceil)/2;
+		}
+		&.education {
+			width: mobilePx(52,ceil);
+			height: mobilePx(48,ceil)+1px;
+			background: url(#{$baseSrc}images/ico-feed-education.png) no-repeat 0 0;
+			background-size: mobilePx(52) mobilePx(48);
+			top: mobilePx(48,ceil)/2;
+		}
+		&.safety {
+			width: mobilePx(55,ceil);
+			height: mobilePx(58,ceil);
+			background: url(#{$baseSrc}images/ico-feed-safety.png) no-repeat 0 0;
+			background-size: mobilePx(55) mobilePx(58);
+			top: mobilePx(58,ceil)/2;
+		}
+		&.health {
+			width: mobilePx(48,ceil)+1px;
+			height: mobilePx(61,ceil);
+			background: url(#{$baseSrc}images/ico-feed-health.png) no-repeat 0 0;
+			background-size: mobilePx(48) mobilePx(61);
+			top: mobilePx(61,ceil)/2;
+		}
+		&.family {
+			width: mobilePx(71,ceil);
+			height: mobilePx(50,ceil);
+			background: url(#{$baseSrc}images/ico-feed-family.png) no-repeat 0 0;
+			background-size: mobilePx(71) mobilePx(50);
+			top: mobilePx(50,ceil)/2;
+		}
+		&.economy {
+			width: mobilePx(48,ceil)+1px;
+			height: mobilePx(56,ceil);
+			background: url(#{$baseSrc}images/ico-feed-economy.png) no-repeat 0 0;
+			background-size: mobilePx(48) mobilePx(56);
+			top: mobilePx(56,ceil)/2;
+		}
+		&.employment {
+			width: mobilePx(59,ceil);
+			height: mobilePx(51,ceil);
+			background: url(#{$baseSrc}images/ico-feed-employment.png) no-repeat 0 0;
+			background-size: mobilePx(59) mobilePx(51);
+			top: mobilePx(51,ceil)/2;
+		}
+		&.life {
+			width: mobilePx(57,ceil);
+			height: mobilePx(51,ceil);
+			background: url(#{$baseSrc}images/ico-feed-life.png) no-repeat 0 0;
+			background-size: mobilePx(57) mobilePx(51);
+			top: mobilePx(51,ceil)/2;
+		}
+		&.etc {
+			width: mobilePx(48,ceil)+1px;
+			height: mobilePx(49,ceil);
+			background: url(#{$baseSrc}images/ico-feed-etc.png) no-repeat 0 0;
+			background-size: mobilePx(48) mobilePx(49);
+			top: mobilePx(49,ceil)/2;
 		}
 	}
 }
@@ -349,29 +405,33 @@ input[type="text"], input[type="search"], textarea {
 
 .check {
 	&.type1 {
-		width: mobilePx(41,floor);
-		height: mobilePx(42,floor);
+		width: mobilePx(41,ceil);
+		height: mobilePx(84/2);
 		background-image: url(#{$baseSrc}images/ico-check.png);
 		background-repeat: no-repeat;
 		background-position: 0 0;
-		background-size: mobilePx(41,floor) mobilePx(42*2,floor);
+		background-size: mobilePx(41,ceil) mobilePx(84);
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
-			background-position: 0 mobilePx(42,floor)*-1;
+			width: mobilePx(41,ceil)+1px;
+			height: mobilePx(84/2)+1px;
+			background-position: 0 mobilePx(84/2)*-1;
 		}
 	}
 	&.type2 {
-		width: mobilePx(54,floor);
-		height: mobilePx(54,floor);
+		width: mobilePx(54);
+		height: mobilePx(108/2);
 		background-image: url(#{$baseSrc}images/ico-check2.png);
 		background-repeat: no-repeat;
 		background-position: 0 0;
-		background-size: mobilePx(54,floor) mobilePx(54*2,floor);
+		background-size: mobilePx(54) mobilePx(108);
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
-			background-position: 0 mobilePx(54,floor)*-1;
+			width: mobilePx(54)+1px;
+			height: mobilePx(108/2)+1px;
+			background-position: 0 mobilePx(108/2)*-1;
 		}
 	}
 	&.sns.facebook {
@@ -384,6 +444,8 @@ input[type="text"], input[type="search"], textarea {
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
+			width: mobilePx(54,floor)+1px;
+			height: mobilePx(54,floor)+1px;
 			background-position: 0 mobilePx(54,floor)*-1;
 		}
 	}
@@ -397,6 +459,8 @@ input[type="text"], input[type="search"], textarea {
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
+			width: mobilePx(54,floor)+1px;
+			height: mobilePx(54,floor)+1px;
 			background-position: 0 mobilePx(54,floor)*-1;
 		}
 	}

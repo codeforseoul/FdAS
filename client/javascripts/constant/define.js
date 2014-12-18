@@ -6,7 +6,7 @@
 
 define([], function(){
 	return {
-		'host': 'localhost:8000',
+		'host': 'localhost:3000',
 		'serviceHost': 'localhost:3000',
 		'introSwipeTime': 250,
 		'feedsLimit': 5,

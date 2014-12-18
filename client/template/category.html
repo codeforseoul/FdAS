@@ -19,6 +19,10 @@
 	<section>
 		<ul>
 			<li data-ng-repeat="category in categories">
+				<span class="ico category"	
+					data-ng-class="category.val">
+					<span>{{category.label}}</span>
+				</span>
 				<input type="checkbox" id="{{category.val}}" class="check type1" 
 					data-ng-model="categories[ category.val ]">
 				<label for="{{category.val}}">{{category.label}}</label>

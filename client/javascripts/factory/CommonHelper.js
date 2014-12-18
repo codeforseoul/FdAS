@@ -12,7 +12,10 @@ define([], function(){
 			'getDefineArrType': function( val, arr ){
 				var map = [];
 
-				val = parseInt( val, 10 );
+				if ( !isNaN( val ) ){
+					val = parseInt( val, 10 );
+				}
+				
 				map = arr.filter( function( each ){
 					return each.val === val;
 				});

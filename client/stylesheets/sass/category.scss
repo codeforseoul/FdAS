@@ -2,10 +2,6 @@
 
 // category layout
 #categoryLy {
-	// position: absolute;
-	// top: 0px; left: 100%;
-	// width: 100%; height: 100%;
-
 	> section {
 		> ul {
 			> li {
@@ -22,12 +18,46 @@
 					border-top: 0px none;
 				}
 
+				> .ico {
+					position: absolute;
+					top:50%; left: mobilePx(30);
+
+					&.female {
+						margin-top: mobilePx(50,ceil)/-2;
+					}
+					&.education {
+						margin-top: mobilePx(48,ceil)/-2;
+					}
+					&.safety {
+						margin-top: mobilePx(58,ceil)/-2;
+					}
+					&.health {
+						margin-top: mobilePx(61,ceil)/-2;
+					}
+					&.family {
+						margin-top: mobilePx(50,ceil)/-2;
+					}
+					&.economy {
+						margin-top: mobilePx(56,ceil)/-2;
+					}
+					&.employment {
+						margin-top: mobilePx(51,ceil)/-2;
+					}
+					&.life {
+						margin-top: mobilePx(51,ceil)/-2;
+					}
+					&.etc {
+						margin-top: mobilePx(49,ceil)/-2;
+					}
+				}
 				> label {
 					display: block;
-					width: 100%; height: mobilePx(49);
+					width: 100%; 
+					height: mobilePx(49);
+					line-height: mobilePx(49);
 					padding-top: mobilePx(25);
 					padding-bottom: mobilePx(20);
-					padding-left: mobilePx(68);
+					padding-left: mobilePx(120);
 					padding-right: mobilePx(35);
 					background-color: #f7f7f7;
 				}

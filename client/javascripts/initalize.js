@@ -13,13 +13,13 @@ define([ 'text!../template/intro.html', 'text!../template/main.html' ], function
 
 		// initalize app
 		if ( StoreService.get( 'isAppInit' ) ){
-			// $location.path( 'feeds' );
+			$location.path( 'feeds' );
 
 			// check list url
 			// $location.path( 'intro' );
 			// $location.path( 'my' );
 			// $location.path( 'my/info' );	
-			$location.path( 'app/setting' );
+			// $location.path( 'app/setting' );
 			// $location.path( 'app/introduce' );
 			// $location.path( 'category' );
 
@@ -42,22 +42,6 @@ define([ 'text!../template/intro.html', 'text!../template/main.html' ], function
 
 		// load other service
 		SnsService.load( 'facebook' );
-
-		// 페이지 변경시 마다 인증 수행 - single page 기반
-		// $rootScope.$on( '$routeChangeStart', function( event, next, current ){
-		// 	AuthService.initAuth();
-		// 	AuthService.doAuth();
-		// });
-		
-		// is page view?
-		// $scope.isViewLoading = false;
-
-		// $scope.$on( '$routeChangeStart', function() {
-		// 	$scope.isViewLoading = true;
-		// });
-		// $scope.$on( '$routeChangeSuccess', function() {
-		// 	$scope.isViewLoading = false;
-		// });
 	}
 
 	initalize.$inject = [

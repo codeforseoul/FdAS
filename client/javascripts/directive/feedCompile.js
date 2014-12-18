@@ -73,6 +73,28 @@ define([], function(){
 					setFeed( $scope.feed.id );
 				}
 
+				$scope.feedScrap = function( feedId ){
+					var myScrap = StoreService.get( 'myScrap' ),
+						findIdx = myScrap.indexOf( feedId );
+
+					if ( feedId ){
+
+						if ( findIdx > -1 ){
+							myScrap.splice( findIdx, 1 );
+							StoreService.save({
+								'myScrap': myScrap
+							});
+						} else {
+							myScrap.push( feedId );
+							StoreService.save({
+								'myScrap': myScrap
+							});
+						}
+					}
+
+					$scope.feed.isScrap = isScrap( feedId );
+				};
+
 				$scope.$watch( 'feed', function( feed ){
 					
 					if ( feed ){

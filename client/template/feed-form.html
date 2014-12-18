@@ -49,8 +49,11 @@
 						data-ng-init="onSubField = 'area'"
 						data-ng-click="onSubField = 'area'"
 						data-ng-class="{
-							'on': onSubField === 'area' }">
-						<span class="ico feed-menu area">
+							'on': onSubField === 'area',
+							'ng-invalid': feedForm.area.$invalid }">
+						<span class="ico feed-menu area"
+							data-ng-class="{ 
+								'ng-invalid': feedForm.area.$invalid }">
 							<span>지역</span>
 						</span>
 					</label>	
@@ -66,26 +69,17 @@
 					<label for="startDate"
 						data-ng-click="onSubField = 'startDate'"
 						data-ng-class="{
-							'on': onSubField === 'startDate' }">
-						<span class="ico feed-menu startDate">
+							'on': onSubField === 'startDate',
+							'ng-invalid': feedForm.startDate.$invalid }">
+						<span class="ico feed-menu startDate"
+							data-ng-class="{ 
+								'ng-invalid': feedForm.startDate.$invalid }">
 							<span>시작일</span>
 						</span>
 					</label>	
 					<div data-ng-show="onSubField === 'startDate'">
 						<input type="date" name="startDate" id="startDate"
 							data-ng-model="startDate">
-					</div>		
-				</li>
-				<li>
-					<label for="endDate"
-						data-ng-click="onSubField = 'endDate'"
-						data-ng-class="{
-							'on': onSubField === 'endDate' }">
-						<span class="ico feed-menu endDate">
-							<span>종료일</span>
-						</span>
-					</label>	
-					<div data-ng-show="onSubField === 'endDate'">
 						<input type="date" name="endDate" id="endDate"
 							data-ng-model="endDate">
 					</div>		
@@ -94,13 +88,16 @@
 					<label for="image"
 						data-ng-click="onSubField = 'image';"
 						data-ng-class="{
-							'on': onSubField === 'image' }">
-						<span class="ico feed-menu image">
+							'on': onSubField === 'image',
+							'ng-invalid': feedForm.image.$invalid }">
+						<span class="ico feed-menu image"
+							data-ng-class="{ 
+								'ng-invalid': feedForm.image.$invalid }">
 							<span>이미지</span>
 						</span>
 					</label>		
 					<div data-ng-show="onSubField === 'image'">	
-						<!-- // ng-change not working in input type[file ] // -->
+						<!-- // ng-change not working in input type[file] // -->
 						<input type="file" name="image" id="image" title="이미지" minlength="4" accept="image/*" capture
 							onchange="angular.element( this ).scope().transferFile( this )"
 							data-ng-model="image"
@@ -112,8 +109,11 @@
 					<label for="agency"
 						data-ng-click="onSubField = 'agency';"
 						data-ng-class="{
-							'on': onSubField === 'agency' }">
-						<span class="ico feed-menu agency">
+							'on': onSubField === 'agency',
+							'ng-invalid': feedForm.agency.$invalid }">
+						<span class="ico feed-menu agency"
+							data-ng-class="{ 
+								'ng-invalid': feedForm.agency.$invalid }">
 							<span>기관 및 회사</span>
 						</span>
 					</label>
@@ -127,8 +127,11 @@
 					<label for="url"
 						data-ng-click="onSubField = 'url';"
 						data-ng-class="{
-							'on': onSubField === 'url' }">
-						<span class="ico feed-menu url">
+							'on': onSubField === 'url',
+							'ng-invalid': feedForm.url.$invalid }">
+						<span class="ico feed-menu url"
+							data-ng-class="{ 
+								'ng-invalid': feedForm.url.$invalid }">
 							<span>URL</span>
 						</span>
 					</label>

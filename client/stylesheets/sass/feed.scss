@@ -10,26 +10,55 @@
 		background: #fff;
 
 		&.mine {
-			border: 1px solid #b8b6b6;
-			box-sizing: border-box;
+			// border: 1px solid #b8b6b6;
+			// box-sizing: border-box;
 		}
-		
+	
 		> header {
 			position: relative;
-			padding: mobilePx(13) mobilePx(21);
-			padding-left: mobilePx(113);
-			background: url(#{$baseSrc}images/ico-feed1.png) no-repeat mobilePx(21) center;
-			background-size: mobilePx(74) mobilePx(73);
+			padding: mobilePx(20) mobilePx(20);
+			padding-left: mobilePx(120); 
 			@include blueBorder;
 
-			.location { 
+			.category {
+				position: absolute;
+				top: 50%; left: mobilePx(30);
+
+				&.female {
+					margin-top: mobilePx(50,ceil)/-2;
+				}
+				&.education {
+					margin-top: mobilePx(48,ceil)/-2;
+				}
+				&.safety {
+					margin-top: mobilePx(58,ceil)/-2;
+				}
+				&.health {
+					margin-top: mobilePx(61,ceil)/-2;
+				}
+				&.family {
+					margin-top: mobilePx(50,ceil)/-2;
+				}
+				&.economy {
+					margin-top: mobilePx(56,ceil)/-2;
+				}
+				&.employment {
+					margin-top: mobilePx(51,ceil)/-2;
+				}
+				&.life {
+					margin-top: mobilePx(51,ceil)/-2;
+				}
+				&.etc {
+					margin-top: mobilePx(49,ceil)/-2;
+				}
+			}
+			.area { 
 				display: block;
-				margin-top: mobilePx(12);
 				letter-spacing: -1px;
 				font-size: max( mobilePx(26), $minFontSize );
 				color: #333333;
 			}
-			small {
+			.sub {
 				display: block;
 				margin-top: mobilePx(10);
 				letter-spacing: -1px;
@@ -136,8 +165,6 @@
 					display: inline-block;
 
 					.ico {
-						vertical-align: -5%;
-
 						& + var {
 							padding-left: mobilePx(8);
 							vertical-align: top;
@@ -194,18 +221,20 @@
 							}
 						}
 						&.share {
-							$height: mobilePx(31, floor);
-							height: $height; line-height: $height;
+							height: mobilePx(31, floor)+1px; 
+							line-height: mobilePx(31, floor)+1px;
 							padding-left: mobilePx(38);
 							background-position: 0 mobilePx(28+1+28+1, floor)*-1;
 						}
 						&.reply {
-							height: mobilePx(30); line-height: mobilePx(30);
+							height: mobilePx(30); 
+							line-height: mobilePx(30);
 							padding-left: mobilePx(45);
-							background-position: 0 mobilePx(28+1+28+1+31+1 - 2, floor)*-1;
+							background-position: 0 mobilePx(28+1+28+1+31+1, floor)*-1;
 						}
 						&.star {
-							height: mobilePx(32); line-height: mobilePx(31);
+							height: mobilePx(32)+1px; 
+							line-height: mobilePx(31)+1px;
 							padding-left: mobilePx(42);
 							background-position: 0 mobilePx(28+1+28+1+31+1+30+1, floor)*-1;
 						}
@@ -460,13 +489,19 @@
 						background-position: 0 0;
 					}
 					&.title {
-						background-position: 0 mobilePx(32)*-1;
+						background-position: 0 -17px;
 					}
 				}
 				textarea,
 				textarea + .placeholder-dir {
 					padding: mobilePx(40) mobilePx(34);
-					line-height: 18px;				
+					line-height: 18px;
+				}
+
+				select.ng-invalid:not(.ng-pristine), 
+				input.ng-invalid:not(.ng-pristine)
+				textarea.ng-invalid:not(.ng-pristine) {
+					color: red;
 				}
 			}
 		}
@@ -474,7 +509,7 @@
 
 	.optionalField {
 		$bg: #f1f1f1;
-		$menuCnt: 6;
+		$menuCnt: 5;
 		overflow: hidden;
 		background: $bg;
 		height: mobilePx(91+107+2);
@@ -501,6 +536,9 @@
 
 					&.on {
 						border-bottom: 1px solid #7ca0d5;								
+					}
+					&.ng-invalid {
+						border-bottom: 1px solid red;								
 					}
 
 					> .ico {
@@ -532,12 +570,15 @@
 							border: 0px none;
 							outline: none;
 						}
-
 						&[type="file"] {
 							overflow: hidden;
 							height: 1px; margin-top: -1px;
 						}
 					}	
+					select.ng-invalid:not(.ng-pristine), 
+					input.ng-invalid:not(.ng-pristine) {
+						color: red;
+					}
 
 					.placeholder-dir {
 						height: mobilePx(107);
@@ -548,12 +589,24 @@
 					}						
 				}
 
+				label[for="startDate"] + div  {
+					&:after {
+						clear: left;
+						content: ' ';
+						display: block;
+					}
+					input {
+						float:left;
+						width:50%;
+					}
+				}
+
 				label[for="image"] + div {
 					.preview {
 						$size: mobilePx(107-(10 * 2));
 						display: inline-block;
 						position: relative;
-						left: (100%/$menuCnt)*3;
+						left: (100%/$menuCnt)*2;
 						width: (100%/$menuCnt);
 						margin: 5px 0;
 						text-align: center;
@@ -571,14 +624,6 @@
 					}
 				}
 			}
-		}
-	}
-
-	&.ng-dirty {
-		input.ng-invalid-required.ng-dirty,
-		select.ng-invalid-required.ng-dirty,
-		textarea.ng-invalid-required.ng-dirty {
-			background-color: lighten( desaturate( #AD141E, 50% ), 50% ) !important;
 		}
 	}
 }

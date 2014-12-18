@@ -72,10 +72,9 @@ define([], function(){
 			}
 		};
 
-		// feed action
-		[ 'scrap', 'star', 'modify', 'remove' ].forEach( function( key, index ){
+		// feed action - event detact from MainController
+		[ 'star', 'modify', 'remove' ].forEach( function( key, index ){
 			$scope.$on( 'service.feed.' + key, function( e, data ){
-				console.log( data )
 				FeedService[ key ].call( null, $scope, data );
 			});
 		});

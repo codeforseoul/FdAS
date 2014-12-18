@@ -6,7 +6,9 @@
 
 define([], function(){
 
-	function FeedFormController( $scope, $location, $routeParams, $filter, Define, ResourceService, AuthService ){
+	function FeedFormController( $scope, $location, $routeParams, $filter, Define, ResourceService, AuthService, CommonHelper ){
+		var feedId = null,
+			userId = null;
 
 		function getData( userId ){
 			var	ndate = new Date().getTime(),
@@ -61,46 +63,43 @@ define([], function(){
 		$scope.categories = Define.categories;
 		$scope.locations = Define.locations;
 
-		// update
-		if ( $scope.isUpdate ){
-			ResourceService.feed.findOne.get({
-				'filter': {
-					'where': {
-						'and': [{
-							'userId': AuthService.getAuth().id	
-						}, {
-							'id': $routeParams.feedId								
-						}]
+		if ( AuthService.isAuth() ){
+			feedId = $routeParams.feedId;
+			userId = AuthService.getAuth().id;
+
+			if ( $scope.isUpdate ){
+				ResourceService.feed.findOne.get({
+					'filter': {
+						'where': {
+							'and': [{
+								'userId': userId
+							}, {
+								'id': feedId							
+							}]
+						}
 					}
-				}
-			}, function( result ){
-				// category 
-				result.category = result.category ? Define.categories.filter( function( item ){
-					return item.val === result.category;
-				}) : [];
-				result.category = result.category.length === 0 ? Define.categories[ 0 ] : result.category[ 0 ];
+				}, function( result ){
+					// select options
+					result.category = CommonHelper.getDefineArrType( result.category, Define.categories );
+					result.area = CommonHelper.getDefineArrType( result.area, Define.locations );
 
-				// area
-				result.area = result.area ? Define.locations.filter( function( item ){
-					return item.val === result.area;
-				}) : [];
-				result.area = result.area.length === 0 ? Define.locations[ 0 ] : result.area[ 0 ];
+					// date
+					result.sdate = result.sdate ? $filter( 'date' )( result.sdate, 'yyyy-MM-dd' ) : null;
+					result.edate = result.edate ? $filter( 'date' )( result.edate, 'yyyy-MM-dd' ) : null;
 
-				// date
-				result.sdate = result.sdate ? $filter( 'date' )( result.sdate, 'yyyy-MM-dd' ) : null;
-				result.edate = result.edate ? $filter( 'date' )( result.edate, 'yyyy-MM-dd' ) : null;
-
-				[ 'category', 'title', 'body', 'area', 'startDate', 'endDate', 'image', 'agency', 'url' ].forEach( function( key ){
-					$scope[ key ] = result[ key ];
-					// $scope.feedForm[ key ].$dirty = true;
+					[ 'category', 'title', 'body', 'area', 'startDate', 'endDate', 'image', 'agency', 'url' ].forEach( function( key ){
+						$scope[ key ] = result[ key ];
+					});
+				}, function(){
+					alert( '일치하는 데이터가 없습니다.' );
+					$scope.$parent.backLink();				
 				});
-			}, function(){
-				alert( '일치하는 데이터가 없습니다.' )
-				$scope.$parent.backLink();				
-			});
+			} else {
+				$scope.category = $scope.categories[ 0 ];
+				$scope.area = $scope.locations[ 0 ];
+			}
 		} else {
-			$scope.category = $scope.categories[ 0 ];
-			$scope.area = $scope.locations[ 0 ];
+			$scope.$emit( 'dialog', 'login' );
 		}
 
 		// to form
@@ -115,38 +114,40 @@ define([], function(){
 		$scope.postFeed = function(){
 
 			if ( AuthService.isAuth() ){
-				var user = AuthService.getAuth(),
-					param = getData( user.id );
+				var param = getData( userId );
 
 				param.addDate = new Date().getTime() + '';
 				param.fixDate = '';
 				param.delDate = '';
-
-			console.log( $scope );
 
 				ResourceService.feed.method.save( param, function(){
 					commonSuccessCallback( '등록' );
 				}, function(){
 					commonErrorCallback( '등록' );
 				});
+			} else {
+				$scope.$emit( 'dialog', 'login' );
 			}
 		};
 
 		// update
 		$scope.putFeed = function(){
-			AuthService.loginChaining( function( user ){
+
+			if ( AuthService.isAuth() ){
 				var param = getData( user );
 
 				param.fixDate = new Date().getTime();
 
 				ResourceService.feed.item.update({
-					 'id': $routeParams.feedId
+					 'id': feedId
 				}, param, function(){
 					commonSuccessCallback( '수정' );
 				}, function(){
 					commonErrorCallback( '수정' );
 				});
-			});
+			} else {
+				$scope.$emit( 'dialog', 'login' );
+			}
 		};
 	}
 
@@ -157,8 +158,25 @@ define([], function(){
 		'$filter',
 		'Define',
 		'ResourceService',
-		'AuthService'
+		'AuthService',
+		'CommonHelper'
 	];
 
 	return FeedFormController;
 });
+
+
+
+// category 
+/*result.category = result.category ? Define.categories.filter( function( item ){
+	return item.val === result.category;
+}) : [];
+result.category = result.category.length === 0 ? Define.categories[ 0 ] : result.category[ 0 ];
+
+CommonHelper.getDefineArrType( result.category, Define.categories );
+
+// area
+result.area = result.area ? Define.locations.filter( function( item ){
+	return item.val === result.area;
+}) : [];
+result.area = result.area.length === 0 ? Define.locations[ 0 ] : result.area[ 0 ];*/
