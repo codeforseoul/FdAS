@@ -100,6 +100,7 @@ define([], function(){
 			}
 		} else {
 			$scope.$emit( 'dialog', 'login' );
+			$scope.$emit( 'backLink' );
 		}
 
 		// to form

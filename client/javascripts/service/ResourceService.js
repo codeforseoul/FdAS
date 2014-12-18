@@ -10,6 +10,9 @@ define([], function(){
 		return {
 			'user': {
 				'method': $resource( 'http://' + Define.serviceHost + '/api/users', null ),
+				'item': $resource( 'http://' + Define.serviceHost + '/api/users/:id', null, {
+					'id': '@id'
+				}),
 				'count': $resource( 'http://' + Define.serviceHost + '/api/users/count', null ),
 				'auth': $resource( 'http://' + Define.serviceHost + '/auth/account', null )
 			},

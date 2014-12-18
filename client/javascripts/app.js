@@ -32,6 +32,7 @@ define([
 	// directive
 		'directive/dialogCompile',
 		'directive/feedCompile',
+		'directive/replyCompile',
 		'directive/imgCompile',
 		'directive/starCompile',
 		'directive/starInputCompile',
@@ -81,6 +82,7 @@ define([
 	// directive
 		dialogCompile,
 		feedCompile,
+		replyCompile,
 		imgCompile,
 		starCompile,
 		starInputCompile,
@@ -119,6 +121,7 @@ define([
 		service( 'FeedService', FeedService ).
 		directive( 'dialogCompile', dialogCompile ).
 		directive( 'feedCompile', feedCompile ).
+		directive( 'replyCompile', replyCompile ).
 		directive( 'imgCompile', imgCompile ).
 		directive( 'starCompile', starCompile ).
 		directive( 'starInputCompile', starInputCompile ).
