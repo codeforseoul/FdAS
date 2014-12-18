@@ -15,7 +15,7 @@ define([
 		'angular-touch',
 		'angular-mocks',
 	// constant
-		'constant/Define',
+		'constant/define',
 	// config
 		'config/Configuration',
 		'config/Router',
