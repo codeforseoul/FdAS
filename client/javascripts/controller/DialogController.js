@@ -6,7 +6,7 @@
 
 define([], function(){
 
-	function DialogController( $scope, $http, $q, Define, SnsService ){
+	function DialogController( $scope, $http, $q, Define, AuthService, SnsService ){
 		$scope.on, 
 		$scope.type, 
 		$scope.data, 
@@ -59,34 +59,16 @@ define([], function(){
 		this.open = $scope.open;
 		this.close = $scope.close;
 
-		// sns 로그인 버튼
-		/*$scope.snsLogin = function( sns ){
-			// var deferred = $q.defer(),
-			// 	promise = deferred.promise;
-
-			// $scope.$parent.login( sns, deferred );
-
-			// promise.then( function(){
-			// 	alert( '로그인 되었습니다.' );
-			// }, function(){
-			// 	alert( '로그인에 실패하였습니다.' );
-			// }).finally( $scope.close );
-			
-			$http.
-				get( 'http://' + Define.serviceHost + '/auth/' + sns ).
-				success( function( data, status, header, config ){
-					alert( '로그인 되었습니다.' );
-				}).
-				error( function(){
-					alert( '로그인에 실패하였습니다.' );
-				}).finally( $scope.close );
+		// sns login
+		$scope.snsLogin = function( sns ){
+			AuthService.cookie();
 		};
 
-		// sns 공유 버튼
+		// sns share
 		$scope.snsShare = function(){
 			SnsService.share.apply( null, arguments );
 			$scope.close();
-		};*/
+		};
 	}
 
 	DialogController.$inject = [
@@ -94,6 +76,7 @@ define([], function(){
 		'$http',
 		'$q', 
 		'Define',
+		'AuthService',
 		'SnsService'
 	];
 

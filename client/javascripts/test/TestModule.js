@@ -17,7 +17,7 @@ define([], function(){
 				$httpBackend.whenDELETE( reg ).passThrough();
 			}); */
 
-			/*$httpBackend.whenPOST( /login/ ).respond( function( method, url, data ){
+			/*$httpBackend.whenPOST( /auth/facebook ).respond( function( method, url, data ){
 				var data = angular.fromJson( data ),
 					user = {};
 
