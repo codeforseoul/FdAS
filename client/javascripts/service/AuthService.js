@@ -6,7 +6,7 @@
 
 define([], function(){
 
-	function AuthService( $q, Define, ResourceService ){
+	function AuthService( $q, $http, Define, ResourceService ){
 		var auth = {};
 
 		function isAuth(){
@@ -19,16 +19,18 @@ define([], function(){
 
 		function setAuth( _deferred ){
 			var Auth = ResourceService.user.auth.get();
-
+			
 			// _deferred.resolve();
 			// auth = { id: '82f0af104381453d298b6bfd62a2cb97' }
 			
 			Auth.$promise.then( function( result ){
-				_deferred ? _deferred.resolve( result.user ) : undefined;
+				_deferred ? 
+					( result.user ? _deferred.resolve( result.user ) : _deferred.reject() ) : 
+					undefined;
 				auth = angular.copy( result.user );
 			});
 			Auth.$promise.catch( function( result ){
-				_deferred ? _deferred.reject( result ) : undefined;
+				_deferred ? _deferred.reject() : undefined;
 			});
 		};
 
@@ -194,6 +196,7 @@ define([], function(){
 
 	AuthService.$inject = [
 		'$q',
+		'$http',
 		'Define',
 		'ResourceService'
 	];

@@ -64,9 +64,9 @@ define([], function(){
 			alert( '저장되었습니다.' );
 		};
 
-		[ 'appAlarm' ].forEach( function( key ){
-			$scope[ key ] = StoreService.get( key );
-		});
+		// [ 'appAlarm' ].forEach( function( key ){
+		// 	$scope[ key ] = StoreService.get( key );
+		// });
 
 		setAuth();
 	}

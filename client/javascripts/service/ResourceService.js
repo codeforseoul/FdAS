@@ -14,7 +14,7 @@ define([], function(){
 					'id': '@id'
 				}),
 				'count': $resource( 'http://' + Define.serviceHost + '/api/users/count', null ),
-				'auth': $resource( 'http://' + Define.serviceHost + '/auth/account', null )
+				'auth': $resource( 'http://' + Define.serviceHost + '/isauth', null )
 			},
 			'feed': {
 				'method': $resource( 'http://' + Define.serviceHost + '/api/services', null ),

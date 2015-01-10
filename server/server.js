@@ -72,6 +72,18 @@ for (var s in config) {
   passportConfigurator.configureProvider(s, c);
 }
 
+// oauth 여부 
+app.get('/isauth', function (req, res, next) {
+  // 회원정보 json 출력
+  res.json(req.user);
+});
+
+// oauth 처리
+app.get('/auth/account', function (req, res, next) {
+  // redirect
+  res.redirect(req.query.returnUrl);
+});
+
 // -- Mount static files here--
 // All static middleware should be registered at the end, as all requests
 // passing the static middleware are hitting the file system
