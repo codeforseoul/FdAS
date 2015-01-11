@@ -302,6 +302,7 @@ input[type="text"], input[type="search"], textarea {
 			background: url(#{$baseSrc}images/ico-feed-family.png) no-repeat 0 0;
 			background-size: mobilePx(71) mobilePx(50);
 			top: mobilePx(50,ceil)/2;
+			margin-left: mobilePx(10)*-1;
 		}
 		&.economy {
 			width: mobilePx(48,ceil)+1px;
@@ -407,11 +408,13 @@ input[type="text"], input[type="search"], textarea {
 	&.type1 {
 		width: mobilePx(41,ceil);
 		height: mobilePx(84/2);
+		background-color: rgba(255,255,255,0);
 		background-image: url(#{$baseSrc}images/ico-check.png);
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(41,ceil) mobilePx(84);
 		box-shadow: none;
+		border: none;
 		@include prefix-css3(appearance, none);
 
 		&:checked {
@@ -423,11 +426,13 @@ input[type="text"], input[type="search"], textarea {
 	&.type2 {
 		width: mobilePx(54);
 		height: mobilePx(108/2);
+		background-color: rgba(255,255,255,0);
 		background-image: url(#{$baseSrc}images/ico-check2.png);
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(54) mobilePx(108);
 		box-shadow: none;
+		border: none;
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
@@ -439,11 +444,13 @@ input[type="text"], input[type="search"], textarea {
 	&.sns.facebook {
 		width: mobilePx(54,floor);
 		height: mobilePx(54,floor);
+		background-color: rgba(255,255,255,0);
 		background-image: url(#{$baseSrc}images/ico-check-sns-facebook.png);
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(54,floor) mobilePx(54*2,floor);
 		box-shadow: none;
+		border: none;
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
@@ -455,11 +462,13 @@ input[type="text"], input[type="search"], textarea {
 	&.sns.kakaotalk {
 		width: mobilePx(54,floor);
 		height: mobilePx(54,floor);
+		background-color: rgba(255,255,255,0);
 		background-image: url(#{$baseSrc}images/ico-check-sns-kakaotalk.png);
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(54,floor) mobilePx(54*2,floor);
 		box-shadow: none;
+		border: none;
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
@@ -508,8 +517,9 @@ input[type="text"], input[type="search"], textarea {
 		$popwidth: 544;
 		$headerHei: 85;
 		position: absolute;
-		top: 40%; left: ( 100 - mobilePercentage( $popwidth ) ) / 2;
+		top: 40%; left: (100 - mobilePercentage( $popwidth )) / 2;
 		width: mobilePercentage( $popwidth );
+		margin: 0; padding: 0;
 		min-width: $minWidth;
 		border-radius: 5px;
 		background: #fff;
@@ -608,46 +618,54 @@ input[type="text"], input[type="search"], textarea {
 		}
 	}
 
-	// &#scrapingLy {
-	// 	display: none;
+		// &#scrapingLy {
+		// 	display: none;
 
-	// 	@include prefix-keyframe( scrapAnimate ) {
-	// 		0% { 
-	// 			display: block;
-	// 			opacity: 1;
-	// 		}
-	// 		100% { 
-	// 			opacity: 0;
-	// 		}	
-	// 	}
+		// 	@include prefix-keyframe( scrapAnimate ) {
+		// 		0% { 
+		// 			display: block;
+		// 			opacity: 1;
+		// 		}
+		// 		100% { 
+		// 			opacity: 0;
+		// 		}	
+		// 	}
 
-	// 	// when showing
-	// 	&.ng-hide-add,
-	// 	&.ng-hide-add-active,
-	// 	&.ng-hide-remove,
-	// 	&.ng-hide-remove-active {
-	// 		@include prefix-animation( 0.5s, 1s, scrapAnimate );
-	// 	}
+		// 	// when showing
+		// 	&.ng-hide-add,
+		// 	&.ng-hide-add-active,
+		// 	&.ng-hide-remove,
+		// 	&.ng-hide-remove-active {
+		// 		@include prefix-animation( 0.5s, 1s, scrapAnimate );
+		// 	}
 
-	// 	div {
-	// 		$wid: 388;
-	// 		position: absolute;
-	// 		top: 50%; left: 50%;
-	// 		width: mobilePx( $wid );
-	// 		min-width: $minWidth;
-	// 		margin-left: mobilePx( $wid ) * -1 / 2;
+		// 	div {
+		// 		$wid: 388;
+		// 		position: absolute;
+		// 		top: 50%; left: 50%;
+		// 		width: mobilePx( $wid );
+		// 		min-width: $minWidth;
+		// 		margin-left: mobilePx( $wid ) * -1 / 2;
 
-	// 		p {
-	// 			display: inline-block;
-	// 			width: mobilePx( $wid );
-	// 			height: mobilePx( 245 );
-	// 			background: url(#{$baseSrc}images/ico-scraping.png) no-repeat 0 0;
-	// 			background-size: mobilePx( $wid ) mobilePx( 245 );
-	// 			text-indent: -9999%;
-	// 		}
-	// 	}
-	// }
+		// 		p {
+		// 			display: inline-block;
+		// 			width: mobilePx( $wid );
+		// 			height: mobilePx( 245 );
+		// 			background: url(#{$baseSrc}images/ico-scraping.png) no-repeat 0 0;
+		// 			background-size: mobilePx( $wid ) mobilePx( 245 );
+		// 			text-indent: -9999%;
+		// 		}
+		// 	}
+		// }
 }
+
+/* iPhone / mobile webkit */
+// @media screen and (max-device-width: 480px) {
+// 	.dialogLy .popLy {
+// 		$popwidth: 544;
+// 		left: (100 - mobilePercentage( $popwidth )) / 4;
+// 	}
+// }
 
 .topLy {
 	z-index: 2;
