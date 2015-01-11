@@ -411,7 +411,8 @@ input[type="text"], input[type="search"], textarea {
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(41,ceil) mobilePx(84);
-		@include prefix-css3(appearance, none);	
+		box-shadow: none;
+		@include prefix-css3(appearance, none);
 
 		&:checked {
 			width: mobilePx(41,ceil)+1px;
@@ -426,6 +427,7 @@ input[type="text"], input[type="search"], textarea {
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(54) mobilePx(108);
+		box-shadow: none;
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
@@ -441,6 +443,7 @@ input[type="text"], input[type="search"], textarea {
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(54,floor) mobilePx(54*2,floor);
+		box-shadow: none;
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
@@ -456,6 +459,7 @@ input[type="text"], input[type="search"], textarea {
 		background-repeat: no-repeat;
 		background-position: 0 0;
 		background-size: mobilePx(54,floor) mobilePx(54*2,floor);
+		box-shadow: none;
 		@include prefix-css3(appearance, none);	
 
 		&:checked {
