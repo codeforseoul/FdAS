@@ -7,7 +7,7 @@ var services = [
   {
     id: '1',
     userID: '1',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
@@ -20,7 +20,7 @@ var services = [
   }, {
     id: '2',
     userID: '2',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
@@ -33,7 +33,7 @@ var services = [
   }, {
     id: '3',
     userID: '1',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
@@ -46,7 +46,7 @@ var services = [
   }, {
     id: '4',
     userID: '3',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
@@ -59,7 +59,7 @@ var services = [
   }, {
     id: '5',
     userID: '2',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
@@ -72,7 +72,7 @@ var services = [
   }, {
     id: '6',
     userID: '1',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
@@ -85,7 +85,7 @@ var services = [
   }, {
     id: '7',
     userID: '2',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
@@ -98,7 +98,7 @@ var services = [
   }, {
     id: '8',
     userID: '1',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
@@ -111,7 +111,7 @@ var services = [
   }, {
     id: '9',
     userID: '3',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
@@ -124,7 +124,7 @@ var services = [
   }, {
     id: '10',
     userID: '2',
-    category: "bokji",
+    category: "etc",
     agency: 'bokjiro.go.kr',
     location: 'seoul',
     addDate: new Date(),
