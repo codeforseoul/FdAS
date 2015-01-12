@@ -7,6 +7,7 @@ var users = [
   {
     id: '1',
     email: 'foo1@bar.com',
+    password: '1234',
     addDate: new Date(),
     fixDate: new Date(),
     // delDate 사용하지 않음. 계정 삭제하면 끝.
