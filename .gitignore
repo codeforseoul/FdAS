@@ -38,5 +38,5 @@ _site
 bower_components
 
 # Ignore docs files
-client/stylesheets/sass/.sass-cache
-client/stylesheets/sass/.sass-cache/*
+client/stylesheets/.sass-cache
+client/stylesheets/.sass-cache/*
