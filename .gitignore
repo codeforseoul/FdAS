@@ -36,3 +36,7 @@ docular_generated
 # exclude jekyll
 _site
 bower_components
+
+# Ignore docs files
+client/stylesheets/sass/.sass-cache
+client/stylesheets/sass/.sass-cache/*
