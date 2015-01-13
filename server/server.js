@@ -75,7 +75,9 @@ for (var s in config) {
 // oauth 여부 
 app.get('/isauth', function (req, res, next) {
   // 회원정보 json 출력
-  res.json(req.user);
+  res.json({
+    user: req.user
+  });
 });
 
 // oauth 처리

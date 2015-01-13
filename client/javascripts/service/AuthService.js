@@ -35,7 +35,7 @@ define([], function(){
 		};
 
 		function cookieAuth(){
-			window.location.href = 'http://' + Define.serviceHost + '/auth/account?returnUrl=' + window.location.href;			
+			window.location.href = 'http://' + Define.serviceHost + '/auth/facebook?returnUrl=' + window.location.href;			
 		}
 
 		function removeAuth( _deferred ){

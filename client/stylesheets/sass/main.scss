@@ -517,9 +517,10 @@ input[type="text"], input[type="search"], textarea {
 		$popwidth: 544;
 		$headerHei: 85;
 		position: absolute;
-		top: 40%; left: (100 - mobilePercentage( $popwidth )) / 2;
+		top: 40%; left: 50%;
 		width: mobilePercentage( $popwidth );
 		margin: 0; padding: 0;
+		margin-left: mobilePercentage( $popwidth ) / -2;
 		min-width: $minWidth;
 		border-radius: 5px;
 		background: #fff;
@@ -658,14 +659,6 @@ input[type="text"], input[type="search"], textarea {
 		// 	}
 		// }
 }
-
-/* iPhone / mobile webkit */
-// @media screen and (max-device-width: 480px) {
-// 	.dialogLy .popLy {
-// 		$popwidth: 544;
-// 		left: (100 - mobilePercentage( $popwidth )) / 4;
-// 	}
-// }
 
 .topLy {
 	z-index: 2;

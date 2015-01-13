@@ -6,7 +6,7 @@
 
 define([], function(){
 
-	function AppSettingController( $scope, $q, AuthService ){
+	function AuthController( $scope, $q, AuthService ){
 		var deferred = $q.defer(),
 			promise = deferred.promise;
 
@@ -23,11 +23,11 @@ define([], function(){
 		});
 	}
 
-	AppSettingController.$inject = [
+	AuthController.$inject = [
 		'$scope',
 		'$q',
 		'AuthService'
 	];
 
-	return AppSettingController;
+	return AuthController;
 });

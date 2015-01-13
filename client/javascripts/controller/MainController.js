@@ -31,20 +31,16 @@ define([], function(){
 		// 이전 화면 이동
 		$scope.backLink = function(){
 
-			if ( window.location.host === Define.host ){
+			// if ( window.location.host === Define.host ){
 				window.history.back();
-			}
+			// }
 		};
 
 		$scope.$on( 'moveLink', function( e, data ){
-			console.log( 'moveLink' );
-			console.log( data );
 			$scope.moveLink( data );
 		});
 
 		$scope.$on( 'moveAuthLink', function( e, data ){
-			console.log( 'moveAuthLink' );
-			console.log( data );
 			$scope.moveAuthLink( data );
 		});
 
@@ -62,15 +58,11 @@ define([], function(){
 
 		// dialog gateway
 		$scope.$on( 'dialog', function( e, name, data ){
-			console.log( name );
-			console.log( data );
 			$scope.$broadcast( 'dialog.' + name, data );
 		});
 
 		// function in dialog gateway
 		$scope.$on( 'service', function( e, name, data ){
-			console.log( name );
-			console.log( data );
 			$scope.$broadcast( 'service.' + name, data );
 		});
 	}
