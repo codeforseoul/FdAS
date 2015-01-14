@@ -153,6 +153,7 @@ define([
 		module( 'fdasApp', [ 'fdasApp.intro', 'fdasApp.my', 'fdasApp.feed' ]).
 		controller( 'MainController', MainController ).
 		controller( 'DialogController', DialogController ).
+		controller( 'AuthController', AuthController ).
 		run( initalize );
 
 	// angular 부트스트래핑

@@ -53,6 +53,10 @@ define([], function(){
 			$scope.children[ item.key ] = StoreService.get( item.key );
 		});
 
+		$scope.chagne = function( item ){
+			console.log( item );
+		};
+
 		$scope.save = function(){
 			var data = {};
 

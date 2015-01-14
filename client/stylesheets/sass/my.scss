@@ -59,14 +59,6 @@
 					color: rgba(0,0,0,255);
 					font-weight: normal;
 					color: #999999;
-
-					& + label {
-						display: none;
-
-						& + var {
-							display: none;
-						}
-					}
 				}
 			}
 
@@ -81,6 +73,10 @@
 				font-weight: bold;
 				font-size: mobilePx(30);
 				letter-spacing: -1px;
+
+				&.isInit {
+					display: none;
+				}
 			}
 			label {
 				left: mobilePx( $paddingLeft );

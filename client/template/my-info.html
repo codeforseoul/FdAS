@@ -25,12 +25,15 @@
 					<select name="{{field.key}}" id="{{field.key}}"
 						data-ng-model="fields[ field.key ]"
 						data-ng-options="option.label for option in field.options"
+						data-ng-change="change( fields[ field.key ] )"
 						data-ng-class="{
 							isInit: !fields[ field.key ].label }">
 							<option value="">{{field.label}}을 선택해 주세요</option>
 					</select>
-					<label for="{{field.key}}">{{field.label}}</label>
-					<var>{{fields[ field.key ].label}}</var>
+					<label for="{{field.key}}" data-ng-class="{
+						isInit: !fields[ field.key ].label }">{{field.label}}</label>
+					<var data-ng-class="{
+						isInit: !fields[ field.key ].label }">{{fields[ field.key ].label}}</var>
 				</li>
 
 				<!-- // 자녀 추가 설정 // -->
@@ -40,12 +43,15 @@
 					<select name="{{child.key}}" id="{{child.key}}"
 						data-ng-model="children[ child.key ]"
 						data-ng-options="option.label for option in child.options"
+						data-ng-change="change( fields[ field.key ] )"
 						data-ng-class="{
 							isInit: !children[ child.key ].label }">
 							<option value="">{{child.label}}을 선택해 주세요</option>
 					</select>
-					<label for="{{child.key}}">{{child.label}}</label>
-					<var>{{children[ child.key ].label}}</var>
+					<label for="{{child.key}}" data-ng-class="{
+						isInit: !children[ child.key ].label }">{{child.label}}</label>
+					<var data-ng-class="{
+						isInit: !children[ child.key ].label }">{{children[ child.key ].label}}</var>
 				</li>
 			</ul>
 		</fieldset>

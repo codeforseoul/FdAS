@@ -8,6 +8,7 @@
     "authPath": "/auth/facebook",
     "callbackPath": "/auth/facebook/callback",
     "successRedirect": "/#/auth",
-    "scope": ["email"]
+    "failureRedirect": "/#/auth",
+    "scope": ["email", "user_birthday", "user_location", "user_photos"]
   }
 }

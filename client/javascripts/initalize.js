@@ -14,6 +14,7 @@ define([ 'text!../template/intro.html', 'text!../template/main.html' ], function
 		// initalize app
 		if ( StoreService.get( 'isAppInit' ) ){
 			$location.path( 'feeds' );
+			AuthService.setAuth();
 
 			// check list url
 			// $location.path( 'intro' );

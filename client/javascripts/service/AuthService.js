@@ -19,23 +19,23 @@ define([], function(){
 
 		function setAuth( _deferred ){
 			var Auth = ResourceService.user.auth.get();
-			
-			// _deferred.resolve();
-			// auth = { id: '82f0af104381453d298b6bfd62a2cb97' }
-			
+						
 			Auth.$promise.then( function( result ){
-				_deferred ? 
-					( result.user ? _deferred.resolve( result.user ) : _deferred.reject() ) : 
-					undefined;
-				auth = angular.copy( result.user );
+
+				if ( result.user ){
+					auth = angular.copy( result.user );
+					_deferred ? _deferred.resolve( result.user ) : undefined;
+				} else {
+					_deferred ? _deferred.reject() : undefined;
+				}
 			});
-			Auth.$promise.catch( function( result ){
+			Auth.$promise.catch( function(){
 				_deferred ? _deferred.reject() : undefined;
 			});
 		};
 
 		function cookieAuth(){
-			window.location.href = 'http://' + Define.serviceHost + '/auth/facebook?returnUrl=' + window.location.href;			
+			window.location.href = 'http://' + window.location.host + '/auth/facebook';	
 		}
 
 		function removeAuth( _deferred ){

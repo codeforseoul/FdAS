@@ -13,10 +13,10 @@ define([], function(){
 		AuthService.setAuth( deferred );
 
 		promise.then( function(){
-			alert( '성공하였습니다.' );
+			// alert( '성공하였습니다.' );
 		});
 		promise.catch( function(){
-			alert( '실패하였습니다.' );
+			// alert( '실패하였습니다.' );
 		});
 		promise.finally( function(){
 			$scope.$emit( 'moveLink', 'feeds' );
