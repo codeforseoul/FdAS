@@ -147,9 +147,6 @@ http://fdas.mozo.kr
 개발 브렌치에 푸시하면 이 서버에서 해당 코드들을 자동으로 땡겨 받습니다.
 when you push to dev branch, the codes will be automatically pulled on this server
 
-개발자 중 한 분이 요청하셔서 임시로 자동 풀 적용한 상태입니다.
-참고: https://gist.github.com/blindsey/1175059/download#
-
 ```
 
 ####5. 두근두근 pull request!
