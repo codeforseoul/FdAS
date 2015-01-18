@@ -139,7 +139,16 @@ master 브렌치에는 테스트가 완료된 deploy 대상 소스만 유지하�
 ```
 브랜치
 Branches
-master <- develop <- front-dev
+master <- develop
+
+# 스테이징 서버
+http://fdas.mozo.kr
+
+개발 브렌치에 푸시하면 이 서버에서 해당 코드들을 자동으로 땡겨 받습니다.
+when you push to dev branch, the codes will be automatically pulled on this server
+
+개발자 중 한 분이 요청하셔서 임시로 자동 풀 적용한 상태입니다.
+참고: https://gist.github.com/blindsey/1175059/download#
 
 ```
 
