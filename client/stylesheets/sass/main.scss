@@ -548,8 +548,12 @@ input[type="text"], input[type="search"], textarea {
 		> footer {
 			> .to-close {
 				position: absolute;
-				top: mobilePx( getCenterPos( 22, $headerHei ) ); 
-				right: mobilePx( 34 );
+				top: 0; right: 0;
+
+				.ico {
+					margin-top: mobilePx( getCenterPos( 22, $headerHei ) ); 
+					margin-right: mobilePx(34);
+				}
 			}
 		}
 
@@ -674,7 +678,6 @@ input[type="text"], input[type="search"], textarea {
 		@include prefix-css3( justify-content, space-between );
 		@include prefix-css3( align-items, center );
 		height: mobilePx( $headerTopHei );
-		padding-left: mobilePx( 26 );
 		background: #7da0d6;
 
 		> h1 {		
@@ -686,15 +689,21 @@ input[type="text"], input[type="search"], textarea {
 				white-space: nowrap; text-indent: -9999%;
 			}
 
-			&.type1 {}
+			&.type1 {
+				padding-left: mobilePx( 26 );			
+			}
 			&.type2 {
 
 				> .to-back {
-					margin-right: mobilePx( 15 );
+					height: mobilePx( $headerTopHei );
 					vertical-align: middle;
 
 					& + * {
 						vertical-align: middle;
+					}
+					> .ico {
+						margin-left: mobilePx( 26 );
+						margin-right: mobilePx( 15 );					
 					}
 				}
 			}

@@ -1,9 +1,10 @@
 <article class="feed">
 	<header>
-		<mark class="ico category" data-ng-class="feed.category">
-			<span>{{feed.category}}</span>
+		<mark class="ico category" data-ng-class="feed.category.val">
+			<span>{{feed.category.label}}</span>
 		</mark>
 		<strong class="area">{{feed.area}}</strong>
+
 		<small class="sub"><span class="agency">{{feed.agency}}</span> <time>{{feed.startDate|date:'yyyy.MM.dd'}} ~ {{feed.endDate|date:'yyyy.MM.dd'}}</time></small>
 		<button type="button" class="ico feed-more2"
 			data-ng-click="$emit( 'dialog', 'feedOption', [ feed.id, feed.userId ] )"><!-- // TO MAIN Controller // -->
@@ -19,12 +20,8 @@
 			data-ng-if="type === 'list' &amp;&amp; !feed.isEnd">
 			<span>자세히 보기</span>
 		</button>
-		<a href="{{feed.url}}"
-			data-ng-if="type === 'item'">
-			{{feed.url}}
-		</a>
-		<div class="img-wrap"
-			data-ng-if="!feed.isEnd">
+		<a href="{{feed.url}}" data-ng-if="type === 'item'">{{feed.url}}</a>
+		<div class="img-wrap" data-ng-if="!feed.isEnd">
 			<img alt="" 
 				data-ng-if="!feed.isEnd"
 				data-img-compile="{{feed.image}}"

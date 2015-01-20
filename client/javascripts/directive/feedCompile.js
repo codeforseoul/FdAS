@@ -25,9 +25,13 @@ define([], function(){
 				}
 
 				function setFeed( feedId ){
+					var area_idx = CommonHelper.getIndexOfDefineArr( $scope.feed.area, Define.locations, 'label' ),
+						category_idx = CommonHelper.getIndexOfDefineArr( $scope.feed.category, Define.categories, 'val' );
+
 					$scope.feed.isScrap = isScrap( feedId );
 					$scope.feed.isEnd = ( $scope.feed.delDate !== '' ) || $filter( 'endDate' )( $scope.feed.endDate );
-					$scope.feed.area = isNaN( $scope.feed.area ) ? $scope.feed.area : CommonHelper.getDefineArrType( $scope.feed.area, Define.locations ).label;
+					$scope.feed.area = area_idx > -1 ? Define.locations[ area_idx ].label : Define.locations[ 0 ].label;
+					$scope.feed.category = category_idx > -1 ? Define.categories[ category_idx ] : Define.categories[ Define.categories.length - 1 ];
 
 					// get star
 					ResourceService.feed.star.method.query({

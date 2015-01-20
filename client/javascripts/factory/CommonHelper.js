@@ -21,7 +21,18 @@ define([], function(){
 				});
 
 				return map.length > 0 ? map[ 0 ] : arr[ 0 ];
-			}
+			},
+			'getIndexOfDefineArr': function( val, arr, key ){
+				var idx = arr.length;
+
+				while( --idx > -1 ){
+					if ( arr[ idx ][ key ] === val ){
+						return idx;
+					}
+				}
+
+				return -1;
+			}	
 		};
 	};
 })
