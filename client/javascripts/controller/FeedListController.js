@@ -101,6 +101,20 @@ define([], function(){
 
 		// feed
 		$scope.feeds = [];
+		// $scope.feeds = [{
+		// 	id: '1',
+		// 	userID: '1',
+		// 	category: "etc",
+		// 	agency: 'bokjiro.go.kr',
+		// 	location: 'seoul',
+		// 	addDate: new Date().getTime(),
+		// 	fixDate: new Date().getTime(),
+		// 	delDate: '',
+		// 	title: '노인생애체험센터운영',
+		// 	body: '젊은 세대에게 노인의 일상생활을 직접 체험해 봄으로써 노인에 대한 인식 변화와 세대 간 이해의 폭 확대',
+		// 	url: 'http://www.bokjiro.go.kr/gowf/wel/welsvc/svcsearch/WelLcg02SvcSearchView.do?servId=00000051166&servNm=노인생애체험센터운영',
+		// 	image: 'http://www.bokjiro.go.kr/img/2014/img_life01.gif'
+		// }];
 		$scope.service = $routeParams.svc;
 
 		// feed action

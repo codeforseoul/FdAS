@@ -549,11 +549,8 @@ input[type="text"], input[type="search"], textarea {
 			> .to-close {
 				position: absolute;
 				top: 0; right: 0;
-
-				.ico {
-					margin-top: mobilePx( getCenterPos( 22, $headerHei ) ); 
-					margin-right: mobilePx(34);
-				}
+				height: mobilePx( $headerHei ); 
+				padding: 0 mobilePx(34);
 			}
 		}
 

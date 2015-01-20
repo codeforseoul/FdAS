@@ -84,9 +84,10 @@
 
 			button {
 				position: absolute;
-				top: 0%; right: mobilePx(21);
+				top: 0%; right: 0;
+				padding: 0 mobilePx(21);
 				height: 100%;
-				background-position: 0 center;
+				background-position: center center;
 			}
 		}	
 		> section {
@@ -205,38 +206,39 @@
 					}
 					> .deco {
 						display: inline-block;
-						background-image: url(#{$baseSrc}images/icos-feed-menu.png);
 						background-repeat: no-repeat;
-						background-size: mobilePx(32) mobilePx(152);
+						background-position: 0 center;
 						letter-spacing: -1px;
 
 						&.scrap {
 							$height: mobilePx(28);
-							height: $height; line-height: $height;
+							height: $height;
 							padding-left: mobilePx(42);
-							background-position: 0 0;
+							background-image: url(#{$baseSrc}images/icos-feed-menu-scrap.png);
+							background-size: mobilePx(32) mobilePx(28);
 
 							&.on {
-								background-position: 0 mobilePx(28+1 + 2, floor)*-1;
+								background-image: url(#{$baseSrc}images/icos-feed-menu-scrap-on.png);
+								background-size: mobilePx(32) mobilePx(28);
 							}
 						}
 						&.share {
-							height: mobilePx(31, floor)+1px; 
-							line-height: mobilePx(31, floor)+1px;
+							height: mobilePx(30);
 							padding-left: mobilePx(38);
-							background-position: 0 mobilePx(28+1+28+1, floor)*-1;
+							background-image: url(#{$baseSrc}images/icos-feed-menu-share.png);
+							background-size: mobilePx(29) mobilePx(30);
 						}
 						&.reply {
 							height: mobilePx(30); 
-							line-height: mobilePx(30);
 							padding-left: mobilePx(45);
-							background-position: 0 mobilePx(28+1+28+1+31+1, floor)*-1;
+							background-image: url(#{$baseSrc}images/icos-feed-menu-reply.png);
+							background-size: mobilePx(32) mobilePx(30);
 						}
 						&.star {
-							height: mobilePx(32)+1px; 
-							line-height: mobilePx(31)+1px;
+							height: mobilePx(32); 
 							padding-left: mobilePx(42);
-							background-position: 0 mobilePx(28+1+28+1+31+1+30+1, floor)*-1;
+							background-image: url(#{$baseSrc}images/icos-feed-menu-star.png);
+							background-size: mobilePx(32) mobilePx(31);
 						}
 					}
 				}
@@ -365,6 +367,8 @@
 				button {
 					margin-top: mobilePx(32-20);
 					margin-bottom: mobilePx(36);
+					padding: 0 20px;
+					background-position: center 0;
 				}
 			}
 		}
