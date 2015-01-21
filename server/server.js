@@ -101,10 +101,8 @@ app.get( '/auth/facebook/callback', passport.authenticate('facebook', {
     // user: req.session.passport.user || {}
 });
 
-app.get('/isauth', function (req, res, next) {
-  res.json({
-    user: req.user
-  });
+app.get('/isAuthenticated', function (req, res, next) {
+  res.json( req.isAuthenticated() );
 });
 
 app.get( '/logout', function( req, res ){
