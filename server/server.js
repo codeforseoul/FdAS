@@ -2,11 +2,6 @@ var loopback = require('loopback');
 var boot = require('loopback-boot');
 var app = module.exports = loopback();
 
-// Passport configurators..
-var loopbackPassport = require('loopback-component-passport');
-var PassportConfigurator = loopbackPassport.PassportConfigurator;
-var passportConfigurator = new PassportConfigurator(app);
-
 /*
  * body-parser is a piece of express middleware that
  *   reads a form's input and stores it as a javascript
@@ -52,38 +47,69 @@ app.use(loopback.token({
   model: app.models.accessToken
 })); 
 
-app.use(loopback.cookieParser(app.get('cookieSecret')));
-app.use(loopback.session({
+app.use( loopback.cookieParser(app.get('cookieSecret')));
+app.use( loopback.session({
   secret: 'kitty',
   saveUninitialized: true,
   resave: true
 }));
-passportConfigurator.init();
 
-passportConfigurator.setupModels({
-  userModel: app.models.user,
-  userIdentityModel: app.models.userIdentity,
-  userCredentialModel: app.models.userCredential
+// passportConfigurator.setupModels({
+//   userModel: app.models.user,
+//   userIdentityModel: app.models.userIdentity,
+//   userCredentialModel: app.models.userCredential
+// });
+
+// for (var s in config) {
+//   var c = config[s];
+//   c.session = c.session !== false;
+//   passportConfigurator.configureProvider(s, c);
+// }
+
+// passport load
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
+
+// passport use
+app.use(passport.initialize());
+app.use(passport.session());
+
+// passport init
+passport.use( new FacebookStrategy({
+    clientID: config[ 'facebook-login' ][ 'clientID' ],
+    clientSecret: config[ 'facebook-login' ][ 'clientSecret' ],
+    callbackURL: config[ 'facebook-login' ][ 'callbackURL' ]
+}, function( accessToken, refreshToken, profile, done ){
+
+    console.log( '+ facebook info ======' );
+    console.log( accessToken );
+    console.log( refreshToken );
+    console.log( profile );
+    console.log( '--------------' );
+
+    // done 메서드에 전달된 정보가 세션에 저장    
+    return done( null, profile );
+}));
+
+// auth restful api
+app.get( '/auth/facebook', passport.authenticate('facebook') );
+app.get( '/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/#/success',
+    failureRedirect: '/#/failure'
+}), function( req, res ){
+    console.log('--- from facebook ---');
+    // user: req.session.passport.user || {}
 });
 
-for (var s in config) {
-  var c = config[s];
-  c.session = c.session !== false;
-  passportConfigurator.configureProvider(s, c);
-}
-
-// oauth 여부 
 app.get('/isauth', function (req, res, next) {
-  // 회원정보 json 출력
   res.json({
     user: req.user
   });
 });
 
-// oauth 처리
-app.get('/auth/account', function (req, res, next) {
-  // redirect
-  res.redirect(req.query.returnUrl);
+app.get( '/logout', function( req, res ){
+    req.logout();
+    res.redirect( '/' );
 });
 
 // -- Mount static files here--
