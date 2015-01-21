@@ -36,3 +36,5 @@ docular_generated
 # exclude jekyll
 _site
 bower_components
+admin/node_modules
+admin/client/app/bower_components
