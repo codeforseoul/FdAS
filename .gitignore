@@ -40,3 +40,4 @@ bower_components
 # Ignore docs files
 client/stylesheets/.sass-cache
 client/stylesheets/.sass-cache/*
+admin/
