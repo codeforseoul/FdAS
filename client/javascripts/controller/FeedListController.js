@@ -25,8 +25,8 @@ define([], function(){
 				}];
 			} else if ( $routeParams.svc === 'mine' ){ // 내가 쓴 글
 				arr.push({
-					'userId': AuthService.getAuth().id
-				});
+					'userId': AuthService.isAuth() ? AuthService.getAuth().id : ''
+				});	
 			} else if ( $routeParams.svc === 'my' ){ // 스크랩한 글
 				arr.push({
 					'id': {
