@@ -68,27 +68,6 @@ define([], function(){
 				}
 			}
 		};
-
-		/*function helpFind( _list, _keys ){
-			var key = _keys.shift(),
-				item = null;
-
-			for( item in _list ){
-
-				if ( item === key ){
-
-					if ( _keys.length === 0 ){
-						return _list[ key ];
-					} else {
-						return helpFind( _list[ key ], _keys );
-					}
-				}
-			}
-		}
-
-		return function( name ){
-			return helpFind( list, name.split( '.' ) ).$promise;
-		}*/
 	}
 
 	ResourceService.$inject = [

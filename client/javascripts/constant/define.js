@@ -6,16 +6,16 @@
 
 define([], function(){
 	return {
-		'host': 'localhost:3000',
-		'serviceHost': 'localhost:3000',
+		// 'host': 'localhost:3000',
+		// 'serviceHost': 'localhost:3000',
+		'host': 'http://fdas.mozo.kr/',
+		'serviceHost': 'http://fdas.mozo.kr/',
 		'introSwipeTime': 250,
 		'feedsLimit': 5,
 		'repliesLimit': 5,
 		'sns': {
 			'facebook': {
-				'appId': '734387796636874',
-			    "secret": "82f0af104381453d298b6bfd62a2cb97",
-				'scope': [ 'public_profile', 'user_birthday', 'user_location', 'email', 'user_photos' ]
+				'appId': '734387796636874'
 			}
 		},
 		'gender': [
