@@ -476,25 +476,27 @@
 					letter-spacing: -1px;	
 					box-sizing: border-box;
 				}
+				select.category + .placeholder-dir {
+					background-image: url(#{$baseSrc}images/icos-feed-menu2-category.png);
+					background-repeat: no-repeat;
+					background-position: 0 center;
+					background-size: mobilePx(32) mobilePx(32);
+				}
+				input.title + .placeholder-dir {
+					background-image: url(#{$baseSrc}images/icos-feed-menu2-title.png);
+					background-repeat: no-repeat;
+					background-position: 0 center;
+					background-size: mobilePx(32) mobilePx(32);
+				}
 				select + .placeholder-dir, 
 				input + .placeholder-dir {
 					display: inline-block;
-					height: mobilePx(32);
-					line-height: mobilePx(32);
-					margin: mobilePx((85-32)/2) mobilePx(34);
+					height: mobilePx(85);
+					line-height: mobilePx(85);
+					margin: 0 mobilePx(34);
 					padding-left: mobilePx(78-34);
 					box-sizing: border-box;
 					background-color: #f7f7f7;
-					background-image: url(#{$baseSrc}images/icos-feed-menu2.png);
-					background-repeat: no-repeat;
-					background-size: mobilePx(32) mobilePx(64);
-
-					&.category {
-						background-position: 0 0;
-					}
-					&.title {
-						background-position: 0 -17px;
-					}
 				}
 				textarea,
 				textarea + .placeholder-dir {
@@ -535,7 +537,6 @@
 					display: inline-block;
 					width: mobilePercentage( 74, ((100/4)/100)*$deviceWid );
 					height: mobilePx(91);
-					line-height: mobilePx(91);
 					box-sizing: border-box;
 
 					&.on {
@@ -546,9 +547,7 @@
 					}
 
 					> .ico {
-						> span {
-							height: 100%;
-						}
+						margin-top: mobilePx(91-40)/2;
 					}
 				}
 

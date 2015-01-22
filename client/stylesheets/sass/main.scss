@@ -152,39 +152,50 @@ input[type="text"], input[type="search"], textarea {
 	}
 
 	&.feed-menu {
+		height: mobilePx(39);
 		background-image: url(#{$baseSrc}images/icos-feed-menu3.png);
 		background-repeat: no-repeat;
-		background-size: mobilePx(184) mobilePx(39);
-
-		&.ng-invalid {
-			background-image: url(#{$baseSrc}images/icos-feed-menu3_invaild.png);
-			background-size: mobilePx(184) mobilePx(39);
-		}
+		background-size: mobilePx(234) mobilePx(88);
 		
 		&.area {
-			width: 15px; 
-			height: mobilePx(39);
-			background-position: 2px 0;
+			width: mobilePx(30); 
+			background-position: mobilePx(5)*-1 0;
+
+			&.ng-invalid {
+				background-position: mobilePx(5)*-1 mobilePx(48)*-1;
+			}
 		}
 		&.image {
-			width: 19px; 
-			height: mobilePx(39);
-			background-position: -16px 0;
+			width: mobilePx(40); 
+			background-position: mobilePx(5+30+10)*-1 0;
+
+			&.ng-invalid {
+				background-position: mobilePx(5+30+10)*-1 mobilePx(48)*-1;
+			}
 		}
 		&.agency {
-			width: 20px; 
-			height: mobilePx(39);
-			background-position: -36px 0;
+			width: mobilePx(42); 
+			background-position: mobilePx(5+30+10+40+10)*-1 0;
+
+			&.ng-invalid {
+				background-position: mobilePx(5+30+10+40+10)*-1 mobilePx(48)*-1;
+			}
 		}
 		&.url {
-			width: 19px; 
-			height: mobilePx(39);
-			background-position: -56px 0;
+			width: mobilePx(40); 
+			background-position: mobilePx(5+30+10+40+10+40+10)*-1 0;
+
+			&.ng-invalid {
+				background-position: mobilePx(5+30+10+40+10+40+10)*-1 mobilePx(48)*-1;
+			}
 		}
 		&.startDate {
-			width: mobilePx(40); 
-			height: mobilePx(39);
-			background-position: -75px 0;
+			width: mobilePx(38); 
+			background-position: mobilePx(5+30+10+40+10+40+10+38+10)*-1 0;
+
+			&.ng-invalid {
+				background-position: mobilePx(5+30+10+40+10+40+10+38+10)*-1 mobilePx(48)*-1;
+			}
 		}
 	}
 
