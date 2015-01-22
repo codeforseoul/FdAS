@@ -23,18 +23,18 @@ define([], function(){
 						'like': $scope.keyword ? '%' + $scope.keyword + '%' : ''
 					}
 				}];
-			} else if ( $routeParams.svc === 'mine' ){ // 내가 쓴 글
+			} else if ( $scope.service === 'mine' ){ // 내가 쓴 글
 				arr.push({
 					'userId': AuthService.isAuth() ? AuthService.getAuth().id : ''
 				});	
-			} else if ( $routeParams.svc === 'my' ){ // 스크랩한 글
+			} else if ( $scope.service === 'scrap' ){ // 스크랩한 글
 				arr.push({
 					'id': {
 						'inq': myScrap
 					}
 				});
 
-				// 삭제된 자료 제외 - TODO
+				// 삭제된 자료 제외
 				arr.push({
 					'delDate': ''
 				});
