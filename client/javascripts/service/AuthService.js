@@ -35,7 +35,7 @@ define([], function(){
 		};
 
 		function cookieAuth(){
-			window.location.href = 'http://' + window.location.host + '/auth/facebook';	
+			window.location.href = Define.serviceHost + '/auth/facebook';	
 		}
 
 		function removeAuth( _deferred ){
@@ -66,132 +66,6 @@ define([], function(){
 		this.cookieAuth = cookieAuth;
 		this.removeAuth = removeAuth;
 		this.loginChaining = loginChaining;
-
-		// this.getUser = getUser;
-		// this.setUser = setUser;
-
-		// function setAuth( _auth ){
-		// 	auth = _auth;
-		// }
-
-		// function getAuth(){
-		// 	return auth;
-		// }
-
-		// function setAuth( _auth ){
-		// 	auth = _auth;
-		// }
-
-		// function doAuth( sns, snsUid, deferred ){
-		// 	var sns = sns ? sns : StoreService.get( 'sns' ),
-		// 		snsUid = snsUid ? snsUid: StoreService.get( 'snsUid' );
-
-		// 	if ( sns && snsUid ){
-		// 		ResourceService.user.findOne.get({
-		// 			'where': {
-		// 				'and': [{
-		// 					'sns': sns
-		// 				}, {
-		// 					'snsUid': snsUid
-		// 				}]
-		// 			}
-		// 		}, function( result ){
-
-		// 			if ( result._id ) {
-		// 				setAuth( true );
-		// 				setUser({
-		// 					'_id': result._id
-		// 				});
-
-		// 				console.log( 'route sns login success' );
-
-		// 				deferred ? deferred.resolve() : null;
-		// 			} else {
-		// 				deferred ? deferred.reject( 'require join' ) : null;
-		// 			}
-		// 		}, function(){
-		// 			deferred ? deferred.reject( 'error server' ) : null;
-		// 		});
-		// 	} else {
-		// 		deferred ? deferred.reject( 'check parameters' ) : null;
-		// 	}
-		// }
-
-		// function doSnsLogin( sns, deferred ){
-		// 	var snsDeferred = $q.defer(),
-		// 		snsPromise = snsDeferred.promise;
-
-		// 	// get sns info
-		// 	SnsService.login( sns, snsDeferred );
-
-		// 	// after sns info
-		// 	snsPromise.then( function( user ){
-		// 		var findPromise = null,
-		// 			joinDeferred = $q.defer(),
-		// 			joinPromise = joinDeferred.promise;
-
-		// 		findPromise = ResourceService.user.findOne.get({
-		// 			'where': {
-		// 				'and': [{
-		// 					'sns': sns
-		// 				}, {
-		// 					'snsUid': user.id
-		// 				}]
-		// 			}
-		// 		}, function( result ){
-
-		// 			if ( result.snsUid ){
-		// 				joinDeferred.resolve( result._id );
-		// 			} else {
-		// 				doSnsJoin( user, joinDeferred );
-		// 			}
-		// 		});
-
-		// 		$q.all( findPromise, joinPromise ).then( function(){
-		// 			StoreService.save({
-		// 				'sns': sns,
-		// 				'snsUid': user.id
-		// 			});
-
-		// 			doAuth( deferred );
-		// 		}, function(){
-		// 			deferred ? deferred.reject() : null;
-		// 		});
-		// 	}, function(){
-		// 		deferred ? deferred.reject() : null;
-		// 	});
-		// };
-
-		// function doSnsJoin( data, deferred ){
-		// 	ResourceService.user.method.save({
-		// 		'sns': 'facebook',
-		// 		'snsUid': data.id,
-		// 		'snsnsPics': data.pic,
-		// 		'snsName': data.name,
-		// 		'addDate': new Date().getTime()
-		// 	}, function( result ){
-		// 		deferred ? deferred.resolve() : null;
-		// 	}, function(){
-		// 		deferred ? deferred.reject() : null;
-		// 	});	
-		// };
-
-		// function getUser(){
-		// 	// return user;
-		// 	return {
-		// 		_id: "2"
-		// 	};
-		// }
-
-		// function setUser( _user ){
-
-		// 	if ( _user ){
-
-		// 		for( var key in _user ){
-		// 			user[ key ] = _user[ key ];
-		// 		}
-		// 	}
-		// }
 	}
 
 	AuthService.$inject = [

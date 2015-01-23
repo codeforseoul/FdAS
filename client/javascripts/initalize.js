@@ -4,7 +4,10 @@
  * @author: CodeforSeoul by blim(kkh975@naver.com)
  */
 
-define([ 'text!../template/intro.html', 'text!../template/main.html' ], function( introHTML, mainHTML ){
+define([ 
+	'text!../template/intro.html', 
+	'text!../template/main.html' 
+], function( introHTML, mainHTML ){
 
 	function initalize( $rootScope, $location, StoreService, AuthService, SnsService ){
 

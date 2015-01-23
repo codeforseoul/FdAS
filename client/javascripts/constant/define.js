@@ -6,10 +6,7 @@
 
 define([], function(){
 	return {
-		// 'host': 'localhost:3000',
-		// 'serviceHost': 'localhost:3000',
-		'host': 'http://fdas.mozo.kr/',
-		'serviceHost': 'http://fdas.mozo.kr/',
+		'serviceHost': window.location.origin,
 		'introSwipeTime': 250,
 		'feedsLimit': 5,
 		'repliesLimit': 5,

@@ -28,6 +28,7 @@ define([], function(){
 					var area_idx = CommonHelper.getIndexOfDefineArr( $scope.feed.area, Define.locations, 'label' ),
 						category_idx = CommonHelper.getIndexOfDefineArr( $scope.feed.category, Define.categories, 'val' );
 
+					$scope.feed.shareUrl = Define.serviceHost + '/#/feed/' + feedId;
 					$scope.feed.isScrap = isScrap( feedId );
 					$scope.feed.isEnd = ( $scope.feed.delDate !== '' ) || $filter( 'endDate' )( $scope.feed.endDate );
 					$scope.feed.area = area_idx > -1 ? Define.locations[ area_idx ].label : Define.locations[ 0 ].label;
@@ -99,8 +100,7 @@ define([], function(){
 					$scope.feed.isScrap = isScrap( feedId );
 				};
 
-				$scope.$watch( 'feed', function( feed ){
-					
+				$scope.$watch( 'feed', function( feed ){					
 					if ( feed ){
 						setFeed( feed.id );	
 					}

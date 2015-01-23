@@ -9,18 +9,18 @@ define([], function(){
 	function ResourceService( $resource, Define ){
 		return {
 			'user': {
-				'method': $resource( 'http://' + Define.serviceHost + '/api/users', null ),
-				'item': $resource( 'http://' + Define.serviceHost + '/api/users/:id', null, {
+				'method': $resource( Define.serviceHost + '/api/users', null ),
+				'item': $resource( Define.serviceHost + '/api/users/:id', null, {
 					'id': '@id'
 				}),
-				'count': $resource( 'http://' + Define.serviceHost + '/api/users/count', null ),
-				'auth': $resource( 'http://' + Define.serviceHost + '/isauth', null )
+				'count': $resource( Define.serviceHost + '/api/users/count', null ),
+				'auth': $resource( Define.serviceHost + '/isauth', null )
 			},
 			'feed': {
-				'method': $resource( 'http://' + Define.serviceHost + '/api/services', null ),
-				'count': $resource( 'http://' + Define.serviceHost + '/api/services/count', null ),
-				'findOne': $resource( 'http://' + Define.serviceHost + '/api/services/findOne', null ),
-				'item': $resource( 'http://' + Define.serviceHost + '/api/services/:id', {
+				'method': $resource( Define.serviceHost + '/api/services', null ),
+				'count': $resource( Define.serviceHost + '/api/services/count', null ),
+				'findOne': $resource( Define.serviceHost + '/api/services/findOne', null ),
+				'item': $resource( Define.serviceHost + '/api/services/:id', {
 					'id': '@id'
 				}, {
 					'update': {
@@ -33,19 +33,19 @@ define([], function(){
 
 				// 댓글
 				'reply': {
-					'method': $resource( 'http://' + Define.serviceHost + '/api/replies', null ),
-					'count': $resource( 'http://' + Define.serviceHost + '/api/replies/count', null )
-					// angular :id 뒤에 추가 url 에러발생
-					// 'count': $resource( 'http://' + Define.serviceHost + '/api/services/:id/replies/count', {
+					'method': $resource( Define.serviceHost + '/api/replies', null ),
+					'count': $resource( Define.serviceHost + '/api/replies/count', null )
+					// angular :id 뒤에 추가 Define.serviceHost 에러발생
+					// 'count': $resource( Define.serviceHost + '/api/services/:id/replies/count', {
 					// 	'id': '@id'
 					// })
 				},
 
 				// 별
 				'star': {
-					'method': $resource( 'http://' + Define.serviceHost + '/api/grades', null ),
-					'count': $resource( 'http://' + Define.serviceHost + '/api/grades/count', null ),
-					'item': $resource( 'http://' + Define.serviceHost + '/api/grades/:id', {
+					'method': $resource( Define.serviceHost + '/api/grades', null ),
+					'count': $resource( Define.serviceHost + '/api/grades/count', null ),
+					'item': $resource( Define.serviceHost + '/api/grades/:id', {
 						'id': '@id'
 					}, {
 						'update': {
@@ -55,7 +55,7 @@ define([], function(){
 							method: 'PUT'
 						}
 					})
-					// 'item': $resource( 'http://' + Define.serviceHost + '/api/grades/:id', {
+					// 'item': $resource( Define.serviceHost + '/api/grades/:id', {
 					// 	'id': '@id'
 					// }, {
 					// 	'update': {

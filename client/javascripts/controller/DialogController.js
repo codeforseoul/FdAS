@@ -9,8 +9,7 @@ define([], function(){
 	function DialogController( $scope, $http, $q, Define, AuthService, SnsService ){
 		$scope.on, 
 		$scope.type, 
-		$scope.data, 
-		$scope.host = Define.host;
+		$scope.data;
 
 		// dialog open
 		$scope.open = function(){

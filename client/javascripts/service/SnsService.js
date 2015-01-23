@@ -59,7 +59,7 @@ define([], function(){
 				'share': function( data ){
 					FB.ui({
 						method: 'feed',
-						redirect_uri: 'http://' + Define.host + '/#/feed/' + data.id,
+						redirect_uri: data.shareUrl,
 						name: data.title,
 						link: data.url,
 						picture: data.image,
