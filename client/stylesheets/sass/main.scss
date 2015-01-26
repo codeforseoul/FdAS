@@ -22,7 +22,7 @@
 * { margin: 0px; padding: 0px; }
 ul, li { list-style: none; }
 fieldset { border: 0px none; }
-html, body, #bodyLy, #wrapLy { width: 100%; height: 100%; min-width: $minWidth; }
+html, body, #bodyLy, #wrapLy { width: 100%; /*height: 100%;*/ min-width: $minWidth; }
 textarea { resize: none; }
 img { border: 0px none; }
 button { border: 0px none; background: none; cursor: pointer; box-sizing: content-box; font-family: inherit; }
@@ -364,6 +364,12 @@ input[type="text"], input[type="search"], textarea {
 		background: url(#{$baseSrc}images/txt-logo2.png) no-repeat 0 0;
 		background-size: mobilePx(221,floor) mobilePx(35,floor);
 	}
+	&.fdas3 {
+		width: mobilePx(234); 
+		height: mobilePx(38);
+		background: url(#{$baseSrc}images/txt-logo3.png) no-repeat 0 0;
+		background-size: mobilePx(234) mobilePx(38);
+	}
 	&.category {
 		width: mobilePx(154,floor); 
 		height: mobilePx(34,floor);
@@ -532,7 +538,6 @@ input[type="text"], input[type="search"], textarea {
 		width: mobilePercentage( $popwidth );
 		margin: 0; padding: 0;
 		margin-left: mobilePercentage( $popwidth ) / -2;
-		min-width: $minWidth;
 		border-radius: 5px;
 		background: #fff;
 
@@ -677,7 +682,14 @@ input[type="text"], input[type="search"], textarea {
 	height: mobilePx( $headerTopHei );
 
 	&.has-search {
-		height: mobilePx( $headerTopHei + 89 );
+		z-index: 1000;
+		position: fixed;
+		top: 0; left: 0;
+		width: 100%; height: mobilePx( $headerTopHei + 89 );
+
+		&.has-search + * {
+			padding-top: mobilePx( $headerTopHei + 89 );
+		}
 	}
 
 	// 상단
