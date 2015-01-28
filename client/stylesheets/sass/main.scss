@@ -22,7 +22,7 @@
 * { margin: 0px; padding: 0px; }
 ul, li { list-style: none; }
 fieldset { border: 0px none; }
-html, body, #bodyLy, #wrapLy { width: 100%; height: 100%; min-width: $minWidth; }
+html, body, #bodyLy, #wrapLy { width: 100%; /* height: 100%; */ min-width: $minWidth; }
 textarea { resize: none; }
 img { border: 0px none; }
 button { border: 0px none; background: none; cursor: pointer; box-sizing: content-box; font-family: inherit; }
@@ -64,12 +64,16 @@ var, em { font-style: normal; }
 	}
 }
 #errorLy {
-	width: 100%; height: 100%;
-	@include prefix-flexbox2();
-	@include prefix-css3( flex-direction, column );
+	// width: 100%; height: 100%;
+	// @include prefix-flexbox2();
+	// @include prefix-css3( flex-direction, column );
 
 	.msg {
-		width: 100%; height: 100%;
+		position: fixed;
+		top: 50%; left: 50%;
+		margin-top: mobilePx(473)/-2;
+		margin-left: mobilePx(415)/-2;
+		width: mobilePx(415); height: mobilePx(473);
 		background: url(#{$baseSrc}images/img-404.png) no-repeat 50% 50%;
 		background-size: mobilePx(415) mobilePx(473);
 		color: rgba(0,0,0,0);

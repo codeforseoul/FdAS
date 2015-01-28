@@ -8,8 +8,7 @@
 				<span class="img-txt my-info">내 정보</span>
 			</h1>
 			<menu class="type2">
-				<button type="button" class="to-save ico" 
-					data-ng-click="save()">
+				<button type="button" class="to-save ico" data-ng-click="save()">
 					<span>저장</span>
 				</button>
 			</menu>
@@ -25,8 +24,7 @@
 						data-ng-model="fields[ field.key ]"
 						data-ng-options="option.label for option in field.options"
 						data-ng-change="change( fields[ field.key ] )"
-						data-ng-class="{
-							isInit: !fields[ field.key ].label }">
+						data-ng-class="{ isInit: !fields[ field.key ].label }">
 							<option value="">{{field.label}}을 선택해 주세요</option>
 					</select>
 					<label for="{{field.key}}" data-ng-class="{
@@ -43,48 +41,13 @@
 						data-ng-model="children[ child.key ]"
 						data-ng-options="option.label for option in child.options"
 						data-ng-change="change( fields[ field.key ] )"
-						data-ng-class="{
-							isInit: !children[ child.key ].label }">
+						data-ng-class="{ isInit: !children[ child.key ].label }">
 							<option value="">{{child.label}}을 선택해 주세요</option>
 					</select>
-					<label for="{{child.key}}" data-ng-class="{
-						isInit: !children[ child.key ].label }">{{child.label}}</label>
-					<var data-ng-class="{
-						isInit: !children[ child.key ].label }">{{children[ child.key ].label}}</var>
+					<label for="{{child.key}}" data-ng-class="{ isInit: !children[ child.key ].label }">{{child.label}}</label>
+					<var data-ng-class="{ isInit: !children[ child.key ].label }">{{children[ child.key ].label}}</var>
 				</li>
 			</ul>
 		</fieldset>
 	</section>
 </section>	
-
-<!-- // dumy // -->
-<!-- <li>
-	<select name="" id="" disabled>
-		<option value=""></option>
-	</select>
-	<label for="">성별을 선택해 주세요</label>
-</li>
-<li>
-	<select name="" id="">
-		<option value="">남자</option>
-	</select>
-	<label for="">성별</label>
-</li>
-<li>
-	<select name="" id="">
-		<option value="">34세</option>
-	</select>
-	<label for="">나이</label>
-</li>
-<li>
-	<select name="" id="">
-		<option value="">서울시 강남구 서울시 강남구 서울시 강남구 서울시 강남구</option>
-	</select>
-	<label for="">지역</label>
-</li>
-<li>
-	<select name="" id="">
-		<option value="">자녀1</option>
-	</select>
-	<label for="">자녀</label>
-</li> -->

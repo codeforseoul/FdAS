@@ -393,20 +393,20 @@
 
 
 #feedFormLy {
-	height: 100%;
-	@include prefix-flexbox2();
-	@include prefix-css3( flex-direction, column );
+	// height: 100%;
+	// @include prefix-flexbox2();
+	// @include prefix-css3( flex-direction, column );
 
-	.topLy {
-		height: mobilePx( $headerTopHei );
-	}
+	// .topLy {
+	// 	height: mobilePx( $headerTopHei );
+	// }
 
-	.contents {
-		@include prefix-css3( flex-grow, 1 );
-		@include prefix-flexbox2();
-		@include prefix-css3( flex-direction, column );
-		@include prefix-css3( justify-content, stretch );
-	}
+	// .contents {
+		// @include prefix-css3( flex-grow, 1 );
+		// @include prefix-flexbox2();
+		// @include prefix-css3( flex-direction, column );
+		// @include prefix-css3( justify-content, stretch );
+	// }
 
 	ul {
 		> li {
@@ -444,24 +444,24 @@
 
 	.requiredField {
 		box-sizing: border-box;
-		@include blueBorder;
-		@include prefix-css3( flex-grow, 1 );
-		@include prefix-flexbox2();
-		@include prefix-css3( flex-direction, column );
-		@include prefix-css3( justify-content, stretch );
+		// @include blueBorder;
+		// @include prefix-css3( flex-grow, 1 );
+		// @include prefix-flexbox2();
+		// @include prefix-css3( flex-direction, column );
+		// @include prefix-css3( justify-content, stretch );
 
 		ul {
-			@include prefix-css3( flex-grow, 1 );
-			@include prefix-flexbox2();
-			@include prefix-css3( flex-direction, column );
-			@include prefix-css3( justify-content, stretch );
+			// @include prefix-css3( flex-grow, 1 );
+			// @include prefix-flexbox2();
+			// @include prefix-css3( flex-direction, column );
+			// @include prefix-css3( justify-content, stretch );
 
 			li {
 				&:last-child {
-					@include prefix-css3( flex-grow, 1 );
-					@include prefix-flexbox2();
-					@include prefix-css3( flex-direction, column );
-					@include prefix-css3( justify-content, stretch );
+					// @include prefix-css3( flex-grow, 1 );
+					// @include prefix-flexbox2();
+					// @include prefix-css3( flex-direction, column );
+					// @include prefix-css3( justify-content, stretch );
 				}
 
 				select, input {
@@ -516,9 +516,15 @@
 	.optionalField {
 		$bg: #f1f1f1;
 		$menuCnt: 5;
+		$menuHeight: 91;
+		$inputHeight: 107;
 		overflow: hidden;
+		position: fixed;
+		bottom:0; left:0;
 		background: $bg;
-		height: mobilePx(91+107+2);
+		width:100%; 
+		height: mobilePx($menuHeight + $inputHeight + 2);
+		@include blueBorder2;
 
 		ul {
 			overflow: hidden;
@@ -528,15 +534,13 @@
 
 			li {
 				float: left;
-				width: (100/$menuCnt)+0%;
+				width: (100 / $menuCnt) + 0%;
 				text-align: center;
 				
-				a,
-				button,
-				label {
+				a, button, label {
 					display: inline-block;
 					width: mobilePercentage( 74, ((100/4)/100)*$deviceWid );
-					height: mobilePx(91);
+					height: mobilePx($menuHeight);
 					box-sizing: border-box;
 
 					&.on {
@@ -553,16 +557,16 @@
 
 				label + div {
 					position: absolute !important;
-					top: mobilePx(91); left: 0;
+					top: mobilePx($menuHeight); 
+					left: 0;
 					width: 100%;
-					height: mobilePx(107);
+					height: mobilePx($inputHeight);
 					border-top: 1px solid #cfcfcf;
 					text-align: left;
 
-					select,
-					input {
+					select, input {
 						width: 100%;
-						height: mobilePx(107);
+						height: mobilePx($inputHeight);
 						border: 0px none;
 						background: $bg;
 						text-align: left;
@@ -584,8 +588,8 @@
 					}
 
 					.placeholder-dir {
-						height: mobilePx(107);
-						line-height: mobilePx(107);
+						height: mobilePx($inputHeight);
+						line-height: mobilePx($inputHeight);
 						padding: 0 mobilePx(36);
 						background: $bg;
 						box-sizing: border-box;
@@ -606,7 +610,7 @@
 
 				label[for="image"] + div {
 					.preview {
-						$size: mobilePx(107-(10 * 2));
+						$size: mobilePx($inputHeight - (10 * 2));
 						display: inline-block;
 						position: relative;
 						left: (100%/$menuCnt)*2;

@@ -20,15 +20,13 @@
 			</button>
 			<button type="button" class="ico to-next"
 				data-ng-click="nextSlide()"
-				data-ng-class="{
-					'disabled': isMove || nowIndex === list.length - 1 }">
+				data-ng-class="{ 'disabled': isMove || nowIndex === list.length - 1 }">
 				<span>다음</span>
 			</button>
 		</menu>
 		<ol>
 			<li data-ng-repeat="cnt in [] | range:list.length"
-				data-ng-class="{
-					'active': nowIndex === $index }">{{$index + 1}}</li>
+				data-ng-class="{ 'active': nowIndex === $index }">{{$index + 1}}</li>
 		</ol>
 		<button type="button" class="ico btn-start"
 			data-ng-if="nowIndex === list.length - 1"
@@ -37,8 +35,7 @@
 		</button>
 	</nav>
 
-	<button type="button" class="ico to-intro-close"
-		data-ng-click="$parent.moveLink( 'feeds' )">
+	<button type="button" class="ico to-intro-close" data-ng-click="$parent.moveLink( 'feeds' )">
 		<span>닫기</span>
 	</button>
 </article>

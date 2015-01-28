@@ -36,7 +36,7 @@ define([
 
 			// $location.path( 'feed/1235678' );
 			// $location.path( 'update/feed/12345678' );
-			// $location.path( 'aaa' );
+			// $location.path( 'aaa' ); // error occur
 		} else {
 			StoreService.save({
 				'isAppInit': true

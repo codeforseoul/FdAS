@@ -1,4 +1,3 @@
-
 $deviceWid: 640;
 $deviceHei: 1136;
 $loadingBgWid: 1742;
@@ -129,6 +128,17 @@ $venders: ( '-webkit-', '-moz-', '-ms-', '-o-', '' );
 
 	& + * {
 		border-top: 1px solid #7090c0;
+	}
+}
+
+@mixin blueBorder2 {
+	border-top: 1px solid #7090c0;
+
+	&:before {
+		content: ' ';
+		display: block;
+		width:100%; height: 0;
+		border-top: 2px solid #7ca0d5;
 	}
 }
 

@@ -61,6 +61,7 @@ define([], function(){
 		if ( StoreService.get( 'isAppInit' ) ){
 			$scope.$emit( 'moveLink', 'feeds' );
 		} else {
+			angular.element( 'html, body, #bodyLy' ).css( 'height', '100%' );
 			StoreService.save({
 				'isAppInit': true
 			});
