@@ -16,12 +16,12 @@ define([
 
 		// initalize app
 		if ( StoreService.get( 'isAppInit' ) ){
-			$location.path( 'feeds' );
+			// $location.path( 'feeds' );
 			AuthService.setAuth();
 
 			// check list url
 			// $location.path( 'intro' );
-			// $location.path( 'my' );
+			$location.path( 'my' );
 			// $location.path( 'my/info' );	
 			// $location.path( 'app/setting' );
 			// $location.path( 'app/introduce' );

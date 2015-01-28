@@ -140,71 +140,91 @@
 
 // my layout
 #myLy {
+	min-height:400px;
+	@include prefix-flexbox2();
+	@include prefix-css3( flex-direction, column );
+
 	> section {
-		padding-top: mobilePx(74);
+		// padding-top: mobilePx(100);
+		@include prefix-css3( flex-grow, 1 );
+		@include prefix-flexbox2();
+		@include prefix-css3( flex-direction, column );
+		// @include prefix-css3( justify-content, center );
 
-		> dl {
-			position: relative;
-			padding-top: mobilePx(324);
-			text-align: center;
-			letter-spacing: -1px;
+		> div {
+			@include prefix-flexbox2();
+			@include prefix-css3( flex-direction, column );
+			@include prefix-css3( flex-grow, 1 );
+			@include prefix-css3( justify-content, center );
 
-			dt {
-				margin-bottom: mobilePx(15,floor);
+			dl {
+				position: relative;
+				padding-top: mobilePx(324);
 				text-align: center;
-				font-size: mobilePx(40);
-				font-weight: bold;
-				color: #333333;
+				letter-spacing: -1px;
 
-				& + dd:after {
-					content: ' / ';
-					display: inline-block;
-				}
-			}
-			dd {
-				display: inline-block;
-				font-size: mobilePx(30);
-				color: #666666;
+				dt {
+					margin-bottom: mobilePx(15,floor);
+					text-align: center;
+					font-size: mobilePx(40);
+					font-weight: bold;
+					color: #333333;
 
-				&:last-child {
-					display: block;
-					margin-top: mobilePx(15,floor);
-
-					a,
-					button {
-						padding: mobilePx(4) mobilePx(24);
-						border: 1px solid #c9c9c9;
-						border-radius: mobilePx(20);
-						text-decoration: none;
-						font-size: max( mobilePx(20), $minFontSize );
-						font-weight: bold;
-						color: #999999;
-						letter-spacing: -1px;
+					& + dd:after {
+						content: ' / ';
+						display: inline-block;
 					}
 				}
+				dd {
+					display: inline-block;
+					font-size: mobilePx(30);
+					color: #666666;
 
-				&.item-pic {
-					position: absolute;
-					top: 0px;
-					left: 50%;
-					width: mobilePx(280);
-					height: mobilePx(280);
-					margin-left: mobilePx(280)/2*-1;
-					background: url(#{$baseSrc}images/img-pic-none.jpg) no-repeat 0 0;
-					background-size: mobilePx(280) mobilePx(280);
-					border-radius: 50% 50%;
+					&:last-child {
+						display: block;
+						margin-top: mobilePx(15,floor);
 
-					img {
-						width: inherit; height: inherit;
+						a,
+						button {
+							padding: mobilePx(4) mobilePx(24);
+							border: 1px solid #c9c9c9;
+							border-radius: mobilePx(20);
+							text-decoration: none;
+							font-size: max( mobilePx(20), $minFontSize );
+							font-weight: bold;
+							color: #999999;
+							letter-spacing: -1px;
+						}
+					}
+
+					&.item-pic {
+						position: absolute;
+						top: 0px;
+						left: 50%;
+						width: mobilePx(280);
+						height: mobilePx(280);
+						margin-left: mobilePx(280)/2*-1;
+						background: url(#{$baseSrc}images/img-pic-none.jpg) no-repeat 0 0;
+						background-size: mobilePx(280) mobilePx(280);
 						border-radius: 50% 50%;
+
+						img {
+							width: inherit; height: inherit;
+							border-radius: 50% 50%;
+						}
 					}
 				}
 			}
 		}
 		> menu {
 			$menuCnt: 3;
+			$height: 160;
 			overflow: hidden;
-			margin-top: mobilePx(83);
+			// position: fixed;
+			// bottom: 0; left:0;
+			// width: 100%;
+			// margin-top: mobilePx(83);
+			height: mobilePx($height);
 			border-top: 1px solid #e5e5e5;
 			border-bottom: 1px solid #e5e5e5;
 			background-color: #f7f7f7;
@@ -214,7 +234,7 @@
 				float: left;
 				display: inline-block;
 				width: floor(100/$menuCnt) + 0%;
-				height: mobilePx(209);
+				height: mobilePx($height);
 				border-top: 1px solid #fff;
 				border-bottom: 1px solid #fff;
 				border-left: 1px solid #e5e5e5;
@@ -240,7 +260,7 @@
 					display: block;
 					width: 100%;
 					height: mobilePx(60);
-					margin: mobilePx(140-60)/2 0;
+					margin-bottom: mobilePx(20);
 					background: url(#{$baseSrc}images/icos-my.png) no-repeat;
 					background-size: mobilePx(69) mobilePx(60*3);
 					background-position: center 0;

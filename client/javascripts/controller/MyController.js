@@ -8,6 +8,9 @@ define([], function(){
 
 	function MyController( $scope, StoreService, ResourceService, AuthService ){
 
+		// height
+		angular.element( 'html, body, #bodyLy, #myLy' ).css( 'height', '100%' );
+
 		// common
 		[ 'myName', 'myGender', 'myAge', 'myPic', 'myLocation', 'myChildren', 'myScrap' ].forEach( function( key ){
 			$scope[ key ] = StoreService.get( key );

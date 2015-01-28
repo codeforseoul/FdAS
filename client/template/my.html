@@ -10,32 +10,34 @@
 		</div>
 	</header>
 	<section>
-		<dl>
-			<dt>{{myName.label||'이름'}} ({{myGender.label||'성별'}}, {{myAge.label||'나이'}})</dt>
-			<dd>{{myLocation.label||'지역'}}</dd>
-			<dd>자녀 {{myChildren.length||0}}명 
-				<span data-ng-repeat="child in myChildren">({{child.age}})</span>
-			</dd>
-			<dd class="item-pic">
-				<img alt="" 
-					data-img-compile="{{myPic}}"
-					data-img-compile-base="images/img-pic-none.jpg">
-			</dd>
-			<dd>
-				<button type="button"
-					data-ng-click="$parent.moveLink( 'my/info' )">
-					<span>정보 수정</span>
-				</a>
-			</dd>
+		<div>
+			<dl>
+				<dt>{{myName.label||'이름'}} ({{myGender.label||'성별'}}, {{myAge.label||'나이'}})</dt>
+				<dd>{{myLocation.label||'지역'}}</dd>
+				<dd>자녀 {{myChildren.length||0}}명 
+					<span data-ng-repeat="child in myChildren">({{child.age}})</span>
+				</dd>
+				<dd class="item-pic">
+					<img alt="" 
+						data-img-compile="{{myPic}}"
+						data-img-compile-base="images/img-pic-none.jpg">
+				</dd>
+				<dd>
+					<button type="button"
+						data-ng-click="$parent.moveLink( 'my/info' )">
+						<span>정보 수정</span>
+					</a>
+				</dd>
 
-			<!-- // dumy // -->
-			<!-- <dt>장지선(여,36)</dt>
-			<dd>서울 서대문구</dd>
-			<dd>자녀 2명(7세,2세)</dd>
-			<dd>
-				<img src="images/img-pic-none.png" alt="">
-			</dd> -->
-		</dl>
+				<!-- // dumy // -->
+				<!-- <dt>장지선(여,36)</dt>
+				<dd>서울 서대문구</dd>
+				<dd>자녀 2명(7세,2세)</dd>
+				<dd>
+					<img src="images/img-pic-none.png" alt="">
+				</dd> -->
+			</dl>
+		</div>
 		<menu>
 			<button type="button" class="to-scrap" 
 				data-ng-click="$parent.moveLink( 'feeds/scrap' )">
