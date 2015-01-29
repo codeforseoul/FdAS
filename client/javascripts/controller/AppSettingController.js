@@ -51,6 +51,17 @@ define([], function(){
 			$scope.login ? removeAuth() : cookieAuth();
 			e.preventDefault();
 		};
+		
+		$scope.toggleAlarm = function( e ){
+			// if ( $scope.appAlarm ){
+			// 	DeviceBridge.alarmFromJS( false );
+			// } else {
+			// 	DeviceBridge.alarmFromJS( true );
+			// }
+
+			DeviceBridge.alarmSet( !$scope.appAlarm );
+			e.preventDefault();
+		};
 
 		$scope.save = function(){
 			var data = {};

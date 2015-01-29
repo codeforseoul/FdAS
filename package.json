@@ -2,32 +2,31 @@
   "name": "FdAS",
   "version": "0.1.0",
   "main": "server/server.js",
-  "repository" : {
-    "type" : "git",
-    "url" : "http://github.com/codeforseoul/FdAS"
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/codeforseoul/FdAS"
   },
   "scripts": {
     "pretest": "jshint ."
   },
   "dependencies": {
-    "compression": "^1.0.3",
-    "errorhandler": "^1.1.1",
-    "grunt": "^0.4.5",
-    "loopback": "^2.7.0",
-    "loopback-boot": "^2.0.0",
-    "loopback-connector-mongodb": "^1.4.4",
-    "loopback-datasource-juggler": "^2.7.0",
-    "serve-favicon": "^2.0.1",
     "body-parser": "^1.9.0",
     "compression": "^1.0.11",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.3.2",
     "errorhandler": "^1.1.1",
     "express-session": "^1.7.6",
+    "grunt": "^0.4.5",
+    "loopback": "^2.7.0",
+    "loopback-boot": "^2.0.0",
     "loopback-component-passport": "^1.0.5",
+    "loopback-connector-mongodb": "^1.4.4",
+    "loopback-datasource-juggler": "^2.7.0",
+    "node-gcm": "^0.9.14",
     "passport": "^0.2.0",
+    "passport-facebook": "^1.0.3",
     "passport-oauth2": "^1.1.2",
-    "passport-facebook": "^1.0.3"
+    "serve-favicon": "^2.0.1"
   },
   "optionalDependencies": {
     "loopback-explorer": "^1.1.0"
