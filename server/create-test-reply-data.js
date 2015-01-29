@@ -40,35 +40,35 @@ var replys = [
     feedId: '10'
   },
   {
-    id: "3",
+    id: "6",
     body: "나아도오오 ㅠ ㅡ ㅠ",
     addDate: Date.parse("2014-11-03T14:20:33+0900"),
     userId: '2',
     feedId: '10'
   },
   {
-    id: "6",
+    id: "7",
     body: "누가 시켰나요 ㅋㅋㅋ",
     addDate: Date.parse("2014-11-03T14:21:04+0900"),
     userId: '2',
     feedId: '10'
   },
   {
-    id: "7",
+    id: "8",
     body: "제가 무능하여 그렇습니다",
     addDate: Date.parse("2014-11-03T14:21:36+0900"),
     userId: '2',
     feedId: '10'
   },
   {
-    id: "8",
+    id: "9",
     body: "부럽사옵니다 ㅠㅠ",
     addDate: Date.parse("2014-11-03T14:58:35+0900"),
     userId: '2',
     feedId: '10'
   },
   {
-    id: "9",
+    id: "10",
     body: "저는 머리가 복잡해서..",
     addDate: Date.parse("2014-11-03T23:41:45+0900"),
     userId: '2',
@@ -88,7 +88,10 @@ dataSource.automigrate('reply', function(er) {
   if (er) throw er;
   replys.forEach(function(reply) {
     Reply.create(reply, function(er, result) {
-      if (er) return;
+      if (er) {
+        console.log(er);
+        return;
+      }
       console.log('Record created:', result);
       count--;
       if(count === 0) {
