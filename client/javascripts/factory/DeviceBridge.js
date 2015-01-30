@@ -9,13 +9,10 @@ define([], function(){
 	return function(){
 		
 		return {
-			'alarmGet': function( data ){
-				window.androidBridge.alarmGet = function(){
-				};
-			},	
-			'alarmSet': function( data ){
-				console.log( data );
-
+			'isDevice': function(){
+				return window.androidBridge ? true : false;
+			},
+			'alarmSetToDevice': function( data ){
 				if ( window.androidBridge ){
 					window.androidBridge.alarmSet( data === true ? 1 : 0 );
 				}

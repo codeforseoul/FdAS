@@ -1,0 +1,31 @@
+{
+  "name": "pushkey",
+  "plural": "pushkeies",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "device": {
+      "type": "string",
+      "required": true
+    },
+    "registrationId": {
+      "type": "string",
+      "required": true
+    },
+    "appVersion": {
+      "type": "string",
+      "required": true
+    },
+    "addDate": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

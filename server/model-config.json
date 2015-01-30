@@ -45,5 +45,9 @@
   "reply": {
     "dataSource": "fdas_dev",
     "public": true
+  },
+  "pushkey": {
+    "dataSource": "fdas_dev",
+    "public": true
   }
 }

@@ -86,6 +86,31 @@ app.get('/auth/account', function (req, res, next) {
   res.redirect(req.query.returnUrl);
 });
 
+// push server
+app.get('/pushkey/add', function(req, res, next){
+  var device = req.query.device;
+  var registrationId = req.query.registrationId;
+  var appVersion = req.query.appVersion;
+
+  // TODO, model 생성 안됨.
+  var userModel = app.models.Pushkey || loopback.getModelByType(app.models.Pushkey);
+
+  userModel.findOne({
+    where: {
+      registrationId: registrationId
+    }
+  }, function(err, item){
+    if ( !item ){
+      userModel.create({
+        device: device,
+        registrationId: registrationId,
+        appVersion: appVersion,
+        addDate: new Date().getTime()
+      });
+    }
+  });
+});
+
 // -- Mount static files here--
 // All static middleware should be registered at the end, as all requests
 // passing the static middleware are hitting the file system

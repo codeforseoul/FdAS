@@ -9,19 +9,24 @@ define([
 	'text!../template/main.html' 
 ], function( introHTML, mainHTML ){
 
-	function initalize( $rootScope, $location, StoreService, AuthService, SnsService ){
+	function initalize( $rootScope, $location, StoreService, AuthService, SnsService, DeviceBridge ){
 
 		// loading done
 		document.getElementById( 'bodyLy' ).innerHTML = mainHTML;
 
+		// device call
+		window.fromDeviceCall = function( func_name ){
+			DeviceBridge[ func_name ].call( this, [] );
+		};
+
 		// initalize app
 		if ( StoreService.get( 'isAppInit' ) ){
-			// $location.path( 'feeds' );
+			$location.path( 'feeds' );
 			AuthService.setAuth();
 
 			// check list url
 			// $location.path( 'intro' );
-			$location.path( 'my' );
+			// $location.path( 'my' );
 			// $location.path( 'my/info' );	
 			// $location.path( 'app/setting' );
 			// $location.path( 'app/introduce' );
@@ -38,9 +43,6 @@ define([
 			// $location.path( 'update/feed/12345678' );
 			// $location.path( 'aaa' ); // error occur
 		} else {
-			StoreService.save({
-				'isAppInit': true
-			});
 			$location.path( 'intro' );
 		}
 
@@ -53,7 +55,8 @@ define([
 		'$location', 
 		'StoreService', 
 		'AuthService', 
-		'SnsService'
+		'SnsService',
+		'DeviceBridge'
 	];
 
 	return initalize;

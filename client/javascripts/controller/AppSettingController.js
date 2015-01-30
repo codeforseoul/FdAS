@@ -6,7 +6,7 @@
 
 define([], function(){
 
-	function AppSettingController( $scope, $q, StoreService, AuthService ){
+	function AppSettingController( $scope, $q, StoreService, AuthService, DeviceBridge ){
 
 		function getAuth(){
 			var deferred = $q.defer(),
@@ -39,7 +39,6 @@ define([], function(){
 		}
 
 		function setAuth(){
-
 			if ( AuthService.isAuth() ){
 				$scope.login = true;				
 			} else {
@@ -53,31 +52,28 @@ define([], function(){
 		};
 		
 		$scope.toggleAlarm = function( e ){
-			// if ( $scope.appAlarm ){
-			// 	DeviceBridge.alarmFromJS( false );
-			// } else {
-			// 	DeviceBridge.alarmFromJS( true );
-			// }
-
-			DeviceBridge.alarmSet( !$scope.appAlarm );
+			$scope.appAlarm = !$scope.appAlarm;
+			DeviceBridge.alarmSetToDevice( $scope.appAlarm );
+			StoreService.save({
+				appAlarm: $scope.appAlarm
+			});
 			e.preventDefault();
 		};
 
-		$scope.save = function(){
+		/*$scope.save = function(){
 			var data = {};
 
-			keys.forEach( function( key ){
+			[ 'appAlarm' ].forEach( function( key ){
 				data[ key ] = $scope[ key ];
 			});
 
 			StoreService.save( data );
 
 			alert( '저장되었습니다.' );
-		};
+		};*/
 
-		// [ 'appAlarm' ].forEach( function( key ){
-		// 	$scope[ key ] = StoreService.get( key );
-		// });
+		// get from storage and set device
+		$scope.appAlarm = StoreService.get( 'appAlarm' );
 
 		setAuth();
 	}
@@ -86,7 +82,8 @@ define([], function(){
 		'$scope', 
 		'$q',
 		'StoreService',
-		'AuthService'
+		'AuthService',
+		'DeviceBridge'
 	];
 
 	return AppSettingController;

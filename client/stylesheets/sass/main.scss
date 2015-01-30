@@ -438,9 +438,10 @@ input[type="text"], input[type="search"], textarea {
 		border: none;
 		@include prefix-css3(appearance, none);
 
+		&.checked,
 		&:checked {
-			width: mobilePx(41,ceil)+1px;
-			height: mobilePx(84/2)+1px;
+			width: mobilePx(41,ceil);
+			height: mobilePx(84/2);
 			background-position: 0 mobilePx(84/2)*-1;
 		}
 	}
@@ -456,9 +457,10 @@ input[type="text"], input[type="search"], textarea {
 		border: none;
 		@include prefix-css3(appearance, none);	
 
+		&.checked,
 		&:checked {
-			width: mobilePx(54)+1px;
-			height: mobilePx(108/2)+1px;
+			width: mobilePx(54);
+			height: mobilePx(108/2);
 			background-position: 0 mobilePx(108/2)*-1;
 		}
 	}
@@ -474,6 +476,7 @@ input[type="text"], input[type="search"], textarea {
 		border: none;
 		@include prefix-css3(appearance, none);	
 
+		&.checked,
 		&:checked {
 			width: mobilePx(54,floor)+1px;
 			height: mobilePx(54,floor)+1px;
@@ -492,6 +495,7 @@ input[type="text"], input[type="search"], textarea {
 		border: none;
 		@include prefix-css3(appearance, none);	
 
+		&.checked,
 		&:checked {
 			width: mobilePx(54,floor)+1px;
 			height: mobilePx(54,floor)+1px;
