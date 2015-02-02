@@ -6,10 +6,10 @@
 
 define([], function(){
 
-	function MainController( $scope, $location, $route, $q, Define, StoreService, ResourceService, AuthService, DeviceBridge ){
+	function MainController( $rootScope, $scope, $location, $route, $q, Define, StoreService, ResourceService, AuthService, DeviceBridge ){
 
 		// 디바이스 접근 여부
-		$scope.isDevice = DeviceBridge.isDevice();
+		$rootScope.isDevice = DeviceBridge.isDevice();
 		
 		// 화면 이동
 		$scope.moveLink = function( path ){
@@ -71,6 +71,7 @@ define([], function(){
 	}
 
 	MainController.$inject = [
+		'$rootScope',
 		'$scope', 
 		'$location', 
 		'$route',

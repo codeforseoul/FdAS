@@ -6,7 +6,7 @@
 
 define([], function(){
 
-	function AuthService( $q, $http, Define, ResourceService ){
+	function AuthService( $rootScope, $q, $http, Define, DeviceBridge, ResourceService ){
 		var auth = {};
 
 		function isAuth(){
@@ -35,7 +35,11 @@ define([], function(){
 		};
 
 		function cookieAuth(){
-			window.location.href = Define.serviceHost + '/auth/facebook';	
+			if ( $rootScope.isDevice ){
+				DeviceBridge.facebookLoginToDevice();
+			} else {
+				window.location.href = Define.serviceHost + '/auth/facebook';					
+			}
 		}
 
 		function removeAuth( _deferred ){
@@ -69,9 +73,11 @@ define([], function(){
 	}
 
 	AuthService.$inject = [
+		'$rootScope',
 		'$q',
 		'$http',
 		'Define',
+		'DeviceBridge',
 		'ResourceService'
 	];
 

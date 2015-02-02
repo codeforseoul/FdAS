@@ -6,7 +6,7 @@
 
 define([], function(){
 
-	function SnsService( $q, Define, DeviceBridge, StoreService, ResourceService ){
+	function SnsService( $rootScope, $q, Define, DeviceBridge, StoreService, ResourceService ){
 		var service = {
 			'facebook': {
 				'load': function( deferred ){
@@ -57,15 +57,24 @@ define([], function(){
 					});
 				},
 				'share': function( data ){
-					FB.ui({
-						method: 'feed',
-						redirect_uri: data.shareUrl,
-						name: data.title,
-						link: data.url,
-						picture: data.image,
-						caption: data.title,
-						description: data.description
-					}, function(){});	
+					if ( $rootScope.isDevice ){
+						DeviceBridge.facebookShareToDevice( 
+							data.title, 
+							data.title, 
+							data.description, 
+							data.url, 
+							data.image );
+					} else {						
+						FB.ui({
+							method: 'feed',
+							redirect_uri: data.shareUrl,
+							name: data.title,
+							link: data.url,
+							picture: data.image,
+							caption: data.title,
+							description: data.description
+						}, function(){});
+					}	
 				}
 			},
 			'kakaotalk': {
@@ -95,6 +104,7 @@ define([], function(){
 	}
 
 	SnsService.$inject = [
+		'$rootScope',
 		'$q',
 		'Define',
 		'DeviceBridge',
