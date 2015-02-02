@@ -10,6 +10,7 @@
     "pretest": "jshint ."
   },
   "dependencies": {
+    "apn": "^1.6.2",
     "body-parser": "^1.9.0",
     "compression": "^1.0.11",
     "connect-ensure-login": "^0.1.1",
@@ -17,12 +18,16 @@
     "errorhandler": "^1.1.1",
     "express-session": "^1.7.6",
     "grunt": "^0.4.5",
+    "jsonwebtoken": "^3.2.2",
     "loopback": "^2.7.0",
     "loopback-boot": "^2.0.0",
+    "loopback-component-passport": "^1.1.2",
     "loopback-connector-mongodb": "^1.4.4",
     "loopback-datasource-juggler": "^2.7.0",
+    "node-gcm": "^0.9.14",
     "passport": "^0.2.1",
     "passport-facebook": "^1.0.3",
+    "passport-kakao": "0.0.2",
     "passport-oauth2": "^1.1.2",
     "serve-favicon": "^2.0.1"
   },

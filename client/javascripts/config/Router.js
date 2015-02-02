@@ -7,7 +7,7 @@
 define([], function(){
 
 	// route
-	function routesConfig( $routeProvider ){
+	function routesConfig( $routeProvider, $httpProvider ){
 		$routeProvider.
 			when( '/intro', {
 				'templateUrl': 'template/intro.html',
@@ -58,10 +58,23 @@ define([], function(){
 			otherwise({
 				'redirectTo': '/404'
 			});
+
+		$httpProvider.interceptors.push([ $q ], function( '$q' ){
+			return {
+				'responseError': function( response ){
+					if ( response.status === 401 || response.status === 403 ){
+						return $q.reject( response );
+					}
+
+					return $q.reject( response );
+				}
+			};
+		});
 	}
 
 	routesConfig.$inject = [
-		'$routeProvider'
+		'$routeProvider',
+		'$httpProvider'
 	];
 
 	return routesConfig;

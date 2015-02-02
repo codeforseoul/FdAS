@@ -2,6 +2,12 @@ var loopback = require('loopback');
 var boot = require('loopback-boot');
 var app = module.exports = loopback();
 
+// Passport configurators..
+/*var loopbackPassport = require('loopback-component-passport');
+var PassportConfigurator = loopbackPassport.PassportConfigurator;
+var passportConfigurator = new PassportConfigurator(app);*/
+var authication = require('authication')(app);
+
 /*
  * body-parser is a piece of express middleware that
  *   reads a form's input and stores it as a javascript
@@ -26,11 +32,11 @@ app.use(loopback.favicon());
 app.use(loopback.compress());
 
 // -- Add your pre-processing middleware here --
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// });
 
 // boot scripts mount components like REST API
 boot(app, __dirname);
@@ -47,68 +53,71 @@ app.use(loopback.token({
   model: app.models.accessToken
 })); 
 
-app.use( loopback.cookieParser(app.get('cookieSecret')));
-app.use( loopback.session({
+app.use(loopback.cookieParser(app.get('cookieSecret')));
+app.use(loopback.session({
   secret: 'kitty',
   saveUninitialized: true,
   resave: true
 }));
 
-// passportConfigurator.setupModels({
-//   userModel: app.models.user,
-//   userIdentityModel: app.models.userIdentity,
-//   userCredentialModel: app.models.userCredential
-// });
 
-// for (var s in config) {
-//   var c = config[s];
-//   c.session = c.session !== false;
-//   passportConfigurator.configureProvider(s, c);
-// }
+/*passportConfigurator.init();
 
-// passport load
-var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
-
-// passport use
-app.use(passport.initialize());
-app.use(passport.session());
-
-// passport init
-passport.use( new FacebookStrategy({
-    clientID: config[ 'facebook-login' ][ 'clientID' ],
-    clientSecret: config[ 'facebook-login' ][ 'clientSecret' ],
-    callbackURL: config[ 'facebook-login' ][ 'callbackURL' ]
-}, function( accessToken, refreshToken, profile, done ){
-
-    console.log( '+ facebook info ======' );
-    console.log( accessToken );
-    console.log( refreshToken );
-    console.log( profile );
-    console.log( '--------------' );
-
-    // done 메서드에 전달된 정보가 세션에 저장    
-    return done( null, profile );
-}));
-
-// auth restful api
-app.get( '/auth/facebook', passport.authenticate('facebook') );
-app.get( '/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/#/success',
-    failureRedirect: '/#/failure'
-}), function( req, res ){
-    console.log('--- from facebook ---');
-    // user: req.session.passport.user || {}
+passportConfigurator.setupModels({
+  userModel: app.models.user,
+  userIdentityModel: app.models.userIdentity,
+  userCredentialModel: app.models.userCredential
 });
 
-app.get('/isAuthenticated', function (req, res, next) {
-  res.json( req.isAuthenticated() );
+for (var s in config) {
+  var c = config[s];
+  c.session = c.session !== false;
+  passportConfigurator.configureProvider(s, c);
+}*/
+
+/*// oauth 여부 
+app.get('/isauth', function (req, res, next) {
+  // 회원정보 json 출력
+  res.json({
+    user: req.user
+  });
 });
 
-app.get( '/logout', function( req, res ){
-    req.logout();
-    res.redirect( '/' );
+// oauth 처리
+app.get('/auth/account', function (req, res, next) {
+  // redirect
+  res.redirect(req.query.returnUrl);
+});*/
+
+
+
+
+/* push server */
+app.get('/pushkey/add', function(req, res, next){
+  var device = req.query.device;
+  var registrationId = req.query.registrationId;
+  var appVersion = req.query.appVersion;
+
+  // TODO, model 생성 안됨.
+  var userModel = app.models.Pushkey || loopback.getModelByType(app.models.Pushkey);
+
+  userModel.findOne({
+    where: {
+      registrationId: registrationId
+    }
+  }, function(err, item){
+    if ( !item ){
+      userModel.create({
+        device: device,
+        registrationId: registrationId,
+        appVersion: appVersion,
+        addDate: new Date().getTime()
+      });
+    }
+  });
 });
+
+
 
 // -- Mount static files here--
 // All static middleware should be registered at the end, as all requests
