@@ -4,3 +4,5 @@ node_modules
 bower_components
 .vagrant
 docular_generated
+supervisor.log
+client
