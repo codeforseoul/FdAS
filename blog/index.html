@@ -2,12 +2,16 @@
 layout: default
 title: Home
 ---
+{% assign base_path = '' %}
+{% if site.baseurl =='/FdAS' %}
+  {% assign base_path = '/FdAS' %}
+{% endif %}
 
 <div class="posts">
   {% for post in paginator.posts %}
   <div class="post well">
     <h1 class="post-title">
-      <a href="{{ site.baseurl }}{{ post.url }}">
+      <a href="{{ base_path }}{{ post.url }}">
         {{ post.title }}
       </a>
     </h1>
