@@ -2,7 +2,7 @@
 title: 			  알뜰 서울의 발견
 description:      나를 위한 서울 복지 정보, 놓치지 말고 알뜰하게
 url:              http://codeforseoul.org/FdAS
-baseurl:          /FdAS
+baseurl:          /FdAS/
 
 author:
   name: team nogo, codeforseoul
