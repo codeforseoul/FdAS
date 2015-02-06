@@ -29,8 +29,8 @@ var messages = {
  */
 gulp.task('jekyll-build', function (done) {
     browserSync.notify(messages.jekyllBuild);
-    return cp.spawn('jekyll', ['build'], { stdio: 'inherit' })
-        .on('close', done);
+    return cp.spawn('jekyll', ['build', '--config=_config.yml,_config.local.yml'], { stdio: 'inherit' })
+    .on('close', done);
 });
 
 /**
@@ -94,7 +94,7 @@ gulp.task('images', function() {
  */
 gulp.task('watch', function () {
     gulp.watch('src/css/*.scss', ['sass']);
-    gulp.watch(['index.html', '_layouts/*.html', '_posts/*', '_config.yml'], ['jekyll-rebuild']);
+    gulp.watch(['index.html', '*.md', '*.html', '_layouts/*.html', '_blog/index.html', '_posts/*.md', '_config.yml', '_includes/*.html', '_data/*.yml'], ['jekyll-rebuild']);
     gulp.watch('src/js/*.js', ['js']);
     gulp.watch('src/images/**/*.+(png|jpeg|jpg|gif|svg)', ['images']);
     gulp.watch('bower.json', ['bower']);

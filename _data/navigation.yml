@@ -1,0 +1,10 @@
+# Site navigation links
+
+- title: 노고팀
+  url: /about/
+
+- title: 블로그
+  url: /blog/
+
+- title: GITHUB
+  url: https://github.com/codeforseoul/FdAS

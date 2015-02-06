@@ -1,0 +1,54 @@
+---
+layout: default
+title: Home
+---
+
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post well">
+    <h1 class="post-title">
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+
+    <span class="post-date">{{ post.date | date_to_string }}</span>
+
+    {{ post.content | split:'<!--break-->' | first }}
+  </div>
+  {% endfor %}
+</div>
+
+{% if paginator.total_pages > 1 %}
+<nav>
+  <ul class="pager">
+
+    <li class="next">
+    {% if paginator.next_page %}
+      <a class="next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">다음 &raquo;</a>
+    {% else %}
+      <span class="next">다음 &raquo;</span>
+    {% endif %}
+    </li>
+<!-- 
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <em>{{ page }}</em>
+      {% elsif page == 1 %}
+        <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+      {% else %}
+        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+ -->
+    <li class="previous">
+    {% if paginator.previous_page %}
+      <a class="previous" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; 이전</a>
+    {% else %}
+      <span class="previous">&laquo; 이전</span>
+    {% endif %}
+    </li>
+
+  </ul>
+</nav>
+{% endif %}

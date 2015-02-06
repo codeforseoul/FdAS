@@ -1,4 +1,35 @@
-title: 알뜰 서울의 발견
+# Setup
+title: 			  알뜰 서울의 발견
+description:      나를 위한 서울 복지 정보, 놓치지 말고 알뜰하게
+url:              http://codeforseoul.org/FdAS
+baseurl:          /FdAS
+
+author:
+  name: team nogo, codeforseoul
+  url: http://codeforseoul.org/FdAS
+
 markdown: redcarpet
 highlighter: pygments # or rouge or null
 exclude: ['node_modules', 'gulpfile.js', 'package.json', 'src', 'Gemfile', 'Gemfile.lock', 'bower.json', 'bower_components', 'docular_generated']
+
+# Github
+github:
+  repo: https://github.com/codeforseoul/FdAS
+
+# Permalinks
+permalink: pretty
+relative_permalinks: false
+
+# Blog
+paginate: 2
+paginate_path: /blog/page:num
+
+defaults:
+  -
+    scope:
+      path: "blogs"
+      type: "posts"
+    values:
+      layout: "post"
+      author: "노고팀"
+      category: "project"

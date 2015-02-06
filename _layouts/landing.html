@@ -10,7 +10,7 @@
 
     <!-- build:css({app,.tmp}) /src/css/main.css -->
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ site.baseurl }}/dist/css/build.min.css">
+    <link rel="stylesheet" href="dist/css/build.min.css">
     <!-- endbuild -->
 
     <link href="{{ site.baseurl }}/dist/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,15 +29,11 @@
 
     {% include navbar.html %}
 
-    {% include carousel.html %}
-
-    <div class="container">
-      {{ content }}
-    </div>
+    {{ content }}
 
     {% include footer.html %}
 
-    <script src="{{ site.baseurl }}/dist/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="{{ site.baseurl }}/dist/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="dist/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="dist/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 </html>
