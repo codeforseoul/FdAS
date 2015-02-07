@@ -34,11 +34,18 @@ define([], function(){
 			});
 		};
 
-		function cookieAuth(){
+		function cookieAuth( type ){
 			if ( $rootScope.isDevice ){
-				DeviceBridge.facebookLoginToDevice();
+				switch( type ){
+					case 'facebook':
+						DeviceBridge.facebookLoginToDevice();
+						break;
+					case 'kakaotalk':
+						DeviceBridge.kakaoLoginToDevice();
+						break;
+				}
 			} else {
-				window.location.href = Define.serviceHost + '/auth/facebook';					
+				window.location.href = Define.serviceHost + '/auth/' + type;					
 			}
 		}
 
@@ -56,7 +63,6 @@ define([], function(){
 		}
 
 		function loginChaining( _deferred ){
-
 			if ( isAuth() ){
 				_deferred ? _deferred.resolve( getAuth() ) : undefined;
 			} else {

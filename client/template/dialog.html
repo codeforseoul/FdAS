@@ -10,14 +10,14 @@
 		</header>
 		<section>
 			<menu>
-				<button type="button" class="to-sns" data-ng-click="$emit( 'auth' )">
+				<button type="button" class="to-sns" data-ng-click="$emit( 'auth', 'facebook' )">
 					<span class="ico sns facebook"></span>
 					<span class="txt">페이스북</span>
 				</button>
-				<!-- <button type="button" class="to-sns">
-					<span class="ico sns kaka"></span>
-					<span class="txt">카카오스토리</span>
-				</button> -->
+				<button type="button" class="to-sns" data-ng-click="$emit( 'auth', 'kakaotalk' )">
+					<span class="ico sns kakaotalk"></span>
+					<span class="txt">카카오톡</span>
+				</button>
 			</menu>
 		</section>
 		<footer>
@@ -39,10 +39,10 @@
 					<span class="ico sns facebook"></span>
 					<span class="txt">페이스북</span>
 				</button>
-				<!-- <button type="button" class="to-sns">
-					<span class="ico sns kaka"></span>
-					<span class="txt">카카오스토리</span>
-				</button> -->
+				<button type="button" class="to-sns" data-ng-click="snsShare( 'kakaotalk', data );">
+					<span class="ico sns kakaotalk"></span>
+					<span class="txt">카카오톡</span>
+				</button>
 				<button type="button" class="to-sns" data-ng-click="open( 'shareCopy', data )">
 					<span class="ico sns copy"></span>
 					<span class="txt">URL 복사</span>

@@ -21,10 +21,6 @@ define([], function(){
 			});	
 		}
 
-		function cookieAuth(){
-			AuthService.cookieAuth();
-		}
-
 		function removeAuth(){
 			var deferred = $q.defer(),
 				promise = deferred.promise;
@@ -46,8 +42,8 @@ define([], function(){
 			}
 		}
 
-		$scope.toggleAuth = function( e ){
-			$scope.login ? removeAuth() : cookieAuth();
+		$scope.toggleAuth = function( e, type ){
+			$scope.login ? removeAuth() : AuthService.cookieAuth( type );
 			e.preventDefault();
 		};
 		
@@ -59,18 +55,6 @@ define([], function(){
 			});
 			e.preventDefault();
 		};
-
-		/*$scope.save = function(){
-			var data = {};
-
-			[ 'appAlarm' ].forEach( function( key ){
-				data[ key ] = $scope[ key ];
-			});
-
-			StoreService.save( data );
-
-			alert( '저장되었습니다.' );
-		};*/
 
 		// get from storage and set device
 		$scope.appAlarm = StoreService.get( 'appAlarm' );

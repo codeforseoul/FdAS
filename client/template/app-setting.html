@@ -38,12 +38,11 @@
 							data-ng-class="{ checked: login === true }"
 							data-ng-model="facebookLogin"
 							data-ng-checked="login === true"
-							data-ng-click="toggleAuth( $event );">
-						<!-- <input type="checkbox" name="snsKaka" class="check sns kaka" title="카카오톡 연동"
-							data-ng-true-value="'logined'"
-							data-ng-false-value="'notlogined'"
-							data-ng-model="snsKaka" 
-							data-ng-click="snsLogin( 'kaka' )"> -->
+							data-ng-click="toggleAuth( $event, 'facebook' );">
+						<input type="checkbox" name="snsKaka" class="check sns kakaotalk" title="카카오톡 연동"
+							data-ng-class="{ checked: login === true }"
+							data-ng-model="kakaoLogin" 
+							data-ng-click="toggleAuth( $event, 'kakaotalk' );">
 					</menu>
 				</li>
 				<li class="item-3">

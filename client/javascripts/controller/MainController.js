@@ -55,8 +55,8 @@ define([], function(){
 			$scope.backLink();
 		});
 
-		$scope.$on( 'auth', function( e, name, data ){
-			AuthService.cookieAuth();
+		$scope.$on( 'auth', function( e, type ){
+			AuthService.cookieAuth( type );
 		});
 
 		// dialog gateway

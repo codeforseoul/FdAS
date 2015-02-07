@@ -32,7 +32,23 @@ define([], function(){
 						(picture ? picture : '' ) 
 					);
 				}
-			}
+			},
+			'kakaoLoginToDevice': function(){
+				if ( window.androidBridge ){
+					window.androidBridge.kakaoLogin();
+				}
+			},
+			'kakaoShareToDevice': function( name, caption, description, link, picture ){
+				if ( window.androidBridge ){
+					window.androidBridge.kakaoShare( 
+						name, 
+						(caption ? caption : ''), 
+						(description ? description : ''), 
+						(link ? link : '' ), 
+						(picture ? picture : '' ) 
+					);
+				}
+			},
 		};
 	};
 })

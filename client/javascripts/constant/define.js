@@ -7,12 +7,16 @@
 define([], function(){
 	return {
 		'serviceHost': window.location.origin,
+		'minimumLoadTime': 1500,
 		'introSwipeTime': 250,
 		'feedsLimit': 5,
 		'repliesLimit': 5,
 		'sns': {
 			'facebook': {
 				'appId': '734387796636874'
+			},
+			'kakaotalk': {
+				'appId': '28952570a30ce516503112547f4f3960'
 			}
 		},
 		'gender': [

@@ -4,7 +4,6 @@
  * @author: CodeforSeoul by blim(kkh975@naver.com)
  */
 
-// window.fdasAppLoadStart = new Date().getTime();
 requirejs.config({
 	'baseUrl': '../javascripts',
 	'paths': {
@@ -42,7 +41,20 @@ requirejs.config({
 		}
 	},
 	'config': {
-		'isLoaded': false	// 로드 및 모듈 완료 플래그
+		'initalize': {
+			'startTime': new Date().getTime() // 로드 및 모듈 완료 플래그
+		}
 	},
 	'deps': [ 'app' ]
 });
+
+// error
+requirejs.onError = function( err ){
+	console.log( err );
+	
+	if ( err.requireType === 'timeout' ){
+		document.getElementById( 'bodyLy' ).innerHTML = '시간이 초과되었습니다.';
+	} else {
+		document.getElementById( 'bodyLy' ).innerHTML = '알 수 없는 에러가 발생하였습니다.';
+	}
+}
