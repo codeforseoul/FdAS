@@ -699,6 +699,7 @@ input[type="text"], input[type="search"], textarea {
 
 		&.has-search + * {
 			padding-top: mobilePx( $headerTopHei + 89 );
+			overflow: hidden;
 		}
 	}
 

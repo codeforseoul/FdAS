@@ -11,23 +11,30 @@ define([
 ], function( introHTML, mainHTML, module ){
 
 	function initalize( $rootScope, $location, Define, StoreService, AuthService, SnsService, DeviceBridge ){
-		var leftTime = Define.minimumLoadTime - new Date().getTime();
-
-		// device call
-		window.fromDeviceCall = function( func_name ){
-			DeviceBridge[ func_name ].call( this, [] );
-		};
+		var loadTime = new Date().getTime() - module.config().startTime,
+			leftTime = Define.minimumLoadTime - loadTime;
 
 		// load other service
 		SnsService.load( 'facebook' );
 		SnsService.load( 'kakaotalk' );
 
-		// minimum load time
-		if ( leftTime > 100 ){
-			setTimeout( deferInitalize, leftTime );
-		} else {
-			deferInitalize();
+		// device call from android
+		window.fromDeviceCall = function( func_name, data ){
+			DeviceBridge[ func_name ].apply( this, [ data ] );
+		};
+
+		// alarm service?
+		if ( StoreService.get( 'appAlarm' ) === null ){
+			DeviceBridge.alarmSetToDevice( true, true );
 		}
+
+		// TODO
+		// minimum load time
+		// if ( leftTime > 100 ){
+		// 	setTimeout( deferInitalize, leftTime );
+		// } else {
+			deferInitalize();
+		// }
 
 		function deferInitalize(){
 			// loading done

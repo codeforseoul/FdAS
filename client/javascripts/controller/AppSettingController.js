@@ -43,16 +43,14 @@ define([], function(){
 		}
 
 		$scope.toggleAuth = function( e, type ){
+			// $scope.facebookLogin = e.target.checked = !$scope.appAlarm; // mobile not working
 			$scope.login ? removeAuth() : AuthService.cookieAuth( type );
 			e.preventDefault();
 		};
 		
 		$scope.toggleAlarm = function( e ){
-			$scope.appAlarm = !$scope.appAlarm;
+			$scope.appAlarm = e.target.checked = !$scope.appAlarm; // mobile not working
 			DeviceBridge.alarmSetToDevice( $scope.appAlarm );
-			StoreService.save({
-				appAlarm: $scope.appAlarm
-			});
 			e.preventDefault();
 		};
 

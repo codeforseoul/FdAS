@@ -6,16 +6,24 @@
 
 define([], function(){
 	
-	return function(){
+	function DefineBridge( StoreService ){
 		
 		return {
+			'test': function(){
+				console.log( 'test DeviceBridge' );
+			},
 			'isDevice': function(){
 				return window.androidBridge ? true : false;
 			},
-			'alarmSetToDevice': function( data ){
+			'alarmSetToDevice': function( isAlarm, isInit ){
 				if ( window.androidBridge ){
-					window.androidBridge.alarmSet( data === true ? 1 : 0 );
+					window.androidBridge.alarmSet( isAlarm === true ? 1 : 0, isInit === true ? 1 : 0 );
 				}
+			},
+			'alarmSetFromDevice': function( data ){
+				StoreService.save({
+					appAlarm: data === "1" ? true : false
+				});
 			},
 			'facebookLoginToDevice': function(){
 				if ( window.androidBridge ){
@@ -51,4 +59,10 @@ define([], function(){
 			},
 		};
 	};
+
+	DefineBridge.$inject = [
+		'StoreService'
+	];
+
+	return DefineBridge;
 })

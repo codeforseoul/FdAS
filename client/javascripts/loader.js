@@ -42,7 +42,7 @@ requirejs.config({
 	},
 	'config': {
 		'initalize': {
-			'startTime': new Date().getTime() // 로드 및 모듈 완료 플래그
+			'startTime': new Date().getTime() 
 		}
 	},
 	'deps': [ 'app' ]
@@ -50,8 +50,6 @@ requirejs.config({
 
 // error
 requirejs.onError = function( err ){
-	console.log( err );
-	
 	if ( err.requireType === 'timeout' ){
 		document.getElementById( 'bodyLy' ).innerHTML = '시간이 초과되었습니다.';
 	} else {

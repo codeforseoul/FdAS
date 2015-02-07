@@ -34,14 +34,15 @@
 					<strong>로그인 설정</strong>
 					<small>SNS 로그 설정을 합니다.</small>
 					<menu>
-						<input type="checkbox" name="snsFb" class="check sns facebook" title="페이스북 연동"
-							data-ng-class="{ checked: login === true }"
+						<input type="checkbox" name="facebookLogin" class="check sns facebook" title="페이스북 연동"
+							data-ng-class="{ checked: facebookLogin === true }"
 							data-ng-model="facebookLogin"
-							data-ng-checked="login === true"
+							data-ng-checked="facebookLogin === true"
 							data-ng-click="toggleAuth( $event, 'facebook' );">
 						<input type="checkbox" name="snsKaka" class="check sns kakaotalk" title="카카오톡 연동"
-							data-ng-class="{ checked: login === true }"
+							data-ng-class="{ checked: kakaoLogin === true }"
 							data-ng-model="kakaoLogin" 
+							data-ng-checked="kakaoLogin === true"
 							data-ng-click="toggleAuth( $event, 'kakaotalk' );">
 					</menu>
 				</li>
