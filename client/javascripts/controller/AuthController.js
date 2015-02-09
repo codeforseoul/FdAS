@@ -7,7 +7,7 @@
 define([], function(){
 
 	function AuthController( $scope, $q, AuthService ){
-		var deferred = $q.defer(),
+		/*var deferred = $q.defer(),
 			promise = deferred.promise;
 
 		AuthService.setAuth( deferred );
@@ -20,7 +20,9 @@ define([], function(){
 		});
 		promise.finally( function(){
 			$scope.$emit( 'moveLink', 'feeds' );
-		});
+		});*/
+		
+		$scope.$emit( 'moveLink', 'feeds' );
 	}
 
 	AuthController.$inject = [

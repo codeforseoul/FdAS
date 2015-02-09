@@ -72,20 +72,34 @@ for (var s in config) {
   passportConfigurator.configureProvider(s, c);
 }
 
+// TODO, 세션 있을시 정상적으로 json보내는지 확인 필요
 // oauth 여부 
-app.get('/isauth', function (req, res, next) {
-  // 회원정보 json 출력
-  res.json({
-    user: req.user
-  });
+app.get('/isAuth', function (req, res, next) {
+  if ( req.user ){
+    res.json({
+      user: req.user
+    });
+  } else {
+    res.status( 403 ).send('not authorzied');
+  }
 });
 
-// oauth 처리
-app.get('/auth/account', function (req, res, next) {
-  // redirect
-  res.redirect(req.query.returnUrl);
+// oauth 추가 by device
+app.post('/auth/account/add', function (req, res, next) {
+  // TODO, implements...
+  // 디바이스 오는 정보를 DB에 밀어넣음
+  // 쿠키&세션 추가해야 함..
+  // 결과값: 
+  //    성공: res.status(200).send('ok');
+  //    실패: res.status(500).send('fail');
 });
 
+// redirect
+app.get('/byPass', function(req, res, next){
+  res.redirect(req.query.url);
+});
+
+// TODO, implements...
 // push server
 app.get('/pushkey/add', function(req, res, next){
   var device = req.query.device;

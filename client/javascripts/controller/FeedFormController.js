@@ -6,9 +6,8 @@
 
 define([], function(){
 
-	function FeedFormController( $scope, $location, $routeParams, $filter, Define, ResourceService, AuthService, CommonHelper ){
-		var feedId = null,
-			userId = null;
+	function FeedFormController( $scope, $q, $location, $routeParams, $filter, Define, ResourceService, AuthService, CommonHelper ){
+		var feedId = null;
 
 		function getData( userId ){
 			var	ndate = new Date().getTime(),
@@ -63,9 +62,8 @@ define([], function(){
 		$scope.categories = Define.categories;
 		$scope.locations = Define.locations;
 
-		if ( AuthService.isAuth() ){
+		AuthService.isAuth( $q.defer() ).promise.then( function( user ){
 			feedId = $routeParams.feedId;
-			userId = AuthService.getAuth().id;
 
 			if ( $scope.isUpdate ){
 				ResourceService.feed.findOne.get({
@@ -98,14 +96,13 @@ define([], function(){
 				$scope.category = $scope.categories[ 0 ];
 				$scope.area = $scope.locations[ 0 ];
 			}
-		} else {
+		}, function(){
 			$scope.$emit( 'dialog', 'login' );
 			$scope.$emit( 'backLink' );
-		}
+		});
 
 		// to form
 		$scope.saveFeed = function(){
-
 			if ( $scope.feedForm.$invalid ){
 				alert( '입려 양식을 확인해주세요.' );
 			}
@@ -113,9 +110,8 @@ define([], function(){
 
 		// insert
 		$scope.postFeed = function(){
-
-			if ( AuthService.isAuth() ){
-				var param = getData( userId );
+			AuthService.isAuth( $q.defer() ).promise.then( function( user ){
+				var param = getData( user.id );
 
 				param.addDate = new Date().getTime() + '';
 				param.fixDate = '';
@@ -126,16 +122,15 @@ define([], function(){
 				}, function(){
 					commonErrorCallback( '등록' );
 				});
-			} else {
+			}, function(){
 				$scope.$emit( 'dialog', 'login' );
-			}
+			});
 		};
 
 		// update
 		$scope.putFeed = function(){
-
-			if ( AuthService.isAuth() ){
-				var param = getData( userId );
+			AuthService.isAuth( $q.defer() ).promise.then( function( user ){
+				var param = getData( user.id );
 
 				param.fixDate = new Date().getTime();
 
@@ -146,14 +141,15 @@ define([], function(){
 				}, function(){
 					commonErrorCallback( '수정' );
 				});
-			} else {
+			}, function(){
 				$scope.$emit( 'dialog', 'login' );
-			}
+			});
 		};
 	}
 
 	FeedFormController.$inject = [
 		'$scope', 
+		'$q', 
 		'$location',
 		'$routeParams',
 		'$filter',

@@ -30,6 +30,13 @@ define([], function(){
 					window.androidBridge.facebookLogin();
 				}
 			},
+			'facebookLoginFromDevice': function( data ){
+				// TODO, auth to server
+				// 어떻게 들어가게 할 것인지 협의 필요
+				// /auth/account/add??
+				console.log( data );
+				console.log( JSON.parse( data ) );
+			},
 			'facebookShareToDevice': function( name, caption, description, link, picture ){
 				if ( window.androidBridge ){
 					window.androidBridge.facebookShare( 
@@ -46,17 +53,24 @@ define([], function(){
 					window.androidBridge.kakaoLogin();
 				}
 			},
+			'kakaoLoginFromDevice': function( data ){
+				// TODO, auth to server 
+				// 어떻게 들어가게 할 것인지 협의 필요
+				// /auth/account/add??
+				console.log( data );
+				console.log( JSON.parse( data ) );
+			},
 			'kakaoShareToDevice': function( name, caption, description, link, picture ){
 				if ( window.androidBridge ){
 					window.androidBridge.kakaoShare( 
 						name, 
 						(caption ? caption : ''), 
 						(description ? description : ''), 
-						(link ? link : '' ), 
+						(link ? link : '' ), 	
 						(picture ? picture : '' ) 
 					);
 				}
-			},
+			}
 		};
 	};
 

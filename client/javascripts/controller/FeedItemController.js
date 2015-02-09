@@ -41,24 +41,19 @@ define([], function(){
 			});		
 		}
 
-		// reply
-		$scope.replies = [];
-
-		// reply action
-		$scope.getReply = getReply;
+		$scope.replies = [];		// reply
+		$scope.getReply = getReply; // reply action
 
 		$scope.saveReply = function(){
-
 			if ( $scope.replyForm.$invalid ){
 				alert( '댓글을 확인해주세요.' );
 			}
 		};
 		
 		$scope.postReply = function(){
-			
-			if ( AuthService.isAuth() ){
+			AuthService.isAuth( $q.defer() ).promise.then( function( user ){
 				ResourceService.feed.reply.method.save({
-					'userId': AuthService.getAuth().id,
+					'userId': user.id,
 					'feedId': feedId,
 					'addDate': new Date().getTime() + '',
 					'body': $scope.reply
@@ -67,9 +62,9 @@ define([], function(){
 				}, function(){
 					alert( '죄송합니다. 댓글 등록에 실패했습니다.' );
 				});
-			} else {
+			}, function(){
 				$scope.$emit( 'dialog', 'login' );
-			}
+			});
 		};
 
 		// feed action - event detact from MainController

@@ -94,7 +94,7 @@ define([], function(){
 							},
 							webLink: {
 								text: '자세히 보기',
-								url: Define.serviceHost + '?bypass=' + data.url
+								url: Define.serviceHost + '/byPass?url=' + data.url
 							},
 							fail: function(){
 								alert( '카카오 링크를 지원하지 않는 기종입니다.' );

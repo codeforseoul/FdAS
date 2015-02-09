@@ -25,6 +25,17 @@ define([], function(){
 			$scope.type = null;
 			$scope.data = null;
 		};
+
+		// sns login
+		$scope.snsLogin = function( type ){
+			AuthService.cookieAuth( type );
+		};
+
+		// sns share
+		$scope.snsShare = function(){
+			SnsService.share.apply( null, arguments );
+			$scope.close();
+		};
 		
 		// dialog channel
 		$scope.$on( 'dialog.close', function( e ){
@@ -57,17 +68,6 @@ define([], function(){
 
 		this.open = $scope.open;
 		this.close = $scope.close;
-
-		// sns login
-		$scope.snsLogin = function( sns ){
-			AuthService.cookie();
-		};
-
-		// sns share
-		$scope.snsShare = function(){
-			SnsService.share.apply( null, arguments );
-			$scope.close();
-		};
 	}
 
 	DialogController.$inject = [

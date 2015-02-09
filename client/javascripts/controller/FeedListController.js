@@ -6,12 +6,13 @@
 
 define([], function(){
 
-	function FeedListController( $scope, $routeParams, Define, StoreService, ResourceService, AuthService, FeedService ){
+	function FeedListController( $scope, $q, $routeParams, Define, StoreService, ResourceService, AuthService, FeedService ){
 		var myLocation = StoreService.get( 'myLocation' ),
 			myCategories = StoreService.get( 'myCategories' ),
 			myScrap = StoreService.get( 'myScrap' ),
 			feedListCnt = 0,
-			feedNowPage = 0;
+			feedNowPage = 0,
+			userId = '';
 
 		function getConditionParam(){
 			var arr = [],
@@ -25,7 +26,7 @@ define([], function(){
 				}];
 			} else if ( $scope.service === 'mine' ){ // 내가 쓴 글
 				arr.push({
-					'userId': AuthService.isAuth() ? AuthService.getAuth().id : ''
+					'userId': userId
 				});	
 			} else if ( $scope.service === 'scrap' ){ // 스크랩한 글
 				arr.push({
@@ -39,7 +40,6 @@ define([], function(){
 					'delDate': ''
 				});
 			} else {
-
 				// 나의 셋팅 > 위치 설정시
 				if ( myLocation.val && myLocation.val > 0 ){
 					arr.push({
@@ -92,29 +92,31 @@ define([], function(){
 
 		// search
 		$scope.filterKeyword = function( e ){
-
 			if ( e.keyCode === 13 ){
 				$scope.feeds = [];
-				getListCount();		
+				getListCount();
 			}
 		};
 
 		// feed
 		$scope.feeds = [];
-		// $scope.feeds = [{
-		// 	id: '1',
-		// 	userID: '1',
-		// 	category: "etc",
-		// 	agency: 'bokjiro.go.kr',
-		// 	location: 'seoul',
-		// 	addDate: new Date().getTime(),
-		// 	fixDate: new Date().getTime(),
-		// 	delDate: '',
-		// 	title: '노인생애체험센터운영',
-		// 	body: '젊은 세대에게 노인의 일상생활을 직접 체험해 봄으로써 노인에 대한 인식 변화와 세대 간 이해의 폭 확대',
-		// 	url: 'http://www.bokjiro.go.kr/gowf/wel/welsvc/svcsearch/WelLcg02SvcSearchView.do?servId=00000051166&servNm=노인생애체험센터운영',
-		// 	image: 'http://www.bokjiro.go.kr/img/2014/img_life01.gif'
-		// }];
+
+		// test feed
+		/*$scope.feeds = [{
+			id: '1',
+			userID: '1',
+			category: "etc",
+			agency: 'bokjiro.go.kr',
+			location: 'seoul',
+			addDate: new Date().getTime(),
+			fixDate: new Date().getTime(),
+			delDate: '',
+			title: '노인생애체험센터운영',
+			body: '젊은 세대에게 노인의 일상생활을 직접 체험해 봄으로써 노인에 대한 인식 변화와 세대 간 이해의 폭 확대',
+			url: 'http://www.bokjiro.go.kr/gowf/wel/welsvc/svcsearch/WelLcg02SvcSearchView.do?servId=00000051166&servNm=노인생애체험센터운영',
+			image: 'http://www.bokjiro.go.kr/img/2014/img_life01.gif'
+		}];*/
+
 		$scope.service = $routeParams.svc;
 
 		// feed action
@@ -127,12 +129,19 @@ define([], function(){
 			});
 		});
 
-		// get feed
-		getListCount();
+		if ( $scope.service === 'mine' ){
+			AuthService.isAuth( $q.defer() ).promise.then( function( user ){
+				userId = user.id;
+				getListCount();
+			});
+		} else {
+			getListCount();
+		}
 	}
 
 	FeedListController.$inject = [
 		'$scope', 
+		'$q',
 		'$routeParams',
 		'Define',
 		'StoreService',

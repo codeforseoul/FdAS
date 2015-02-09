@@ -6,7 +6,7 @@
 
 define([], function(){
 
-	function MyController( $scope, StoreService, ResourceService, AuthService ){
+	function MyController( $scope, $q, StoreService, ResourceService, AuthService ){
 
 		// height
 		angular.element( 'html, body, #bodyLy, #myLy' ).css( 'height', '100%' );
@@ -17,19 +17,22 @@ define([], function(){
 		});
 
 		// database
-		if ( AuthService.isAuth() ) {
+		AuthService.isAuth( $q.defer() ).promise.then( function( user ){
 			ResourceService.feed.count.get({
 				'where': {
-					'userId': AuthService.getAuth().id
+					'userId': user.id
 				}
 			}, function( result ) {
 				$scope.mineCnt = result.count;
 			});
-		}
+		}, function(){
+			$scope.mineCnt = 0;
+		});
 	}
 
 	MyController.$inject = [
 		'$scope', 
+		'$q',
 		'StoreService',
 		'ResourceService',
 		'AuthService'

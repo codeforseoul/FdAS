@@ -8,48 +8,28 @@ define([], function(){
 
 	function AppSettingController( $scope, $q, StoreService, AuthService, DeviceBridge ){
 
-		function getAuth(){
-			var deferred = $q.defer(),
-				promise = deferred.promise;
-
-			AuthService.setAuth( deferred );
-			promise.then( function( user ){
-				$scope.login = true;
-			});
-			promise.catch( function(){
-				$scope.login = false;
-			});	
-		}
-
-		function removeAuth(){
-			var deferred = $q.defer(),
-				promise = deferred.promise;
-
-			AuthService.removeAuth( deferred );
-			promise.then( function( user ){
-				$scope.login = false;
-			});
-			promise.catch( function(){
-				$scope.login = true;
-			});	
-		}
-
-		function setAuth(){
-			if ( AuthService.isAuth() ){
-				$scope.login = true;				
-			} else {
-				getAuth();	
-			}
-		}
-
 		$scope.toggleAuth = function( e, type ){
-			// $scope.facebookLogin = e.target.checked = !$scope.appAlarm; // mobile not working
-			$scope.login ? removeAuth() : AuthService.cookieAuth( type );
+			if ( ( $scope.facebookLogin && type === 'kakao' ) || 
+				( $scope.kakaoLogin && type === 'facebook' ) ){
+				alert( '이미 인증이 되었습니다.' );
+			} else {
+				if ( e.target.checked ){
+					AuthService.delCookieAuth( type, $q.defer() ).promise.then( function(){
+						e.target.checked = false;
+					}, function(){
+						alert( '실패하였습니다.' );
+					});
+				} else {
+					AuthService.cookieAuth( type );
+				}
+			}
+
 			e.preventDefault();
 		};
 		
 		$scope.toggleAlarm = function( e ){
-			$scope.appAlarm = e.target.checked = !$scope.appAlarm; // mobile not working
+			$scope.appAlarm = !$scope.appAlarm; 
+			e.target.checked = $scope.appAlarm; // mobile not working
 			DeviceBridge.alarmSetToDevice( $scope.appAlarm );
 			e.preventDefault();
 		};
@@ -57,7 +37,9 @@ define([], function(){
 		// get from storage and set device
 		$scope.appAlarm = StoreService.get( 'appAlarm' );
 
-		setAuth();
+		AuthService.isAuth( $q.defer() ).promise.then( function( user ){
+			$scope[ user.type + 'Login' ] = true;
+		});
 	}
 
 	AppSettingController.$inject = [

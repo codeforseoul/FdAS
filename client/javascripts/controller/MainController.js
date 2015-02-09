@@ -6,10 +6,7 @@
 
 define([], function(){
 
-	function MainController( $rootScope, $scope, $location, $route, $q, Define, StoreService, ResourceService, AuthService, DeviceBridge ){
-
-		// 디바이스 접근 여부
-		$rootScope.isDevice = DeviceBridge.isDevice();
+	function MainController( $rootScope, $scope, $location, $route, $q, Define, StoreService, ResourceService, AuthService ){
 		
 		// 화면 이동
 		$scope.moveLink = function( path ){
@@ -17,13 +14,12 @@ define([], function(){
 		};
 
 		// 화면 이동
-		$scope.moveAuthLink = function( path ){
-
-			if ( AuthService.isAuth() ){
-				$location.path( '/' + path );	
-			} else {
-				$scope.$broadcast( 'dialog.login' );				
-			}
+		$scope.moveAuthLink = function( path, successCallback, failureCallback ){
+			AuthService.isAuth( $q.defer() ).promise.then( function( user ){
+				successCallback ? successCallback() : $location.path( '/' + path );	
+			}, function(){
+				failureCallback ? failureCallback() : $scope.$broadcast( 'dialog.login' );
+			});
 		};
 		
 		// 화면 갱신
@@ -33,10 +29,7 @@ define([], function(){
 
 		// 이전 화면 이동
 		$scope.backLink = function(){
-
-			// if ( window.location.host === Define.host ){
-				window.history.back();
-			// }
+			window.history.back();
 		};
 
 		$scope.$on( 'moveLink', function( e, data ){
@@ -53,10 +46,6 @@ define([], function(){
 
 		$scope.$on( 'backLink', function( e ){
 			$scope.backLink();
-		});
-
-		$scope.$on( 'auth', function( e, type ){
-			AuthService.cookieAuth( type );
 		});
 
 		// dialog gateway
@@ -79,8 +68,7 @@ define([], function(){
 		'Define',
 		'StoreService',
 		'ResourceService',
-		'AuthService',
-		'DeviceBridge'
+		'AuthService'
 	];
 
 	return MainController;

@@ -13,7 +13,6 @@ define([], function(){
 				findIdx = myScrap.indexOf( data );
 
 			if ( data ){
-
 				if ( findIdx > -1 ){
 					myScrap.splice( findIdx, 1 );
 					StoreService.save({
@@ -30,12 +29,9 @@ define([], function(){
 
 		this.modify = function( $scope, data ){
 			var feedId  = data[ 0 ],
-				userId = data[ 1 ],
-				user = null;
+				userId = data[ 1 ];
 
-			if ( AuthService.isAuth() ){
-				user = AuthService.getAuth();
-
+			AuthService.isAuth( $q.defer() ).promise.then( function( user ){
 				if ( user.id === userId ){
 					$scope.$emit( 'moveLink', 'update/feed/' + feedId );	
 					$scope.$emit( 'dialog', 'close' );
@@ -43,26 +39,21 @@ define([], function(){
 					alert( '죄송합니다. 권한이 없습니다.' );
 					$scope.$emit( 'dialog', 'close' );
 				}
-			} else {
+			}, function(){
 				$scope.$emit( 'dialog', 'login' );
-			}
+			});
 		};
 
 		this.remove = function( $scope, data ){
 			var feedId = data[ 0 ],
-				userId = data[ 1 ],
-				deferred = null,
-				check = null,
-				user = null;
+				userId = data[ 1 ];
 
-			if ( AuthService.isAuth() ){
-				check = confirm( "정말로 삭제하시겠습니까?" );
+			AuthService.isAuth( $q.defer() ).promise.then( function( user ){
+				var check = confirm( "정말로 삭제하시겠습니까?" );
 
 				if ( check === true ){
-					user = AuthService.getAuth();
-
 					if ( user.id === userId ){
-						deferred = ResourceService.feed.item.delete({
+						routeDeferred = ResourceService.feed.item.delete({
 							'id': feedId,
 							'where': {
 								'and': [{
@@ -75,16 +66,16 @@ define([], function(){
 							'delDate': new Date().getTime() + ''
 						});
 
-						deferred.$promise.then( function(){
+						routeDeferred.$promise.then( function(){
 							alert( '삭제되었습니다.' );
 							$scope.$emit( 'reloadPage' );	
 						});
 
-						deferred.$promise.catch( function(){
+						routeDeferred.$promise.catch( function(){
 							alert( '죄송합니다. 삭제에 실패하였습니다.' );
 						});
 
-						deferred.$promise.finally( function(){
+						routeDeferred.$promise.finally( function(){
 							$scope.$emit( 'dialog', 'close' );
 						});
 					} else {
@@ -94,20 +85,17 @@ define([], function(){
 				} else {
 					$scope.$emit( 'dialog', 'close' );					
 				}
-			} else {
-				$scope.$emit( 'dialog', 'login' );				
-			}
+			}, function(){
+				$scope.$emit( 'dialog', 'login' );	
+			});
 		};
 
 		this.star = function( $scope, data ){
 			var star = data[ 0 ], 
-				feedId = data[ 1 ],
-				deferred = null,
-				user = null;
+				feedId = data[ 1 ];
 
-			if ( AuthService.isAuth() ){
-				user = AuthService.getAuth();
-				deferred = ResourceService.feed.star.method.query({
+			AuthService.isAuth( $q.defer() ).promise.then( function( user ){
+				var routeDeferred = ResourceService.feed.star.method.query({
 					'filter':{
 						'limit': 1,
 						'where': {
@@ -120,7 +108,7 @@ define([], function(){
 					}	
 				});
 
-				deferred.$promise.then( function( result ){
+				routeDeferred.$promise.then( function( result ){
 					var date = new Date().getTime() + '';
 
 					if ( result.length === 0 ){ // new
@@ -154,16 +142,16 @@ define([], function(){
 					}
 				});
 
-				deferred.$promise.catch( function(){
+				routeDeferred.$promise.catch( function(){
 					alert( '죄송합니다. 등록에 실패하였습니다.' );
 				});
 
-				deferred.$promise.finally( function(){
+				routeDeferred.$promise.finally( function(){
 					$scope.$emit( 'dialog', 'close' );
 				});
-			} else {
+			}, function(){
 				$scope.$emit( 'dialog', 'login' );
-			}
+			});
 		};
 	}
 
