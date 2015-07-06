@@ -147,3 +147,7 @@ master <- develop <- front-dev
 창피해하지 마세요. 여러분이 더 대단합니다. 아마도, 당연히, 격하게 환영합니다!
 Don't be embarrassed about your code. We welcome it!
 
+####6. 프로젝트 문서
+
+https://drive.google.com/folderview?id=0By0AzcV9f08-fktqVjFMNE9ILUdsSXBZZWl2SXRwWmFTMzVTQlFhWXBFbnB0cEJYWHN1RVU&usp=sharing
+
